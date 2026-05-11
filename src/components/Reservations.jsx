@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const FIELD_CLASS = 'w-full bg-transparent border-b border-white/20 text-white font-montserrat text-sm py-2 outline-none placeholder:text-white/20 focus:border-ardor-red transition-colors duration-200'
 
-export default function Reservations() {
+export default function Reservations({ reducedMotion }) {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -22,8 +22,8 @@ export default function Reservations() {
 
         <motion.div
           className="text-center mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 30 }}
+          whileInView={reducedMotion ? {} : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
@@ -51,23 +51,23 @@ export default function Reservations() {
             >
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block font-montserrat text-xs tracking-widest uppercase text-ardor-muted mb-2">Full Name</label>
-                  <input type="text" required placeholder="Ana García" className={FIELD_CLASS} />
+                  <label htmlFor="res-name" className="block font-montserrat text-xs tracking-widest uppercase text-ardor-muted mb-2">Full Name</label>
+                  <input id="res-name" type="text" required placeholder="Ana García" className={FIELD_CLASS} />
                 </div>
                 <div>
-                  <label className="block font-montserrat text-xs tracking-widest uppercase text-ardor-muted mb-2">Email</label>
-                  <input type="email" required placeholder="ana@example.com" className={FIELD_CLASS} />
+                  <label htmlFor="res-email" className="block font-montserrat text-xs tracking-widest uppercase text-ardor-muted mb-2">Email</label>
+                  <input id="res-email" type="email" required placeholder="ana@example.com" className={FIELD_CLASS} />
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block font-montserrat text-xs tracking-widest uppercase text-ardor-muted mb-2">Date</label>
-                  <input type="date" required className={`${FIELD_CLASS} [color-scheme:dark]`} />
+                  <label htmlFor="res-date" className="block font-montserrat text-xs tracking-widest uppercase text-ardor-muted mb-2">Date</label>
+                  <input id="res-date" type="date" required className={`${FIELD_CLASS} [color-scheme:dark]`} />
                 </div>
                 <div>
-                  <label className="block font-montserrat text-xs tracking-widest uppercase text-ardor-muted mb-2">Time</label>
-                  <select required className={`${FIELD_CLASS} bg-ardor-dark appearance-none`}>
+                  <label htmlFor="res-time" className="block font-montserrat text-xs tracking-widest uppercase text-ardor-muted mb-2">Time</label>
+                  <select id="res-time" required className={`${FIELD_CLASS} bg-ardor-dark appearance-none`}>
                     <option value="" disabled defaultValue="">Select time</option>
                     {['7:00 PM','7:30 PM','8:00 PM','8:30 PM','9:00 PM','9:30 PM','10:00 PM'].map(t => (
                       <option key={t}>{t}</option>
@@ -77,8 +77,8 @@ export default function Reservations() {
               </div>
 
               <div>
-                <label className="block font-montserrat text-xs tracking-widest uppercase text-ardor-muted mb-2">Guests</label>
-                <select required className={`${FIELD_CLASS} bg-ardor-dark appearance-none`}>
+                <label htmlFor="res-guests" className="block font-montserrat text-xs tracking-widest uppercase text-ardor-muted mb-2">Guests</label>
+                <select id="res-guests" required className={`${FIELD_CLASS} bg-ardor-dark appearance-none`}>
                   <option value="" disabled defaultValue="">Number of guests</option>
                   {['1 Guest','2 Guests','3 Guests','4 Guests','5 Guests','6 Guests','7+ Guests (please call)'].map(g => (
                     <option key={g}>{g}</option>
@@ -91,8 +91,8 @@ export default function Reservations() {
                   type="submit"
                   disabled={loading}
                   className="font-montserrat text-sm tracking-[0.3em] uppercase bg-ardor-gold text-ardor-dark px-12 py-4 font-medium w-full md:w-auto disabled:opacity-60"
-                  whileHover={{ backgroundColor: '#E63946', color: '#ffffff' }}
-                  whileTap={{ scale: 0.97 }}
+                  whileHover={reducedMotion ? {} : { backgroundColor: '#E63946', color: '#ffffff' }}
+                  whileTap={reducedMotion ? {} : { scale: 0.97 }}
                   transition={{ duration: 0.2 }}
                 >
                   {loading ? 'Reserving…' : 'Confirm Reservation'}

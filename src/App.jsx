@@ -18,8 +18,8 @@ export default function App() {
       <About reducedMotion={prefersReducedMotion} />
       <Dishes reducedMotion={prefersReducedMotion} />
       <Drinks reducedMotion={prefersReducedMotion} />
-      <Menu />
-      <Reservations />
+      <Menu reducedMotion={prefersReducedMotion} />
+      <Reservations reducedMotion={prefersReducedMotion} />
       <Footer reducedMotion={prefersReducedMotion} />
     </main>
   )
