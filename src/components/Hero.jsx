@@ -3,8 +3,6 @@ import { Canvas } from '@react-three/fiber'
 import { motion } from 'framer-motion'
 import DishScene from '../canvas/DishScene'
 
-const DISH_TEXTURE = 'https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=512&q=80'
-
 const PARTICLES = Array.from({ length: 14 }, (_, i) => ({
   id: i,
   left: `${Math.random() * 100}%`,
@@ -34,13 +32,18 @@ export default function Hero({ reducedMotion }) {
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center bg-ardor-dark overflow-hidden">
 
       {/* R3F Canvas — full background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <Canvas camera={{ position: [0, 1.5, 4], fov: 45 }}>
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.4, ease: 'easeOut', delay: 0.2 }}
+      >
+        <Canvas camera={{ position: [0, 1.8, 3.2], fov: 48 }}>
           <Suspense fallback={null}>
-            <DishScene textureUrl={DISH_TEXTURE} />
+            <DishScene dishId={1} />
           </Suspense>
         </Canvas>
-      </div>
+      </motion.div>
 
       {/* Radial gradient overlay */}
       <div

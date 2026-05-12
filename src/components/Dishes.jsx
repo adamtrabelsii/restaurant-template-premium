@@ -6,24 +6,24 @@ import DishScene from '../canvas/DishScene'
 const DISHES = [
   {
     id: 1,
+    dishId: 1,
     name: 'Paella Valenciana',
     description: 'Saffron bomba rice, free-range rabbit, green beans, slow-cooked over orange wood fire.',
     price: '€28',
-    texture: 'https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=512&q=80',
   },
   {
     id: 2,
+    dishId: 2,
     name: 'Secreto Ibérico',
     description: 'Hidden cut of pure-bred Ibérico pork, charcoal grilled, Pedro Ximénez reduction, roasted peppers.',
     price: '€34',
-    texture: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=512&q=80',
   },
   {
     id: 3,
+    dishId: 3,
     name: 'Gambas al Ajillo',
     description: 'Wild Atlantic prawns, sizzling in garlic, guindilla chilli, dry sherry, served in a clay cazuela.',
     price: '€22',
-    texture: 'https://images.unsplash.com/photo-1559847844-5315695dadae?w=512&q=80',
   },
 ]
 
@@ -49,7 +49,7 @@ function DishCard({ dish, reducedMotion, delay }) {
         <div className="h-64 bg-black/30">
           <Canvas camera={{ position: [0, 1.5, 4], fov: 45 }}>
             <Suspense fallback={null}>
-              <DishScene hovered={hovered} textureUrl={dish.texture} />
+              <DishScene hovered={hovered} dishId={dish.dishId} />
             </Suspense>
           </Canvas>
         </div>
