@@ -1,240 +1,152 @@
-import { useRef, useMemo } from 'react'
+import { Suspense, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Environment, ContactShadows } from '@react-three/drei'
-import { Vector2 } from 'three'
+import { Environment, ContactShadows, Float, Sparkles } from '@react-three/drei'
+import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing'
+import * as THREE from 'three'
 
-// Y level of the plate's inner well surface (food sits here)
-const WELL_Y = 0.055
-
-function Plate() {
-  // 2D profile [radius, height] rotated around Y → realistic dinner plate
-  const points = useMemo(() => [
-    new Vector2(0.001, WELL_Y + 0.012), // center lip (tiny offset avoids degenerate pole)
-    new Vector2(0.28,  WELL_Y + 0.008),
-    new Vector2(0.58,  WELL_Y + 0.000),
-    new Vector2(0.74,  WELL_Y - 0.012), // well floor (slightly concave)
-    new Vector2(0.84,  WELL_Y - 0.008),
-    new Vector2(0.91,  WELL_Y + 0.004), // shoulder
-    new Vector2(0.97,  WELL_Y + 0.022), // rim inner face
-    new Vector2(1.04,  WELL_Y + 0.044), // rim top inner
-    new Vector2(1.13,  WELL_Y + 0.046), // rim top flat
-    new Vector2(1.21,  WELL_Y + 0.032), // rim outer top
-    new Vector2(1.27,  WELL_Y + 0.004), // outer edge
-    new Vector2(1.27,  -0.010),         // outer edge base
-    new Vector2(1.21,  -0.018),         // underside outer
-    new Vector2(0.92,  -0.022),         // underside
-    new Vector2(0.88,  -0.028),         // foot ring outer
-    new Vector2(0.82,  -0.022),         // foot ring inner
-    new Vector2(0.76,  -0.028),         // underside inner
-    new Vector2(0.001, -0.028),         // center bottom
-  ], [])
-
-  return (
-    <group>
-      {/* Main plate body */}
-      <mesh castShadow receiveShadow>
-        <latheGeometry args={[points, 120]} />
-        <meshStandardMaterial color="#F4F1ED" metalness={0.03} roughness={0.22} />
-      </mesh>
-      {/* Subtle porcelain rim highlight */}
-      <mesh position={[0, WELL_Y + 0.047, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[1.04, 1.22, 120]} />
-        <meshStandardMaterial color="#FEFCFA" metalness={0.05} roughness={0.10} transparent opacity={0.55} />
-      </mesh>
-    </group>
-  )
-}
-
-// Paella Valenciana — saffron rice, mussels, red peppers
-function PaellaFood() {
-  const grains = useMemo(() => {
-    const items = []
-    const rings = [
-      { r: 0.1, count: 6 },
-      { r: 0.28, count: 12 },
-      { r: 0.46, count: 18 },
-      { r: 0.63, count: 22 },
-      { r: 0.79, count: 26 },
-    ]
-    rings.forEach(({ r, count }, ring) => {
-      for (let i = 0; i < count; i++) {
-        const angle = (i / count) * Math.PI * 2 + ring * 0.45
-        items.push({
-          x: Math.cos(angle) * r,
-          z: Math.sin(angle) * r,
-          ry: angle + Math.PI / 2,
-          colorIdx: (ring + i) % 4,
-        })
-      }
-    })
-    return items
-  }, [])
-
-  const grainColors = ['#E0A020', '#B07808', '#D4940C', '#C88A10']
-  const mussels = useMemo(() => Array.from({ length: 6 }, (_, i) => ({ angle: (i / 6) * Math.PI * 2 })), [])
-  const peppers = useMemo(() => Array.from({ length: 3 }, (_, i) => ({ angle: (i / 3) * Math.PI * 2 + 1.0 })), [])
-
-  return (
-    <group position={[0, WELL_Y - 0.012, 0]}>
-      {/* Saffron rice base */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]}>
-        <circleGeometry args={[0.92, 48]} />
-        <meshStandardMaterial color="#C8920A" roughness={0.95} />
-      </mesh>
-      {/* Rice grains */}
-      {grains.map((g, i) => (
-        <mesh key={i} position={[g.x, 0.013, g.z]} rotation={[Math.PI / 2, 0, g.ry]}>
-          <capsuleGeometry args={[0.016, 0.055, 2, 5]} />
-          <meshStandardMaterial color={grainColors[g.colorIdx]} roughness={0.92} />
-        </mesh>
-      ))}
-      {/* Mussels */}
-      {mussels.map(({ angle }, i) => (
-        <mesh key={i} position={[Math.cos(angle) * 0.64, 0.04, Math.sin(angle) * 0.64]} rotation={[0.3, angle, 0]}>
-          <sphereGeometry args={[0.1, 8, 5, 0, Math.PI]} />
-          <meshStandardMaterial color="#1A1A16" roughness={0.25} metalness={0.55} />
-        </mesh>
-      ))}
-      {/* Red pepper strips */}
-      {peppers.map(({ angle }, i) => (
-        <mesh key={i} position={[Math.cos(angle) * 0.42, 0.04, Math.sin(angle) * 0.42]} rotation={[Math.PI / 2, 0, angle]}>
-          <capsuleGeometry args={[0.022, 0.2, 2, 6]} />
-          <meshStandardMaterial color="#D42200" roughness={0.82} />
-        </mesh>
-      ))}
-      {/* Parsley sprig */}
-      <mesh position={[0.08, 0.06, -0.16]}>
-        <sphereGeometry args={[0.055, 5, 5]} />
-        <meshStandardMaterial color="#1E5C10" roughness={0.95} />
-      </mesh>
-    </group>
-  )
-}
-
-// Secreto Ibérico — chargrilled pork, PX sauce, roasted peppers
-function SecretoFood() {
-  const herbs = useMemo(() => Array.from({ length: 6 }, (_, i) => ({ x: 0.36 + i * 0.028, z: -0.26 + i * 0.04 })), [])
-
-  return (
-    <group position={[0, WELL_Y - 0.008, 0]}>
-      {/* Pedro Ximénez sauce smear */}
-      <mesh position={[0.05, 0.001, 0.1]} scale={[1.6, 1, 0.75]} rotation={[0, 0.4, 0]}>
-        <cylinderGeometry args={[0.35, 0.35, 0.012, 20]} />
-        <meshStandardMaterial color="#5A1800" roughness={0.28} metalness={0.08} transparent opacity={0.9} />
-      </mesh>
-      {/* Meat slab */}
-      <mesh position={[0, 0.055, 0]} rotation={[0, 0.35, 0]}>
-        <capsuleGeometry args={[0.25, 0.62, 6, 12]} />
-        <meshStandardMaterial color="#7A2E14" roughness={0.85} metalness={0.02} />
-      </mesh>
-      {/* Char crust overlay */}
-      <mesh position={[0, 0.085, 0]} scale={[0.95, 0.18, 0.95]} rotation={[0, 0.35, 0]}>
-        <capsuleGeometry args={[0.25, 0.62, 4, 10]} />
-        <meshStandardMaterial color="#2C0D06" roughness={0.95} transparent opacity={0.5} />
-      </mesh>
-      {/* Roasted red pepper */}
-      <mesh position={[-0.52, 0.03, 0.1]} rotation={[Math.PI / 2, 0, 0.5]}>
-        <capsuleGeometry args={[0.07, 0.28, 3, 8]} />
-        <meshStandardMaterial color="#C03000" roughness={0.82} />
-      </mesh>
-      {/* Micro herb garnish */}
-      {herbs.map((h, i) => (
-        <mesh key={i} position={[h.x, 0.06, h.z]}>
-          <sphereGeometry args={[0.018, 4, 4]} />
-          <meshStandardMaterial color="#2A6018" roughness={0.95} />
-        </mesh>
-      ))}
-    </group>
-  )
-}
-
-// Gambas al Ajillo — prawns in garlic sherry oil, chilli
-function GambasFood() {
-  const prawns = useMemo(() => Array.from({ length: 5 }, (_, i) => ({ angle: (i / 5) * Math.PI * 2 - 0.3 })), [])
-  const garlic = useMemo(() => Array.from({ length: 10 }, (_, i) => ({
-    angle: (i / 10) * Math.PI * 2,
-    r: 0.2 + (i % 3) * 0.16,
-  })), [])
-
-  return (
-    <group position={[0, WELL_Y - 0.010, 0]}>
-      {/* Sherry/garlic oil pool */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]}>
-        <circleGeometry args={[0.78, 40]} />
-        <meshStandardMaterial color="#C87A08" roughness={0.18} metalness={0.12} transparent opacity={0.75} />
-      </mesh>
-      {/* Prawns */}
-      {prawns.map(({ angle }, i) => (
-        <group key={i} position={[Math.cos(angle) * 0.38, 0, Math.sin(angle) * 0.38]}>
-          <mesh position={[0, 0.05, 0]} rotation={[0.5, angle + Math.PI / 2, 0]}>
-            <capsuleGeometry args={[0.055, 0.38, 4, 8]} />
-            <meshStandardMaterial color="#E85A30" roughness={0.72} metalness={0.04} />
-          </mesh>
-          {/* Prawn head */}
-          <mesh position={[Math.cos(angle) * 0.22, 0.07, Math.sin(angle) * 0.22]}>
-            <sphereGeometry args={[0.065, 7, 7]} />
-            <meshStandardMaterial color="#CC4020" roughness={0.68} metalness={0.06} />
-          </mesh>
-        </group>
-      ))}
-      {/* Garlic slices */}
-      {garlic.map(({ angle, r }, i) => (
-        <mesh key={i} position={[Math.cos(angle) * r, 0.025, Math.sin(angle) * r]}>
-          <cylinderGeometry args={[0.04, 0.04, 0.018, 6]} />
-          <meshStandardMaterial color="#F0D8A0" roughness={0.88} />
-        </mesh>
-      ))}
-      {/* Guindilla chilli */}
-      <mesh position={[0.3, 0.06, -0.4]} rotation={[Math.PI / 2, 0, 0.7]}>
-        <capsuleGeometry args={[0.025, 0.25, 3, 6]} />
-        <meshStandardMaterial color="#CC1100" roughness={0.75} />
-      </mesh>
-    </group>
-  )
-}
-
-const FOOD_MAP = { 1: PaellaFood, 2: SecretoFood, 3: GambasFood }
-
-export default function DishScene({ hovered = false, dishId = 1 }) {
+function ProceduralDish({ scrollProgress, reducedMotion }) {
   const groupRef = useRef()
-  const floatRef = useRef(0)
+  const foodRef = useRef()
 
-  useFrame((_, delta) => {
+  useFrame((state) => {
     if (!groupRef.current) return
-    groupRef.current.rotation.y += hovered ? 0.018 : 0.005
-    // Gentle floating bob
-    floatRef.current += delta * 0.6
-    groupRef.current.position.y = Math.sin(floatRef.current) * 0.04
+    const scroll = scrollProgress.current
+    groupRef.current.rotation.y = scroll * Math.PI * 2 + state.clock.elapsedTime * 0.04
+    groupRef.current.rotation.x = THREE.MathUtils.lerp(
+      groupRef.current.rotation.x,
+      -0.25 + scroll * 0.35,
+      0.08
+    )
+    if (!reducedMotion) {
+      groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.6) * 0.05
+    }
+    if (foodRef.current && !reducedMotion) {
+      foodRef.current.rotation.z = state.clock.elapsedTime * 0.1
+    }
   })
 
-  const FoodComponent = FOOD_MAP[dishId] ?? PaellaFood
+  return (
+    <group ref={groupRef}>
+      {/* Plate - quiet ceramic glaze */}
+      <mesh receiveShadow castShadow position={[0, 0, 0]}>
+        <cylinderGeometry args={[1.6, 1.55, 0.08, 64]} />
+        <meshPhysicalMaterial
+          color="#f5f1ea"
+          roughness={0.35}
+          metalness={0.04}
+          clearcoat={0.25}
+          clearcoatRoughness={0.4}
+        />
+      </mesh>
+      {/* Plate rim */}
+      <mesh position={[0, 0.04, 0]}>
+        <torusGeometry args={[1.55, 0.04, 16, 64]} />
+        <meshPhysicalMaterial color="#ebe5d8" roughness={0.5} />
+      </mesh>
+      {/* Saffron rice mound — flatter so it doesn't read as a planet */}
+      <mesh ref={foodRef} position={[0, 0.08, 0]} castShadow>
+        <sphereGeometry args={[1.25, 48, 24, 0, Math.PI * 2, 0, Math.PI / 4]} />
+        <meshStandardMaterial color="#c89c3e" roughness={0.95} flatShading />
+      </mesh>
+      {/* Red pepper strips */}
+      {[0, 1, 2, 3, 4].map((i) => {
+        const angle = (i / 5) * Math.PI * 2
+        return (
+          <mesh
+            key={i}
+            position={[Math.cos(angle) * 0.7, 0.22, Math.sin(angle) * 0.7]}
+            rotation={[0, angle, 0.1]}
+            castShadow
+          >
+            <boxGeometry args={[0.45, 0.04, 0.12]} />
+            <meshStandardMaterial color="#A8323F" roughness={0.6} />
+          </mesh>
+        )
+      })}
+      {/* Prawns */}
+      {[0, 1, 2].map((i) => {
+        const angle = (i / 3) * Math.PI * 2 + 0.5
+        return (
+          <mesh
+            key={`prawn-${i}`}
+            position={[Math.cos(angle) * 0.95, 0.24, Math.sin(angle) * 0.95]}
+            rotation={[0, angle + Math.PI / 2, 0]}
+            castShadow
+          >
+            <capsuleGeometry args={[0.1, 0.35, 8, 16]} />
+            <meshStandardMaterial color="#d77f4e" roughness={0.5} />
+          </mesh>
+        )
+      })}
+      {/* Black olives */}
+      {[0, 1, 2, 3].map((i) => {
+        const angle = (i / 4) * Math.PI * 2 + 0.8
+        return (
+          <mesh
+            key={`olive-${i}`}
+            position={[Math.cos(angle) * 0.5, 0.2, Math.sin(angle) * 0.5]}
+            castShadow
+          >
+            <sphereGeometry args={[0.09, 16, 16]} />
+            <meshStandardMaterial color="#1a1208" roughness={0.4} metalness={0.15} />
+          </mesh>
+        )
+      })}
+      {/* Lemon wedge */}
+      <mesh position={[0.9, 0.26, -0.3]} rotation={[0, 0.3, 0.2]} castShadow>
+        <sphereGeometry args={[0.18, 16, 16, 0, Math.PI]} />
+        <meshStandardMaterial color="#e5c64a" roughness={0.55} />
+      </mesh>
+    </group>
+  )
+}
 
+export default function DishScene({ scrollProgress, reducedMotion }) {
   return (
     <>
-      <Environment preset="studio" />
-      <ambientLight intensity={0.65} />
-      {/* Warm key light from upper-right */}
-      <pointLight color="#FFF5E0" intensity={3.0} position={[3, 5, 3]} />
-      {/* Cool fill from left */}
-      <pointLight color="#C8D8FF" intensity={1.0} position={[-3, 3, 2]} />
-      {/* Warm back rim light for food pop */}
-      <pointLight color="#E63946" intensity={1.8} position={[0, -1.5, -2]} />
-      {/* Overhead soft white */}
-      <pointLight color="#FFFFFF" intensity={0.9} position={[0, 6, 1]} />
+      <ambientLight intensity={0.35} />
+      <directionalLight
+        position={[5, 8, 3]}
+        intensity={1.25}
+        color="#FFF1DD"
+        castShadow
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+      />
+      <directionalLight position={[-4, 3, -2]} intensity={0.35} color="#A8323F" />
+      <directionalLight position={[2, -2, 4]} intensity={0.3} color="#FFF1DD" />
+      <pointLight position={[0, 3, 0]} intensity={0.3} color="#C9A961" />
+
+      <Float
+        speed={reducedMotion ? 0 : 1.0}
+        rotationIntensity={0}
+        floatIntensity={reducedMotion ? 0 : 0.3}
+      >
+        <Suspense fallback={null}>
+          <ProceduralDish scrollProgress={scrollProgress} reducedMotion={reducedMotion} />
+        </Suspense>
+      </Float>
+
+      {!reducedMotion && (
+        <Sparkles count={25} scale={5} size={1.5} speed={0.2} color="#C9A961" opacity={0.35} />
+      )}
 
       <ContactShadows
         position={[0, -0.55, 0]}
-        opacity={0.45}
-        scale={4}
-        blur={2.2}
-        far={1}
-        color="#1a0a00"
+        opacity={0.55}
+        scale={6}
+        blur={2.5}
+        far={2}
       />
 
-      <group ref={groupRef} rotation={[-0.28, 0, 0]}>
-        <Plate />
-        <FoodComponent />
-      </group>
+      <Environment preset="studio" />
+
+      {!reducedMotion && (
+        <EffectComposer disableNormalPass multisampling={0}>
+          <Bloom intensity={0.25} luminanceThreshold={0.95} luminanceSmoothing={0.4} mipmapBlur />
+          <Vignette eskil={false} offset={0.25} darkness={0.75} />
+        </EffectComposer>
+      )}
     </>
   )
 }

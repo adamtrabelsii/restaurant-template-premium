@@ -18,13 +18,25 @@
     "scroll": "Desliza"
   },
   "about": {
+    "eyebrow": "Nuestra historia",
     "quote": "\"Fuego. Sabor.<br />Sentimiento.\"",
     "body": "Nacido en las cocinas de Madrid, ARDOR lleva el espíritu indómito de la cocina española a cada plato. Cocinamos con carbón, paciencia y una obsesión incansable por el sabor — desde el mejor Ibérico hasta la pesca más fresca de la costa.",
     "chefName": "Chef Alejandro Vega",
     "chefRole": "Chef Ejecutivo y Fundador",
     "chefAlt": "Chef principal en ARDOR",
     "imageAlt": "Ambiente de la cocina de ARDOR",
-    "imageCaption": "Madrid, España"
+    "imageCaption": "Madrid, España",
+    "stats": {
+      "years":    "Años de oficio",
+      "michelin": "Estrellas Michelin",
+      "wines":    "Vinos en bodega",
+      "chefs":    "Chefs en brigada"
+    }
+  },
+  "press": { "eyebrow": "Aparecemos en" },
+  "gallery": {
+    "eyebrow": "El espacio",
+    "title": "Una sala para los sentidos"
   },
   "dishes": {
     "eyebrow": "Nuestras Especialidades",
