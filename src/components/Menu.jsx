@@ -1,37 +1,13 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const TABS = ['tapas', 'mains', 'postres', 'bebidas']
 
-const TAB_LABELS = { tapas: 'Tapas', mains: 'Mains', postres: 'Postres', bebidas: 'Bebidas' }
-
-const MENU_ITEMS = {
-  tapas: [
-    { name: 'Pan con Tomate', desc: 'Sourdough, grated heirloom tomato, Arbequina oil, sea salt', price: '€8' },
-    { name: 'Patatas Bravas', desc: 'Crispy potatoes, smoky bravas sauce, garlic alioli', price: '€9' },
-    { name: 'Croquetas de Jamón', desc: 'Hand-rolled jamón ibérico croquettes, béchamel, crispy crumb', price: '€12' },
-    { name: 'Pimientos de Padrón', desc: 'Blistered Padrón peppers, flor de sal, lemon', price: '€9' },
-  ],
-  mains: [
-    { name: 'Paella Valenciana', desc: 'Saffron bomba rice, rabbit, beans, orange wood fire (for 2)', price: '€56' },
-    { name: 'Secreto Ibérico', desc: 'Charcoal-grilled Ibérico pork, PX reduction, peppers', price: '€34' },
-    { name: 'Lubina a la Sal', desc: 'Whole sea bass baked in salt crust, garlic butter, capers', price: '€38' },
-    { name: 'Cochinillo Asado', desc: 'Segovian suckling pig, slow-roasted 6 hours, apple compote', price: '€42' },
-  ],
-  postres: [
-    { name: 'Crema Catalana', desc: 'Classic custard, caramelised crust, orange zest', price: '€9' },
-    { name: 'Churros con Chocolate', desc: 'Fried dough, cinnamon sugar, thick dark chocolate dipping sauce', price: '€11' },
-    { name: 'Tarta de Santiago', desc: 'Almond cake, powdered sugar cross, Pedro Ximénez ice cream', price: '€10' },
-  ],
-  bebidas: [
-    { name: 'Sangria Ardiente', desc: 'House red wine, blood orange, cinnamon, berries', price: '€14' },
-    { name: 'Rioja Reserva', desc: 'Bodegas Muga, aged 18 months in oak, deep cherry notes', price: '€12' },
-    { name: 'Agua de Valencia', desc: "Fresh orange juice, Cava, vodka, gin — Valencia's signature", price: '€13' },
-  ],
-}
-
 export default function Menu({ reducedMotion }) {
+  const { t } = useLanguage()
   const [active, setActive] = useState('tapas')
+  const items = t(`menu.items.${active}`)
 
   return (
     <section id="menu" className="bg-white py-24 md:py-32">
@@ -44,9 +20,9 @@ export default function Menu({ reducedMotion }) {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-montserrat text-xs tracking-[0.4em] uppercase text-ardor-red mb-3">Explore</p>
+          <p className="font-montserrat text-xs tracking-[0.4em] uppercase text-ardor-red mb-3">{t('menu.eyebrow')}</p>
           <h2 className="font-cormorant font-bold text-ardor-dark" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
-            Nuestra Carta
+            {t('menu.title')}
           </h2>
           <div className="w-16 h-px bg-ardor-red mx-auto mt-5" />
         </motion.div>
@@ -60,7 +36,7 @@ export default function Menu({ reducedMotion }) {
               className="relative font-montserrat text-xs tracking-[0.3em] uppercase px-6 py-3 cursor-pointer whitespace-nowrap transition-colors duration-200"
               style={{ color: active === tab ? '#0F0F0F' : '#9CA3AF' }}
             >
-              {TAB_LABELS[tab]}
+              {t(`menu.tabs.${tab}`)}
               {active === tab && (
                 <motion.div
                   layoutId="tab-underline"
@@ -82,7 +58,7 @@ export default function Menu({ reducedMotion }) {
             transition={{ duration: 0.25, ease: 'easeOut' }}
             className="space-y-5"
           >
-            {MENU_ITEMS[active].map((item, i) => (
+            {items.map((item, i) => (
               <li
                 key={i}
                 className="flex justify-between items-baseline border-b border-dotted border-gray-200 pb-4 last:border-0"

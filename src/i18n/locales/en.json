@@ -1,0 +1,156 @@
+{
+  "navbar": {
+    "links": {
+      "about": "About",
+      "dishes": "Dishes",
+      "drinks": "Drinks",
+      "menu": "Menu"
+    },
+    "reserve": "Reserve",
+    "toggleMenu": "Toggle menu",
+    "switchToEnglish": "Switch language to English",
+    "switchToSpanish": "Switch language to Spanish"
+  },
+  "hero": {
+    "tagline": "Madrid · Est. 2018",
+    "subtitle": "Where Passion Meets the Plate",
+    "cta": "Reserve a Table",
+    "scroll": "Scroll"
+  },
+  "about": {
+    "quote": "\"Fire. Flavor.<br />Feeling.\"",
+    "body": "Born in the kitchens of Madrid, ARDOR brings the untamed spirit of Spanish cuisine to every plate. We cook with charcoal, patience, and a relentless obsession with flavour — from the finest Ibérico to the freshest coastal catch.",
+    "chefName": "Chef Alejandro Vega",
+    "chefRole": "Executive Chef & Founder",
+    "chefAlt": "Head chef at ARDOR",
+    "imageAlt": "ARDOR kitchen atmosphere",
+    "imageCaption": "Madrid, Spain"
+  },
+  "dishes": {
+    "eyebrow": "Our Specialities",
+    "title": "Signature Dishes",
+    "items": [
+      {
+        "name": "Paella Valenciana",
+        "description": "Saffron bomba rice, free-range rabbit, green beans, slow-cooked over orange wood fire.",
+        "price": "€28",
+        "alt": "Paella Valenciana served in a wide pan"
+      },
+      {
+        "name": "Secreto Ibérico",
+        "description": "Hidden cut of pure-bred Ibérico pork, charcoal grilled, Pedro Ximénez reduction, roasted peppers.",
+        "price": "€34",
+        "alt": "Grilled Ibérico pork with reduction sauce"
+      },
+      {
+        "name": "Gambas al Ajillo",
+        "description": "Wild Atlantic prawns, sizzling in garlic, guindilla chilli, dry sherry, served in a clay cazuela.",
+        "price": "€22",
+        "alt": "Sizzling garlic prawns in a clay dish"
+      }
+    ]
+  },
+  "drinks": {
+    "eyebrow": "Cocktails & Wine",
+    "title": "The Bar",
+    "blurb": "Handcrafted cocktails inspired by the flavours of Spain. Each glass tells a story.",
+    "items": [
+      {
+        "name": "Sangria Ardiente",
+        "label": "Signature",
+        "description": "Tempranillo, blood orange, cinnamon, vanilla, seasonal berries.",
+        "alt": "Sangria Ardiente cocktail"
+      },
+      {
+        "name": "Cava Blanco",
+        "label": "Refreshing",
+        "description": "Cava Brut, elderflower, cucumber, fresh mint, splash of tonic.",
+        "alt": "Cava Blanco cocktail"
+      },
+      {
+        "name": "Fuego Negro",
+        "label": "Bold",
+        "description": "Mezcal, activated charcoal, smoked honey syrup, lime, chilli salt rim.",
+        "alt": "Fuego Negro cocktail"
+      }
+    ]
+  },
+  "menu": {
+    "eyebrow": "Explore",
+    "title": "Our Menu",
+    "tabs": {
+      "tapas": "Tapas",
+      "mains": "Mains",
+      "postres": "Desserts",
+      "bebidas": "Drinks"
+    },
+    "items": {
+      "tapas": [
+        { "name": "Pan con Tomate", "desc": "Sourdough, grated heirloom tomato, Arbequina oil, sea salt", "price": "€8" },
+        { "name": "Patatas Bravas", "desc": "Crispy potatoes, smoky bravas sauce, garlic alioli", "price": "€9" },
+        { "name": "Croquetas de Jamón", "desc": "Hand-rolled jamón ibérico croquettes, béchamel, crispy crumb", "price": "€12" },
+        { "name": "Pimientos de Padrón", "desc": "Blistered Padrón peppers, flor de sal, lemon", "price": "€9" }
+      ],
+      "mains": [
+        { "name": "Paella Valenciana", "desc": "Saffron bomba rice, rabbit, beans, orange wood fire (for 2)", "price": "€56" },
+        { "name": "Secreto Ibérico", "desc": "Charcoal-grilled Ibérico pork, PX reduction, peppers", "price": "€34" },
+        { "name": "Lubina a la Sal", "desc": "Whole sea bass baked in salt crust, garlic butter, capers", "price": "€38" },
+        { "name": "Cochinillo Asado", "desc": "Segovian suckling pig, slow-roasted 6 hours, apple compote", "price": "€42" }
+      ],
+      "postres": [
+        { "name": "Crema Catalana", "desc": "Classic custard, caramelised crust, orange zest", "price": "€9" },
+        { "name": "Churros con Chocolate", "desc": "Fried dough, cinnamon sugar, thick dark chocolate dipping sauce", "price": "€11" },
+        { "name": "Tarta de Santiago", "desc": "Almond cake, powdered sugar cross, Pedro Ximénez ice cream", "price": "€10" }
+      ],
+      "bebidas": [
+        { "name": "Sangria Ardiente", "desc": "House red wine, blood orange, cinnamon, berries", "price": "€14" },
+        { "name": "Rioja Reserva", "desc": "Bodegas Muga, aged 18 months in oak, deep cherry notes", "price": "€12" },
+        { "name": "Agua de Valencia", "desc": "Fresh orange juice, Cava, vodka, gin — Valencia's signature", "price": "€13" }
+      ]
+    }
+  },
+  "reservations": {
+    "eyebrow": "Join Us",
+    "title": "Book a Table",
+    "blurb": "Reserve your table at ARDOR. We look forward to welcoming you.",
+    "labels": {
+      "name": "Full Name",
+      "email": "Email",
+      "date": "Date",
+      "time": "Time",
+      "guests": "Guests"
+    },
+    "placeholders": {
+      "name": "Ana García",
+      "email": "ana@example.com",
+      "time": "Select time",
+      "guests": "Number of guests"
+    },
+    "guestsOptions": ["1 Guest", "2 Guests", "3 Guests", "4 Guests", "5 Guests", "6 Guests", "7+ Guests (please call)"],
+    "submit": "Confirm Reservation",
+    "submitting": "Reserving…",
+    "successTitle": "Perfect! Your table is reserved.",
+    "successBody": "A confirmation will be sent to your email."
+  },
+  "footer": {
+    "tagline": "Where Passion Meets the Plate",
+    "navigateHeading": "Navigate",
+    "findUsHeading": "Find Us",
+    "links": [
+      { "label": "About", "href": "#about" },
+      { "label": "Signature Dishes", "href": "#dishes" },
+      { "label": "Drinks & Bar", "href": "#drinks" },
+      { "label": "Full Menu", "href": "#menu" },
+      { "label": "Reservations", "href": "#reservations" }
+    ],
+    "address": ["Calle de la Pasión, 14", "28001 Madrid, Spain"],
+    "hours": {
+      "weekdays": { "label": "Mon–Thu", "value": "7:00 PM – 11:00 PM" },
+      "weekend": { "label": "Fri–Sat", "value": "7:00 PM – 12:30 AM" },
+      "sunday": { "label": "Sunday", "value": "Closed" }
+    },
+    "copyright": "© 2026 ARDOR Madrid. All rights reserved.",
+    "crafted": "Crafted with passion in Madrid",
+    "socialAria": "ARDOR on {network}"
+  }
+}

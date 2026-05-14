@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion'
+import { useLanguage } from '../i18n/LanguageContext'
+import LanguageToggle from './LanguageToggle'
 
-const links = [
-  { label: 'About', href: '#about' },
-  { label: 'Dishes', href: '#dishes' },
-  { label: 'Drinks', href: '#drinks' },
-  { label: 'Menu', href: '#menu' },
+const LINK_KEYS = [
+  { key: 'about', href: '#about' },
+  { key: 'dishes', href: '#dishes' },
+  { key: 'drinks', href: '#drinks' },
+  { key: 'menu', href: '#menu' },
 ]
 
 export default function Navbar({ reducedMotion }) {
+  const { t } = useLanguage()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const { scrollY } = useScroll()
@@ -38,29 +41,35 @@ export default function Navbar({ reducedMotion }) {
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8 font-montserrat text-xs font-medium tracking-widest uppercase text-ardor-muted">
-          {links.map(l => (
+          {LINK_KEYS.map(l => (
             <li key={l.href}>
-              <a href={l.href} className="hover:text-white transition-colors duration-200">{l.label}</a>
+              <a href={l.href} className="hover:text-white transition-colors duration-200">{t(`navbar.links.${l.key}`)}</a>
             </li>
           ))}
           <li>
             <a href="#reservations"
                className="border border-ardor-red text-ardor-red px-4 py-2 rounded-full hover:bg-ardor-red hover:text-white transition-all duration-200">
-              Reserve
+              {t('navbar.reserve')}
             </a>
+          </li>
+          <li>
+            <LanguageToggle reducedMotion={reducedMotion} />
           </li>
         </ul>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer"
-          aria-label="Toggle menu"
-          onClick={() => setMobileOpen(o => !o)}
-        >
-          {[0, 1, 2].map(i => (
-            <span key={i} className="w-6 h-0.5 bg-white block" />
-          ))}
-        </button>
+        {/* Mobile: language toggle + hamburger */}
+        <div className="md:hidden flex items-center gap-3">
+          <LanguageToggle reducedMotion={reducedMotion} />
+          <button
+            className="flex flex-col gap-1.5 p-2 cursor-pointer"
+            aria-label={t('navbar.toggleMenu')}
+            onClick={() => setMobileOpen(o => !o)}
+          >
+            {[0, 1, 2].map(i => (
+              <span key={i} className="w-6 h-0.5 bg-white block" />
+            ))}
+          </button>
+        </div>
       </div>
 
       {/* Mobile drawer */}
@@ -74,16 +83,16 @@ export default function Navbar({ reducedMotion }) {
             className="md:hidden mt-4 pb-4 border-t border-white/10"
           >
             <ul className="flex flex-col gap-4 pt-4 px-2 font-montserrat text-xs font-medium tracking-widest uppercase text-ardor-muted">
-              {links.map(l => (
+              {LINK_KEYS.map(l => (
                 <li key={l.href}>
                   <a href={l.href} onClick={() => setMobileOpen(false)}
-                     className="block hover:text-white transition-colors duration-200">{l.label}</a>
+                     className="block hover:text-white transition-colors duration-200">{t(`navbar.links.${l.key}`)}</a>
                 </li>
               ))}
               <li>
                 <a href="#reservations" onClick={() => setMobileOpen(false)}
                    className="inline-block border border-ardor-red text-ardor-red px-4 py-2 rounded-full">
-                  Reserve
+                  {t('navbar.reserve')}
                 </a>
               </li>
             </ul>

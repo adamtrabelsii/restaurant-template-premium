@@ -1,34 +1,14 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLanguage } from '../i18n/LanguageContext'
 
-const DRINKS = [
-  {
-    id: 1,
-    name: 'Sangria Ardiente',
-    label: 'Signature',
-    description: 'Tempranillo, blood orange, cinnamon, vanilla, seasonal berries.',
-    image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500&q=80',
-    alt: 'Sangria Ardiente cocktail',
-  },
-  {
-    id: 2,
-    name: 'Cava Blanco',
-    label: 'Refreshing',
-    description: 'Cava Brut, elderflower, cucumber, fresh mint, splash of tonic.',
-    image: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&q=80',
-    alt: 'Cava Blanco cocktail',
-  },
-  {
-    id: 3,
-    name: 'Fuego Negro',
-    label: 'Bold',
-    description: 'Mezcal, activated charcoal, smoked honey syrup, lime, chilli salt rim.',
-    image: 'https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=500&q=80',
-    alt: 'Fuego Negro cocktail',
-  },
+const DRINK_IMAGES = [
+  'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500&q=80',
+  'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&q=80',
+  'https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=500&q=80',
 ]
 
-function DrinkCard({ drink, reducedMotion, delay }) {
+function DrinkCard({ drink, image, reducedMotion, delay }) {
   const [hovered, setHovered] = useState(false)
 
   return (
@@ -48,7 +28,7 @@ function DrinkCard({ drink, reducedMotion, delay }) {
       >
         <div className="overflow-hidden h-64">
           <motion.img
-            src={drink.image}
+            src={image}
             alt={drink.alt}
             className="w-full h-full object-cover"
             animate={reducedMotion ? {} : { scale: hovered ? 1.05 : 1 }}
@@ -89,6 +69,9 @@ function DrinkCard({ drink, reducedMotion, delay }) {
 }
 
 export default function Drinks({ reducedMotion }) {
+  const { t } = useLanguage()
+  const drinks = t('drinks.items')
+
   return (
     <section id="drinks" className="bg-ardor-darker py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
@@ -100,19 +83,19 @@ export default function Drinks({ reducedMotion }) {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-montserrat text-xs tracking-[0.4em] uppercase text-ardor-red mb-3">Cocktails & Wine</p>
+          <p className="font-montserrat text-xs tracking-[0.4em] uppercase text-ardor-red mb-3">{t('drinks.eyebrow')}</p>
           <h2 className="font-cormorant font-bold text-white" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
-            La Barra
+            {t('drinks.title')}
           </h2>
           <div className="w-16 h-px bg-ardor-gold mx-auto mt-5" />
           <p className="font-montserrat text-ardor-muted text-sm mt-5 max-w-md mx-auto">
-            Handcrafted cocktails inspired by the flavours of Spain. Each glass tells a story.
+            {t('drinks.blurb')}
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {DRINKS.map((drink, i) => (
-            <DrinkCard key={drink.id} drink={drink} reducedMotion={reducedMotion} delay={i * 0.1} />
+          {drinks.map((drink, i) => (
+            <DrinkCard key={i} drink={drink} image={DRINK_IMAGES[i]} reducedMotion={reducedMotion} delay={i * 0.1} />
           ))}
         </div>
 

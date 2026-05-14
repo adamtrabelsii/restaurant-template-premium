@@ -1,57 +1,39 @@
-import { useState, Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
 import { motion } from 'framer-motion'
-import DishScene from '../canvas/DishScene'
+import { useLanguage } from '../i18n/LanguageContext'
 
-const DISHES = [
-  {
-    id: 1,
-    dishId: 1,
-    name: 'Paella Valenciana',
-    description: 'Saffron bomba rice, free-range rabbit, green beans, slow-cooked over orange wood fire.',
-    price: '€28',
-  },
-  {
-    id: 2,
-    dishId: 2,
-    name: 'Secreto Ibérico',
-    description: 'Hidden cut of pure-bred Ibérico pork, charcoal grilled, Pedro Ximénez reduction, roasted peppers.',
-    price: '€34',
-  },
-  {
-    id: 3,
-    dishId: 3,
-    name: 'Gambas al Ajillo',
-    description: 'Wild Atlantic prawns, sizzling in garlic, guindilla chilli, dry sherry, served in a clay cazuela.',
-    price: '€22',
-  },
+const UNSPLASH = (id, w = 1000) =>
+  `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`
+
+const DISH_IMAGES = [
+  UNSPLASH('1534080564583-6be75777b70a'),
+  UNSPLASH('1432139509613-5c4255815697'),
+  UNSPLASH('1559847844-5315695dadae'),
 ]
 
-function DishCard({ dish, reducedMotion, delay }) {
-  const [hovered, setHovered] = useState(false)
-
+function DishCard({ dish, image, reducedMotion, delay }) {
   return (
     <motion.div
       initial={reducedMotion ? false : { opacity: 0, y: 40 }}
       whileInView={reducedMotion ? {} : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, ease: 'easeOut', delay }}
-      className="cursor-pointer"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      className="group cursor-pointer"
     >
       <motion.div
-        className="bg-ardor-dark border border-white/5 overflow-hidden"
-        animate={{ borderColor: hovered ? 'rgba(230,57,70,0.4)' : 'rgba(255,255,255,0.05)' }}
-        transition={{ duration: 0.3 }}
+        className="bg-ardor-dark border border-white/5 overflow-hidden transition-colors duration-300 group-hover:border-ardor-red/40"
       >
-        {/* Mini R3F canvas */}
-        <div className="h-64 bg-black/30">
-          <Canvas camera={{ position: [0, 1.5, 4], fov: 45 }}>
-            <Suspense fallback={null}>
-              <DishScene hovered={hovered} dishId={dish.dishId} />
-            </Suspense>
-          </Canvas>
+        <div className="h-64 overflow-hidden bg-black/30 relative">
+          <motion.img
+            src={image}
+            alt={dish.alt}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover"
+            initial={false}
+            whileHover={reducedMotion ? {} : { scale: 1.06 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
         </div>
 
         <div className="p-6">
@@ -67,6 +49,9 @@ function DishCard({ dish, reducedMotion, delay }) {
 }
 
 export default function Dishes({ reducedMotion }) {
+  const { t } = useLanguage()
+  const dishes = t('dishes.items')
+
   return (
     <section id="dishes" className="bg-ardor-mid py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
@@ -78,16 +63,16 @@ export default function Dishes({ reducedMotion }) {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <p className="font-montserrat text-xs tracking-[0.4em] uppercase text-ardor-red mb-3">Our Specialities</p>
+          <p className="font-montserrat text-xs tracking-[0.4em] uppercase text-ardor-red mb-3">{t('dishes.eyebrow')}</p>
           <h2 className="font-cormorant font-bold text-white" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
-            Platos Estrella
+            {t('dishes.title')}
           </h2>
           <div className="w-16 h-px bg-ardor-gold mx-auto mt-5" />
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {DISHES.map((dish, i) => (
-            <DishCard key={dish.id} dish={dish} reducedMotion={reducedMotion} delay={i * 0.1} />
+          {dishes.map((dish, i) => (
+            <DishCard key={i} dish={dish} image={DISH_IMAGES[i]} reducedMotion={reducedMotion} delay={i * 0.1} />
           ))}
         </div>
 

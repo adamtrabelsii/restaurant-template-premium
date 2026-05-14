@@ -1,0 +1,156 @@
+{
+  "navbar": {
+    "links": {
+      "about": "Nosotros",
+      "dishes": "Platos",
+      "drinks": "Bebidas",
+      "menu": "Carta"
+    },
+    "reserve": "Reservar",
+    "toggleMenu": "Abrir menú",
+    "switchToEnglish": "Cambiar idioma a Inglés",
+    "switchToSpanish": "Cambiar idioma a Español"
+  },
+  "hero": {
+    "tagline": "Madrid · Desde 2018",
+    "subtitle": "Donde la Pasión se Encuentra con el Plato",
+    "cta": "Reservar Mesa",
+    "scroll": "Desliza"
+  },
+  "about": {
+    "quote": "\"Fuego. Sabor.<br />Sentimiento.\"",
+    "body": "Nacido en las cocinas de Madrid, ARDOR lleva el espíritu indómito de la cocina española a cada plato. Cocinamos con carbón, paciencia y una obsesión incansable por el sabor — desde el mejor Ibérico hasta la pesca más fresca de la costa.",
+    "chefName": "Chef Alejandro Vega",
+    "chefRole": "Chef Ejecutivo y Fundador",
+    "chefAlt": "Chef principal en ARDOR",
+    "imageAlt": "Ambiente de la cocina de ARDOR",
+    "imageCaption": "Madrid, España"
+  },
+  "dishes": {
+    "eyebrow": "Nuestras Especialidades",
+    "title": "Platos Estrella",
+    "items": [
+      {
+        "name": "Paella Valenciana",
+        "description": "Arroz bomba con azafrán, conejo de campo, judías verdes, cocinado lentamente sobre fuego de naranjo.",
+        "price": "€28",
+        "alt": "Paella Valenciana servida en una paellera"
+      },
+      {
+        "name": "Secreto Ibérico",
+        "description": "Corte oculto de cerdo Ibérico puro, a la brasa, reducción de Pedro Ximénez, pimientos asados.",
+        "price": "€34",
+        "alt": "Cerdo Ibérico a la brasa con salsa de reducción"
+      },
+      {
+        "name": "Gambas al Ajillo",
+        "description": "Gambas salvajes del Atlántico, chisporroteando en ajo, guindilla, jerez seco, en cazuela de barro.",
+        "price": "€22",
+        "alt": "Gambas al ajillo chisporroteando en cazuela de barro"
+      }
+    ]
+  },
+  "drinks": {
+    "eyebrow": "Cócteles y Vinos",
+    "title": "La Barra",
+    "blurb": "Cócteles artesanales inspirados en los sabores de España. Cada copa cuenta una historia.",
+    "items": [
+      {
+        "name": "Sangría Ardiente",
+        "label": "Insignia",
+        "description": "Tempranillo, naranja sanguina, canela, vainilla, frutos rojos de temporada.",
+        "alt": "Cóctel Sangría Ardiente"
+      },
+      {
+        "name": "Cava Blanco",
+        "label": "Refrescante",
+        "description": "Cava Brut, flor de saúco, pepino, menta fresca, un toque de tónica.",
+        "alt": "Cóctel Cava Blanco"
+      },
+      {
+        "name": "Fuego Negro",
+        "label": "Intenso",
+        "description": "Mezcal, carbón activado, sirope de miel ahumada, lima, borde de sal con chile.",
+        "alt": "Cóctel Fuego Negro"
+      }
+    ]
+  },
+  "menu": {
+    "eyebrow": "Descubre",
+    "title": "Nuestra Carta",
+    "tabs": {
+      "tapas": "Tapas",
+      "mains": "Principales",
+      "postres": "Postres",
+      "bebidas": "Bebidas"
+    },
+    "items": {
+      "tapas": [
+        { "name": "Pan con Tomate", "desc": "Pan de masa madre, tomate rallado, aceite Arbequina, sal marina", "price": "€8" },
+        { "name": "Patatas Bravas", "desc": "Patatas crujientes, salsa brava ahumada, alioli de ajo", "price": "€9" },
+        { "name": "Croquetas de Jamón", "desc": "Croquetas artesanales de jamón ibérico, bechamel, rebozado crujiente", "price": "€12" },
+        { "name": "Pimientos de Padrón", "desc": "Pimientos de Padrón asados, flor de sal, limón", "price": "€9" }
+      ],
+      "mains": [
+        { "name": "Paella Valenciana", "desc": "Arroz bomba con azafrán, conejo, judías, fuego de naranjo (para 2)", "price": "€56" },
+        { "name": "Secreto Ibérico", "desc": "Secreto Ibérico a la brasa, reducción de PX, pimientos", "price": "€34" },
+        { "name": "Lubina a la Sal", "desc": "Lubina entera al horno en costra de sal, mantequilla de ajo, alcaparras", "price": "€38" },
+        { "name": "Cochinillo Asado", "desc": "Cochinillo segoviano, asado lentamente 6 horas, compota de manzana", "price": "€42" }
+      ],
+      "postres": [
+        { "name": "Crema Catalana", "desc": "Crema clásica, costra caramelizada, ralladura de naranja", "price": "€9" },
+        { "name": "Churros con Chocolate", "desc": "Masa frita, azúcar y canela, salsa espesa de chocolate negro", "price": "€11" },
+        { "name": "Tarta de Santiago", "desc": "Pastel de almendra, cruz de azúcar glas, helado de Pedro Ximénez", "price": "€10" }
+      ],
+      "bebidas": [
+        { "name": "Sangría Ardiente", "desc": "Vino tinto de la casa, naranja sanguina, canela, frutos rojos", "price": "€14" },
+        { "name": "Rioja Reserva", "desc": "Bodegas Muga, criado 18 meses en roble, notas profundas de cereza", "price": "€12" },
+        { "name": "Agua de Valencia", "desc": "Zumo de naranja fresco, Cava, vodka, ginebra — la insignia de Valencia", "price": "€13" }
+      ]
+    }
+  },
+  "reservations": {
+    "eyebrow": "Únete",
+    "title": "Haz Tu Reserva",
+    "blurb": "Reserva tu mesa en ARDOR. Te esperamos con ilusión.",
+    "labels": {
+      "name": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "date": "Fecha",
+      "time": "Hora",
+      "guests": "Comensales"
+    },
+    "placeholders": {
+      "name": "Ana García",
+      "email": "ana@ejemplo.com",
+      "time": "Selecciona hora",
+      "guests": "Número de comensales"
+    },
+    "guestsOptions": ["1 Comensal", "2 Comensales", "3 Comensales", "4 Comensales", "5 Comensales", "6 Comensales", "7+ Comensales (por favor llama)"],
+    "submit": "Confirmar Reserva",
+    "submitting": "Reservando…",
+    "successTitle": "¡Perfecto! Tu mesa está reservada.",
+    "successBody": "Recibirás una confirmación en tu correo electrónico."
+  },
+  "footer": {
+    "tagline": "Donde la Pasión se Encuentra con el Plato",
+    "navigateHeading": "Navegar",
+    "findUsHeading": "Encuéntranos",
+    "links": [
+      { "label": "Nosotros", "href": "#about" },
+      { "label": "Platos Estrella", "href": "#dishes" },
+      { "label": "Bebidas y Barra", "href": "#drinks" },
+      { "label": "Carta Completa", "href": "#menu" },
+      { "label": "Reservas", "href": "#reservations" }
+    ],
+    "address": ["Calle de la Pasión, 14", "28001 Madrid, España"],
+    "hours": {
+      "weekdays": { "label": "Lun–Jue", "value": "19:00 – 23:00" },
+      "weekend": { "label": "Vie–Sáb", "value": "19:00 – 00:30" },
+      "sunday": { "label": "Domingo", "value": "Cerrado" }
+    },
+    "copyright": "© 2026 ARDOR Madrid. Todos los derechos reservados.",
+    "crafted": "Hecho con pasión en Madrid",
+    "socialAria": "ARDOR en {network}"
+  }
+}
