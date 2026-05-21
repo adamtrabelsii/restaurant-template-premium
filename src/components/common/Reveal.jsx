@@ -1,3 +1,4 @@
+// src/components/common/Reveal.jsx
 import { motion } from 'framer-motion'
 
 const VARIANTS = {
@@ -17,6 +18,7 @@ export default function Reveal({
   duration = 0.7,
   amount = 0.2,
   once = true,
+  blur = true,
   reducedMotion = false,
   className,
   ...rest
@@ -27,13 +29,21 @@ export default function Reveal({
     return <Tag className={className} {...rest}>{children}</Tag>
   }
 
+  const base = VARIANTS[direction] || VARIANTS.up
+  const variants = blur
+    ? {
+        hidden: { ...base.hidden, filter: 'blur(6px)' },
+        show:   { ...base.show,   filter: 'blur(0px)' },
+      }
+    : base
+
   return (
     <Motion
       className={className}
       initial="hidden"
       whileInView="show"
       viewport={{ once, amount }}
-      variants={VARIANTS[direction] || VARIANTS.up}
+      variants={variants}
       transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
       {...rest}
     >
