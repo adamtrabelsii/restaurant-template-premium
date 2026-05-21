@@ -10,9 +10,9 @@ const UNSPLASH = (id, w = 1200) =>
   `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`
 
 const DISH_IMAGES = [
-  UNSPLASH('1555949258-eb67b1da0818'),
-  UNSPLASH('1519708227418-a8d26ca58d9a'),
-  UNSPLASH('1476224203421-74177e45b4ef'),
+  UNSPLASH('1661445014453-784cd6c59ac8'),
+  UNSPLASH('1605880319800-4f524f05436c'),
+  UNSPLASH('1581073746562-e7fd2422f0eb'),
 ]
 
 const SPANS = [

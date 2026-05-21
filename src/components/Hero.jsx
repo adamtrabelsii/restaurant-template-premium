@@ -54,7 +54,7 @@ export default function Hero({ reducedMotion }) {
         aria-hidden="true"
       >
         <img
-          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=2200&q=80&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1493243350443-9e3048ce7288?w=2200&q=80&auto=format&fit=crop"
           alt=""
           className="w-full h-[115%] object-cover opacity-40"
         />

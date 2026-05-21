@@ -4,9 +4,9 @@ import { useLanguage } from '../i18n/LanguageContext'
 import Reveal from './common/Reveal'
 
 const DRINK_IMAGES = [
-  'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=700&q=80',
-  'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=700&q=80',
-  'https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=700&q=80',
+  'https://images.unsplash.com/photo-1560508180-03f285f67ded?w=700&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=700&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=700&q=80&auto=format&fit=crop',
 ]
 
 function PourSVG() {

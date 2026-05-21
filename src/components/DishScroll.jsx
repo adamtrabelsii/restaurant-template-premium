@@ -3,21 +3,21 @@ import { motion } from 'framer-motion'
 import { ContainerScroll } from './ui/container-scroll-animation'
 const DISHES = [
   {
-    image: 'https://images.unsplash.com/photo-1555949258-eb67b1da0818?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1661445014453-784cd6c59ac8?w=1200&q=80&auto=format&fit=crop',
     name: 'Spaghetti alle Vongole',
     price: '€26',
     desc: 'Fresh clams, white wine, garlic, chilli, flat-leaf parsley',
     featured: true,
   },
   {
-    image: 'https://images.unsplash.com/photo-1519708227418-a8d26ca58d9a?w=700&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1605880319800-4f524f05436c?w=700&q=80&auto=format&fit=crop',
     name: 'Branzino al Sale',
     price: '€38',
     desc: 'Whole sea bass, salt crust, lemon butter, Amalfi olive oil',
     featured: false,
   },
   {
-    image: 'https://images.unsplash.com/photo-1476224203421-74177e45b4ef?w=700&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1581073746562-e7fd2422f0eb?w=700&q=80&auto=format&fit=crop',
     name: 'Risotto al Nero di Seppia',
     price: '€32',
     desc: 'Carnaroli rice, cuttlefish ink, grilled calamari, mascarpone',
