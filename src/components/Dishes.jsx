@@ -1,6 +1,10 @@
-import { motion } from 'framer-motion'
+// src/components/Dishes.jsx
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
 import Reveal from './common/Reveal'
+
+const EASE = [0.16, 1, 0.3, 1]
 
 const UNSPLASH = (id, w = 1200) =>
   `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`
@@ -11,7 +15,6 @@ const DISH_IMAGES = [
   UNSPLASH('1559847844-5315695dadae'),
 ]
 
-// Bento layout: featured large + two compact
 const SPANS = [
   'md:col-span-2 md:row-span-2 md:min-h-[36rem]',
   'md:col-span-1 md:row-span-1 md:min-h-[17.5rem]',
@@ -19,13 +22,24 @@ const SPANS = [
 ]
 
 function DishCard({ dish, image, reducedMotion, delay, span, featured }) {
+  const cardRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ['start end', 'end start'],
+  })
+  const imgY = useTransform(scrollYProgress, [0, 1], [30, -30])
+
   return (
     <motion.article
+      ref={cardRef}
       initial={reducedMotion ? false : { opacity: 0, y: 40 }}
       whileInView={reducedMotion ? {} : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay }}
-      className={`group relative overflow-hidden rounded-sm glass glass-hover cursor-pointer ${span}`}
+      transition={{ duration: 0.8, ease: EASE, delay }}
+      whileHover={reducedMotion ? {} : {
+        boxShadow: '0 0 0 1px rgba(201,169,97,0.45), 0 20px 60px -20px rgba(201,169,97,0.25)',
+      }}
+      className={`group relative overflow-hidden rounded-sm glass cursor-pointer ${span}`}
     >
       <div className="absolute inset-0 overflow-hidden">
         <motion.img
@@ -34,16 +48,27 @@ function DishCard({ dish, image, reducedMotion, delay, span, featured }) {
           loading="lazy"
           decoding="async"
           className="w-full h-full object-cover"
-          initial={false}
-          whileHover={reducedMotion ? {} : { scale: 1.08 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          style={reducedMotion ? {} : { y: imgY }}
+          whileHover={reducedMotion ? {} : { scale: 1.06 }}
+          transition={{ duration: 1, ease: EASE }}
         />
+        {/* Shimmer sweep on featured card */}
+        {featured && !reducedMotion && (
+          <motion.div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'linear-gradient(105deg, transparent 40%, rgba(201,169,97,0.08) 50%, transparent 60%)',
+              backgroundSize: '200% 100%',
+            }}
+            animate={{ backgroundPosition: ['-100% 0', '200% 0'] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'linear', repeatDelay: 2 }}
+          />
+        )}
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-ardor-darker via-ardor-darker/30 to-transparent" />
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{ background: 'radial-gradient(ellipse at center, rgba(201,169,97,0.10) 0%, transparent 70%)' }} />
 
-      {/* Corner brackets */}
       <span className="absolute top-4 left-4 w-4 h-4 border-l border-t border-ardor-neon/40 group-hover:border-ardor-neon transition-colors" />
       <span className="absolute top-4 right-4 w-4 h-4 border-r border-t border-ardor-neon/40 group-hover:border-ardor-neon transition-colors" />
 
@@ -86,7 +111,8 @@ export default function Dishes({ reducedMotion }) {
             <p className="font-montserrat text-[10px] tracking-[0.5em] uppercase text-ardor-red">{t('dishes.eyebrow')}</p>
             <span className="w-8 h-px bg-ardor-red/60" />
           </div>
-          <h2 className="font-cormorant font-bold italic text-white" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', letterSpacing: '-0.02em' }}>
+          <h2 className="font-cormorant font-bold italic text-white"
+            style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', letterSpacing: '-0.02em' }}>
             {t('dishes.title')}
           </h2>
           <div className="w-20 h-px bg-gradient-to-r from-transparent via-ardor-gold to-transparent mx-auto mt-6" />
