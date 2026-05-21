@@ -1,6 +1,8 @@
+// src/App.jsx
 import { useReducedMotion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import DishScroll from './components/DishScroll'
 import About from './components/About'
 import Press from './components/Press'
 import Dishes from './components/Dishes'
@@ -25,6 +27,7 @@ export default function App() {
       <Navbar reducedMotion={prefersReducedMotion} />
       <main>
         <Hero reducedMotion={prefersReducedMotion} />
+        <DishScroll reducedMotion={prefersReducedMotion} />
         <Press reducedMotion={prefersReducedMotion} />
         <About reducedMotion={prefersReducedMotion} />
         <Dishes reducedMotion={prefersReducedMotion} />
