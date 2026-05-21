@@ -1,4 +1,4 @@
-import { motion, useScroll, useSpring } from 'framer-motion'
+﻿import { motion, useScroll, useSpring } from 'framer-motion'
 
 export default function ScrollProgress() {
   const { scrollYProgress } = useScroll()
@@ -10,8 +10,8 @@ export default function ScrollProgress() {
       className="fixed top-0 left-0 right-0 h-[2px] z-[55] origin-left"
       style={{
         scaleX,
-        background: 'linear-gradient(90deg, #A8323F 0%, #C9A961 100%)',
-        boxShadow: '0 0 10px rgba(168,50,63,0.35)',
+        background: 'linear-gradient(90deg, #C87941 0%, #7BA7BC 100%)',
+        boxShadow: '0 0 10px rgba(200,121,65,0.35)',
       }}
     />
   )

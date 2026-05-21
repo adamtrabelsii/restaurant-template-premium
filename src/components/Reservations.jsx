@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
 import Reveal from './common/Reveal'
@@ -37,7 +37,7 @@ export default function Reservations({ reducedMotion }) {
   return (
     <section id="reservations" className="relative bg-ardor-darker py-28 md:py-40 overflow-hidden noise">
       <div className="absolute inset-0 pointer-events-none opacity-50" aria-hidden="true"
-        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(168,50,63,0.10) 0%, transparent 65%), radial-gradient(ellipse 50% 50% at 50% 80%, rgba(201,169,97,0.06) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(200,121,65,0.10) 0%, transparent 65%), radial-gradient(ellipse 50% 50% at 50% 80%, rgba(123,167,188,0.06) 0%, transparent 70%)' }}
       />
 
       <div className="relative max-w-2xl mx-auto px-6">
@@ -220,7 +220,7 @@ export default function Reservations({ reducedMotion }) {
                       disabled={!canNext()}
                       className="relative font-montserrat text-[11px] tracking-[0.3em] uppercase text-white px-8 py-3 rounded-full overflow-hidden border border-white/15 group disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
                     >
-                      <span className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #A8323F, #C9A961)' }} />
+                      <span className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #C87941, #7BA7BC)' }} />
                       <span className="relative">Next →</span>
                     </button>
                   ) : (
@@ -231,7 +231,7 @@ export default function Reservations({ reducedMotion }) {
                       whileHover={reducedMotion || loading ? {} : { scale: 1.02 }}
                       whileTap={reducedMotion || loading ? {} : { scale: 0.97 }}
                     >
-                      <span className="absolute inset-0" style={{ background: '#C9A961' }} />
+                      <span className="absolute inset-0" style={{ background: '#7BA7BC' }} />
                       <span className="relative">{loading ? t('reservations.submitting') : t('reservations.submit')}</span>
                     </motion.button>
                   )}
@@ -249,7 +249,7 @@ export default function Reservations({ reducedMotion }) {
               className="glass rounded-sm py-16 px-8 text-center"
             >
               <div className="w-16 h-16 rounded-full bg-ardor-neon/10 border border-ardor-neon/40 mx-auto mb-6 flex items-center justify-center">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A961" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7BA7BC" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 13l4 4L19 7" />
                 </svg>
               </div>

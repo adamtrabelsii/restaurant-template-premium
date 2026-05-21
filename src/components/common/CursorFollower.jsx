@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 export default function CursorFollower({ reducedMotion }) {
@@ -33,7 +33,7 @@ export default function CursorFollower({ reducedMotion }) {
         height: 380,
         marginLeft: -190,
         marginTop: -190,
-        background: 'radial-gradient(circle, rgba(201,169,97,0.08) 0%, rgba(168,50,63,0.04) 35%, transparent 65%)',
+        background: 'radial-gradient(circle, rgba(123,167,188,0.08) 0%, rgba(200,121,65,0.04) 35%, transparent 65%)',
         mixBlendMode: 'screen',
         filter: 'blur(20px)',
       }}

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Instagram, Facebook, MapPin, Send } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -22,7 +22,7 @@ export default function Footer({ reducedMotion }) {
       {/* Animated gradient rule */}
       <motion.div
         className="w-full h-px mb-16"
-        style={{ background: 'linear-gradient(90deg, transparent 0%, #A8323F 35%, #C9A961 65%, transparent 100%)' }}
+        style={{ background: 'linear-gradient(90deg, transparent 0%, #C87941 35%, #7BA7BC 65%, transparent 100%)' }}
         initial={reducedMotion ? false : { scaleX: 0, originX: 0 }}
         whileInView={reducedMotion ? {} : { scaleX: 1 }}
         viewport={{ once: true, amount: 0.5 }}

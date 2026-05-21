@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
 import Reveal from './common/Reveal'
@@ -14,9 +14,9 @@ function PourSVG() {
     <svg aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-24 pointer-events-none" viewBox="0 0 48 96">
       <defs>
         <linearGradient id="pour" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#C9A961" stopOpacity="0" />
-          <stop offset="50%" stopColor="#C9A961" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#A8323F" stopOpacity="0.9" />
+          <stop offset="0%" stopColor="#7BA7BC" stopOpacity="0" />
+          <stop offset="50%" stopColor="#7BA7BC" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#C87941" stopOpacity="0.9" />
         </linearGradient>
       </defs>
       <motion.path
@@ -73,7 +73,7 @@ function DrinkCard({ drink, image, reducedMotion, delay }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            style={{ background: 'radial-gradient(ellipse at top, rgba(201,169,97,0.16) 0%, transparent 60%)' }}
+            style={{ background: 'radial-gradient(ellipse at top, rgba(123,167,188,0.16) 0%, transparent 60%)' }}
           />
         )}
       </AnimatePresence>
@@ -88,7 +88,7 @@ export default function Drinks({ reducedMotion }) {
   return (
     <section id="drinks" className="relative bg-ardor-darker py-28 md:py-40 overflow-hidden noise">
       <div className="absolute inset-0 pointer-events-none opacity-60" aria-hidden="true"
-        style={{ background: 'radial-gradient(ellipse 50% 40% at 30% 20%, rgba(201,169,97,0.07) 0%, transparent 65%), radial-gradient(ellipse 50% 50% at 80% 80%, rgba(168,50,63,0.06) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse 50% 40% at 30% 20%, rgba(123,167,188,0.07) 0%, transparent 65%), radial-gradient(ellipse 50% 50% at 80% 80%, rgba(200,121,65,0.06) 0%, transparent 70%)' }}
       />
 
       <div className="relative max-w-7xl mx-auto px-6">

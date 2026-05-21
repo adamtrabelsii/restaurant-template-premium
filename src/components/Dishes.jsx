@@ -1,4 +1,4 @@
-// src/components/Dishes.jsx
+﻿// src/components/Dishes.jsx
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -37,7 +37,7 @@ function DishCard({ dish, image, reducedMotion, delay, span, featured }) {
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.8, ease: EASE, delay }}
       whileHover={reducedMotion ? {} : {
-        boxShadow: '0 0 0 1px rgba(201,169,97,0.45), 0 20px 60px -20px rgba(201,169,97,0.25)',
+        boxShadow: '0 0 0 1px rgba(123,167,188,0.45), 0 20px 60px -20px rgba(123,167,188,0.25)',
       }}
       className={`group relative overflow-hidden rounded-sm glass cursor-pointer ${span}`}
     >
@@ -57,7 +57,7 @@ function DishCard({ dish, image, reducedMotion, delay, span, featured }) {
           <motion.div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: 'linear-gradient(105deg, transparent 40%, rgba(201,169,97,0.08) 50%, transparent 60%)',
+              background: 'linear-gradient(105deg, transparent 40%, rgba(123,167,188,0.08) 50%, transparent 60%)',
               backgroundSize: '200% 100%',
             }}
             animate={{ backgroundPosition: ['-100% 0', '200% 0'] }}
@@ -67,7 +67,7 @@ function DishCard({ dish, image, reducedMotion, delay, span, featured }) {
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-ardor-darker via-ardor-darker/30 to-transparent" />
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{ background: 'radial-gradient(ellipse at center, rgba(201,169,97,0.10) 0%, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse at center, rgba(123,167,188,0.10) 0%, transparent 70%)' }} />
 
       <span className="absolute top-4 left-4 w-4 h-4 border-l border-t border-ardor-neon/40 group-hover:border-ardor-neon transition-colors" />
       <span className="absolute top-4 right-4 w-4 h-4 border-r border-t border-ardor-neon/40 group-hover:border-ardor-neon transition-colors" />

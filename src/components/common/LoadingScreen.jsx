@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function LoadingScreen({ reducedMotion }) {
@@ -30,12 +30,12 @@ export default function LoadingScreen({ reducedMotion }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              ARD<span className="text-ardor-red">O</span>R
+              V<span className="text-ardor-red">E</span>LA
             </motion.div>
             <div className="w-48 h-px bg-white/10 overflow-hidden">
               <motion.div
                 className="h-full"
-                style={{ background: 'linear-gradient(90deg, #A8323F, #C9A961)' }}
+                style={{ background: 'linear-gradient(90deg, #C87941, #7BA7BC)' }}
                 initial={{ width: '0%' }}
                 animate={{ width: '100%' }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}

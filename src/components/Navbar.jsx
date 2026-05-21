@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+﻿import { useState, useRef } from 'react'
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
 import LanguageToggle from './LanguageToggle'
@@ -49,7 +49,7 @@ export default function Navbar({ reducedMotion }) {
     >
       <div className="max-w-7xl mx-auto px-5 md:px-7 flex items-center justify-between">
         <a href="#hero" className="font-cormorant text-2xl font-bold italic tracking-widest text-white select-none">
-          ARD<span className="text-ardor-red">O</span>R
+          V<span className="text-ardor-red">E</span>LA
         </a>
 
         <ul className="hidden md:flex items-center gap-7 font-montserrat text-[11px] font-medium tracking-[0.25em] uppercase">
@@ -65,7 +65,7 @@ export default function Navbar({ reducedMotion }) {
                 <motion.span
                   layoutId="nav-active"
                   className="absolute -bottom-2 left-0 right-0 h-px"
-                  style={{ background: 'linear-gradient(90deg, transparent, #C9A961, transparent)' }}
+                  style={{ background: 'linear-gradient(90deg, transparent, #7BA7BC, transparent)' }}
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}

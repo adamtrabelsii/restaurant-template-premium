@@ -1,4 +1,4 @@
-// src/components/Hero.jsx
+﻿// src/components/Hero.jsx
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -71,7 +71,7 @@ export default function Hero({ reducedMotion }) {
             top: orb.y,
             width: orb.size,
             height: orb.size,
-            background: 'radial-gradient(circle, rgba(201,169,97,0.09) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(123,167,188,0.09) 0%, transparent 70%)',
             transform: 'translate(-50%, -50%)',
           }}
           animate={{ y: [0, -20, 0], opacity: [0.6, 1, 0.6] }}
@@ -90,7 +90,7 @@ export default function Hero({ reducedMotion }) {
         aria-hidden="true"
         style={{
           background:
-            'radial-gradient(ellipse 70% 60% at 30% 30%, rgba(168,50,63,0.18) 0%, transparent 65%), radial-gradient(ellipse 60% 60% at 80% 75%, rgba(201,169,97,0.12) 0%, transparent 70%)',
+            'radial-gradient(ellipse 70% 60% at 30% 30%, rgba(200,121,65,0.18) 0%, transparent 65%), radial-gradient(ellipse 60% 60% at 80% 75%, rgba(123,167,188,0.12) 0%, transparent 70%)',
         }}
       />
 
@@ -172,7 +172,7 @@ export default function Hero({ reducedMotion }) {
           transition={{ duration: 0.25, ease: EASE }}
         >
           <span className="absolute inset-0 opacity-90"
-            style={{ background: 'linear-gradient(135deg, #A8323F 0%, #C9A961 100%)' }} />
+            style={{ background: 'linear-gradient(135deg, #C87941 0%, #7BA7BC 100%)' }} />
           <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             style={{ background: '#F4EFE7' }} />
           <span className="relative">{t('hero.cta')}</span>

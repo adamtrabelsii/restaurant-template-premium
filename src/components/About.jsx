@@ -1,4 +1,4 @@
-// src/components/About.jsx
+﻿// src/components/About.jsx
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -7,10 +7,10 @@ import Reveal from './common/Reveal'
 const EASE = [0.16, 1, 0.3, 1]
 
 const STATS = [
-  { value: 12, suffix: '',  labelKey: 'about.stats.years',   accent: '#C9A961' },
-  { value: 2,  suffix: '★', labelKey: 'about.stats.michelin',accent: '#C9A961' },
-  { value: 87, suffix: '',  labelKey: 'about.stats.wines',   accent: '#A8323F' },
-  { value: 4,  suffix: '',  labelKey: 'about.stats.chefs',   accent: '#C9A961' },
+  { value: 12, suffix: '',  labelKey: 'about.stats.years',   accent: '#7BA7BC' },
+  { value: 2,  suffix: '★', labelKey: 'about.stats.michelin',accent: '#7BA7BC' },
+  { value: 87, suffix: '',  labelKey: 'about.stats.wines',   accent: '#C87941' },
+  { value: 4,  suffix: '',  labelKey: 'about.stats.chefs',   accent: '#7BA7BC' },
 ]
 
 const statsContainer = {
@@ -57,7 +57,7 @@ export default function About({ reducedMotion }) {
   return (
     <section ref={sectionRef} id="about" className="relative bg-ardor-darker py-28 md:py-40 overflow-hidden noise">
       <div className="absolute inset-0 pointer-events-none opacity-50" aria-hidden="true"
-        style={{ background: 'radial-gradient(ellipse 50% 60% at 80% 30%, rgba(168,50,63,0.10) 0%, transparent 65%), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,169,97,0.06) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse 50% 60% at 80% 30%, rgba(200,121,65,0.10) 0%, transparent 65%), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(123,167,188,0.06) 0%, transparent 70%)' }}
       />
 
       <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
@@ -68,9 +68,9 @@ export default function About({ reducedMotion }) {
             <motion.div
               className="w-px flex-shrink-0 self-stretch origin-top"
               style={reducedMotion
-                ? { background: 'linear-gradient(180deg, #A8323F 0%, #C9A961 100%)' }
+                ? { background: 'linear-gradient(180deg, #C87941 0%, #7BA7BC 100%)' }
                 : {
-                    background: 'linear-gradient(180deg, #A8323F 0%, #C9A961 100%)',
+                    background: 'linear-gradient(180deg, #C87941 0%, #7BA7BC 100%)',
                     scaleY: lineScaleY,
                   }
               }

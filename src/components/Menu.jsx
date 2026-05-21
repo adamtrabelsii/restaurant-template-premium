@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
 import Reveal from './common/Reveal'
@@ -49,7 +49,7 @@ export default function Menu({ reducedMotion }) {
                 <motion.div
                   layoutId="tab-underline"
                   className="absolute bottom-0 left-0 right-0 h-px"
-                  style={{ background: 'linear-gradient(90deg, transparent, #C9A961, transparent)' }}
+                  style={{ background: 'linear-gradient(90deg, transparent, #7BA7BC, transparent)' }}
                   transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                 />
               )}
@@ -69,9 +69,9 @@ export default function Menu({ reducedMotion }) {
                 aria-pressed={isActive}
                 className="font-montserrat text-[10px] tracking-[0.3em] uppercase px-4 py-1.5 rounded-full border transition-all duration-200 cursor-pointer"
                 style={{
-                  borderColor: isActive ? '#C9A961' : 'rgba(244,239,231,0.10)',
-                  color: isActive ? '#C9A961' : '#A89E92',
-                  background: isActive ? 'rgba(201,169,97,0.06)' : 'transparent',
+                  borderColor: isActive ? '#7BA7BC' : 'rgba(244,239,231,0.10)',
+                  color: isActive ? '#7BA7BC' : '#A89E92',
+                  background: isActive ? 'rgba(123,167,188,0.06)' : 'transparent',
                 }}
               >
                 {f.label}
@@ -123,7 +123,7 @@ export default function Menu({ reducedMotion }) {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     className="absolute inset-0 flex items-center justify-center p-6 text-center"
-                    style={{ background: 'radial-gradient(circle at center, rgba(201,169,97,0.10) 0%, transparent 60%)' }}
+                    style={{ background: 'radial-gradient(circle at center, rgba(123,167,188,0.10) 0%, transparent 60%)' }}
                   >
                     <div>
                       <p className="font-cormorant italic text-ardor-neon text-3xl mb-3">{items[hoveredIdx].name}</p>
