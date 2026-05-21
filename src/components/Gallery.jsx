@@ -1,7 +1,10 @@
+// src/components/Gallery.jsx
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
 import Reveal from './common/Reveal'
+
+const EASE = [0.16, 1, 0.3, 1]
 
 const IMAGES = [
   { src: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1100&q=80', alt: 'Dining room', span: 'md:col-span-2 md:row-span-2' },
@@ -28,7 +31,8 @@ export default function Gallery({ reducedMotion }) {
             </p>
             <span className="w-8 h-px bg-ardor-gold/60" />
           </div>
-          <h2 className="font-cormorant font-bold italic text-white" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', letterSpacing: '-0.02em' }}>
+          <h2 className="font-cormorant font-bold italic text-white"
+            style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', letterSpacing: '-0.02em' }}>
             {t('gallery.title') || 'A room for the senses'}
           </h2>
           <div className="w-20 h-px bg-gradient-to-r from-transparent via-ardor-neon to-transparent mx-auto mt-6" />
@@ -39,10 +43,10 @@ export default function Gallery({ reducedMotion }) {
             <motion.button
               key={i}
               onClick={() => setLightbox(img)}
-              initial={reducedMotion ? false : { opacity: 0, y: 30 }}
-              whileInView={reducedMotion ? {} : { opacity: 1, y: 0 }}
+              initial={reducedMotion ? false : { opacity: 0, y: 30, filter: 'blur(6px)' }}
+              whileInView={reducedMotion ? {} : { opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.06 }}
+              transition={{ duration: 0.7, ease: EASE, delay: i * 0.06 }}
               className={`group relative overflow-hidden rounded-sm cursor-pointer ${img.span}`}
               aria-label={`Open ${img.alt}`}
             >
@@ -51,8 +55,8 @@ export default function Gallery({ reducedMotion }) {
                 alt={img.alt}
                 loading="lazy"
                 className="w-full h-full object-cover"
-                whileHover={reducedMotion ? {} : { scale: 1.08 }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={reducedMotion ? {} : { scale: 1.06, filter: 'brightness(1.12)' }}
+                transition={{ duration: 0.6, ease: EASE }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ardor-darker/70 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-500" />
               <span className="absolute bottom-4 left-4 font-montserrat text-[10px] tracking-[0.4em] uppercase text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -82,7 +86,7 @@ export default function Gallery({ reducedMotion }) {
               initial={{ scale: 0.96, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.96, opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.4, ease: EASE }}
               className="max-h-[90vh] max-w-[90vw] object-contain rounded-sm"
               onClick={(e) => e.stopPropagation()}
             />
