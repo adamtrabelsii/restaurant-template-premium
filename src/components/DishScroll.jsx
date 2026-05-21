@@ -3,24 +3,24 @@ import { motion } from 'framer-motion'
 import { ContainerScroll } from './ui/container-scroll-animation'
 const DISHES = [
   {
-    image: 'https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=1200&q=80&auto=format&fit=crop',
-    name: 'Toro Tartare',
-    price: '€38',
-    desc: 'Bluefin tuna, smoked roe, crispy capers',
+    image: 'https://images.unsplash.com/photo-1555949258-eb67b1da0818?w=1200&q=80&auto=format&fit=crop',
+    name: 'Spaghetti alle Vongole',
+    price: '€26',
+    desc: 'Fresh clams, white wine, garlic, chilli, flat-leaf parsley',
     featured: true,
   },
   {
-    image: 'https://images.unsplash.com/photo-1432139509613-5c4255815697?w=700&q=80&auto=format&fit=crop',
-    name: 'Ibérico Presa',
-    price: '€42',
-    desc: 'Charcoal-grilled, romesco, wild herbs',
+    image: 'https://images.unsplash.com/photo-1519708227418-a8d26ca58d9a?w=700&q=80&auto=format&fit=crop',
+    name: 'Branzino al Sale',
+    price: '€38',
+    desc: 'Whole sea bass, salt crust, lemon butter, Amalfi olive oil',
     featured: false,
   },
   {
-    image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?w=700&q=80&auto=format&fit=crop',
-    name: 'Black Truffle Risotto',
-    price: '€56',
-    desc: 'Carnaroli, aged parmesan, shaved truffle',
+    image: 'https://images.unsplash.com/photo-1476224203421-74177e45b4ef?w=700&q=80&auto=format&fit=crop',
+    name: 'Risotto al Nero di Seppia',
+    price: '€32',
+    desc: 'Carnaroli rice, cuttlefish ink, grilled calamari, mascarpone',
     featured: false,
   },
 ]
