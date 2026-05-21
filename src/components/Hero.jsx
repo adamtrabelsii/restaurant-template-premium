@@ -15,7 +15,7 @@ const item = {
   show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: EASE } },
 }
 
-const LETTERS = ['A', 'R', 'D', 'O', 'R']
+const LETTERS = ['V', 'E', 'L', 'A']
 
 // Ambient orb config: [left, top, duration, size, delay]
 const ORBS = [
@@ -139,7 +139,7 @@ export default function Hero({ reducedMotion }) {
           {LETTERS.map((L, i) => (
             <motion.span
               key={i}
-              className={L === 'O' ? 'text-ardor-red' : ''}
+              className={L === 'E' ? 'text-ardor-red' : ''}
               initial={reducedMotion ? false : { y: 120, opacity: 0, rotateY: 60 }}
               animate={{ y: 0, opacity: 1, rotateY: 0 }}
               transition={{ duration: 1, delay: 0.3 + i * 0.08, ease: EASE }}
