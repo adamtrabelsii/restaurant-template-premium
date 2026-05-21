@@ -27,7 +27,7 @@ export function ContainerScroll({ titleComponent, children }) {
     >
       <div className="py-10 md:py-40 w-full relative" style={{ perspective: '1000px' }}>
         <ScrollHeader translate={translate} titleComponent={titleComponent} />
-        <ScrollCard rotate={rotate} translate={translate} scale={scale}>
+        <ScrollCard rotate={rotate} scale={scale}>
           {children}
         </ScrollCard>
       </div>
@@ -55,7 +55,7 @@ function ScrollCard({ rotate, scale, children }) {
         boxShadow:
           '0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003',
       }}
-      className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-[#3a2e28] p-2 md:p-6 bg-ardor-darker rounded-[30px] shadow-2xl"
+      className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-ardor-dark/60 p-2 md:p-6 bg-ardor-darker rounded-[30px] shadow-2xl"
     >
       <div className="h-full w-full overflow-hidden rounded-2xl bg-ardor-mid md:rounded-2xl md:p-4">
         {children}
