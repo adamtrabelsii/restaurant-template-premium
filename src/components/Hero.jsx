@@ -1,3 +1,4 @@
+// src/components/Hero.jsx
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -16,6 +17,13 @@ const item = {
 
 const LETTERS = ['A', 'R', 'D', 'O', 'R']
 
+// Ambient orb config: [left, top, duration, size, delay]
+const ORBS = [
+  { x: '25%', y: '20%', duration: 6, size: 320, delay: 0 },
+  { x: '70%', y: '65%', duration: 9, size: 200, delay: 2 },
+  { x: '50%', y: '80%', duration: 7, size: 140, delay: 1 },
+]
+
 export default function Hero({ reducedMotion }) {
   const { t } = useLanguage()
   const sectionRef = useRef(null)
@@ -25,9 +33,9 @@ export default function Hero({ reducedMotion }) {
     offset: ['start start', 'end start'],
   })
 
-  const titleY = useTransform(scrollYProgress, [0, 1], [0, -80])
+  const titleY       = useTransform(scrollYProgress, [0, 1], [0, -80])
   const titleOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, 120])
+  const bgY          = useTransform(scrollYProgress, [0, 1], [0, 160])
 
   const motionProps = reducedMotion
     ? {}
@@ -39,7 +47,7 @@ export default function Hero({ reducedMotion }) {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center bg-ardor-darker overflow-hidden noise"
     >
-      {/* Photographic backdrop — candlelit interior */}
+      {/* Photographic backdrop */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={reducedMotion ? {} : { y: bgY }}
@@ -52,6 +60,30 @@ export default function Hero({ reducedMotion }) {
         />
       </motion.div>
 
+      {/* Ambient gold orbs */}
+      {!reducedMotion && ORBS.map((orb, i) => (
+        <motion.div
+          key={i}
+          aria-hidden="true"
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            left: orb.x,
+            top: orb.y,
+            width: orb.size,
+            height: orb.size,
+            background: 'radial-gradient(circle, rgba(201,169,97,0.09) 0%, transparent 70%)',
+            transform: 'translate(-50%, -50%)',
+          }}
+          animate={{ y: [0, -20, 0], opacity: [0.6, 1, 0.6] }}
+          transition={{
+            duration: orb.duration,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: orb.delay,
+          }}
+        />
+      ))}
+
       {/* Warm color wash */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -62,7 +94,7 @@ export default function Hero({ reducedMotion }) {
         }}
       />
 
-      {/* Deep vignette to anchor the title */}
+      {/* Deep vignette */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
@@ -72,7 +104,7 @@ export default function Hero({ reducedMotion }) {
         }}
       />
 
-      {/* Decorative thin gold frame */}
+      {/* Decorative gold frame */}
       <div className="absolute inset-6 md:inset-10 pointer-events-none border border-ardor-gold/10" aria-hidden="true" />
       <div className="absolute inset-6 md:inset-10 pointer-events-none" aria-hidden="true">
         <span className="absolute top-0 left-0 w-6 h-6 border-l border-t border-ardor-gold/40 -translate-x-px -translate-y-px" />
@@ -108,17 +140,16 @@ export default function Hero({ reducedMotion }) {
             <motion.span
               key={i}
               className={L === 'O' ? 'text-ardor-red' : ''}
-              initial={reducedMotion ? false : { y: 120, opacity: 0, rotateX: 60 }}
-              animate={{ y: 0, opacity: 1, rotateX: 0 }}
+              initial={reducedMotion ? false : { y: 120, opacity: 0, rotateY: 60 }}
+              animate={{ y: 0, opacity: 1, rotateY: 0 }}
               transition={{ duration: 1, delay: 0.3 + i * 0.08, ease: EASE }}
-              style={{ display: 'inline-block', transformOrigin: 'bottom' }}
+              style={{ display: 'inline-block', transformOrigin: 'bottom center' }}
             >
               {L}
             </motion.span>
           ))}
         </motion.h1>
 
-        {/* Thin gold rule under title */}
         <motion.div
           variants={item}
           className="w-24 h-px bg-gradient-to-r from-transparent via-ardor-gold to-transparent mb-8"
@@ -140,16 +171,17 @@ export default function Hero({ reducedMotion }) {
           whileTap={reducedMotion ? {} : { scale: 0.97 }}
           transition={{ duration: 0.25, ease: EASE }}
         >
-          <span
-            className="absolute inset-0 opacity-90"
-            style={{ background: 'linear-gradient(135deg, #A8323F 0%, #C9A961 100%)' }}
-          />
+          <span className="absolute inset-0 opacity-90"
+            style={{ background: 'linear-gradient(135deg, #A8323F 0%, #C9A961 100%)' }} />
           <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ background: '#F4EFE7' }} />
+            style={{ background: '#F4EFE7' }} />
           <span className="relative">{t('hero.cta')}</span>
         </motion.a>
 
-        <motion.div variants={item} className="flex items-center gap-8 mt-12 font-montserrat text-[10px] tracking-[0.3em] uppercase text-ardor-text/40">
+        <motion.div
+          variants={item}
+          className="flex items-center gap-8 mt-12 font-montserrat text-[10px] tracking-[0.3em] uppercase text-ardor-text/40"
+        >
           <span>★★ Michelin</span>
           <span className="text-ardor-gold/60">·</span>
           <span>50 Best</span>
@@ -165,7 +197,9 @@ export default function Hero({ reducedMotion }) {
         transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
         aria-hidden="true"
       >
-        <span className="font-montserrat text-[10px] tracking-[0.4em] uppercase text-ardor-text/40">{t('hero.scroll')}</span>
+        <span className="font-montserrat text-[10px] tracking-[0.4em] uppercase text-ardor-text/40">
+          {t('hero.scroll')}
+        </span>
         <div className="w-px h-10 bg-gradient-to-b from-ardor-gold/60 to-transparent" />
       </motion.div>
     </section>
