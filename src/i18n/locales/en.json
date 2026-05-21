@@ -12,20 +12,20 @@
     "switchToSpanish": "Switch language to Spanish"
   },
   "hero": {
-    "tagline": "Madrid · Est. 2018",
-    "subtitle": "Where Passion Meets the Plate",
+    "tagline": "Napoli · Est. 2019",
+    "subtitle": "Where the Sea Meets the Table",
     "cta": "Reserve a Table",
     "scroll": "Scroll"
   },
   "about": {
     "eyebrow": "Our story",
-    "quote": "\"Fire. Flavor.<br />Feeling.\"",
-    "body": "Born in the kitchens of Madrid, ARDOR brings the untamed spirit of Spanish cuisine to every plate. We cook with charcoal, patience, and a relentless obsession with flavour — from the finest Ibérico to the freshest coastal catch.",
-    "chefName": "Chef Alejandro Vega",
+    "quote": "\"Sea. Salt.<br />Soul.\"",
+    "body": "Born on the shores of Napoli, VELA brings the untamed spirit of coastal Italian cuisine to every plate. We cook with the finest catches from the Tyrrhenian Sea, handmade pasta, and a relentless obsession with simplicity done perfectly.",
+    "chefName": "Chef Emma Wiebach",
     "chefRole": "Executive Chef & Founder",
-    "chefAlt": "Head chef at ARDOR",
-    "imageAlt": "ARDOR kitchen atmosphere",
-    "imageCaption": "Madrid, Spain",
+    "chefAlt": "Head chef at VELA",
+    "imageAlt": "VELA kitchen atmosphere",
+    "imageCaption": "Napoli, Italy",
     "stats": {
       "years":    "Years of craft",
       "michelin": "Michelin stars",
@@ -43,47 +43,47 @@
     "title": "Signature Dishes",
     "items": [
       {
-        "name": "Paella Valenciana",
-        "description": "Saffron bomba rice, free-range rabbit, green beans, slow-cooked over orange wood fire.",
-        "price": "€28",
-        "alt": "Paella Valenciana served in a wide pan"
+        "name": "Spaghetti alle Vongole",
+        "description": "Fresh clams, white wine, garlic, chilli, flat-leaf parsley, hand-pulled spaghetti.",
+        "price": "€26",
+        "alt": "Spaghetti alle vongole in a wide bowl"
       },
       {
-        "name": "Secreto Ibérico",
-        "description": "Hidden cut of pure-bred Ibérico pork, charcoal grilled, Pedro Ximénez reduction, roasted peppers.",
-        "price": "€34",
-        "alt": "Grilled Ibérico pork with reduction sauce"
+        "name": "Branzino al Sale",
+        "description": "Whole sea bass baked in a salt crust, lemon butter, capers, Amalfi olive oil.",
+        "price": "€38",
+        "alt": "Sea bass emerging from salt crust"
       },
       {
-        "name": "Gambas al Ajillo",
-        "description": "Wild Atlantic prawns, sizzling in garlic, guindilla chilli, dry sherry, served in a clay cazuela.",
-        "price": "€22",
-        "alt": "Sizzling garlic prawns in a clay dish"
+        "name": "Risotto al Nero di Seppia",
+        "description": "Carnaroli rice, cuttlefish ink, grilled calamari, mascarpone, Prosecco.",
+        "price": "€32",
+        "alt": "Black squid ink risotto with calamari"
       }
     ]
   },
   "drinks": {
     "eyebrow": "Cocktails & Wine",
     "title": "The Bar",
-    "blurb": "Handcrafted cocktails inspired by the flavours of Spain. Each glass tells a story.",
+    "blurb": "Handcrafted cocktails inspired by the flavours of the Amalfi coast. Each glass tells a story.",
     "items": [
       {
-        "name": "Sangria Ardiente",
+        "name": "Spritz della Costa",
         "label": "Signature",
-        "description": "Tempranillo, blood orange, cinnamon, vanilla, seasonal berries.",
-        "alt": "Sangria Ardiente cocktail"
+        "description": "Aperol, Prosecco DOC, blood orange, rosemary, Amalfi lemon zest.",
+        "alt": "Spritz della Costa cocktail"
       },
       {
-        "name": "Cava Blanco",
+        "name": "Limoncello Fizz",
         "label": "Refreshing",
-        "description": "Cava Brut, elderflower, cucumber, fresh mint, splash of tonic.",
-        "alt": "Cava Blanco cocktail"
+        "description": "House limoncello, elderflower, sparkling water, fresh mint, candied lemon.",
+        "alt": "Limoncello Fizz cocktail"
       },
       {
-        "name": "Fuego Negro",
+        "name": "Negroni Scuro",
         "label": "Bold",
-        "description": "Mezcal, activated charcoal, smoked honey syrup, lime, chilli salt rim.",
-        "alt": "Fuego Negro cocktail"
+        "description": "Gin, Campari, sweet vermouth, activated charcoal, orange peel, smoked cedar.",
+        "alt": "Negroni Scuro cocktail"
       }
     ]
   },
@@ -91,40 +91,40 @@
     "eyebrow": "Explore",
     "title": "Our Menu",
     "tabs": {
-      "tapas": "Tapas",
+      "tapas": "Antipasti",
       "mains": "Mains",
       "postres": "Desserts",
       "bebidas": "Drinks"
     },
     "items": {
       "tapas": [
-        { "name": "Pan con Tomate", "desc": "Sourdough, grated heirloom tomato, Arbequina oil, sea salt", "price": "€8" },
-        { "name": "Patatas Bravas", "desc": "Crispy potatoes, smoky bravas sauce, garlic alioli", "price": "€9" },
-        { "name": "Croquetas de Jamón", "desc": "Hand-rolled jamón ibérico croquettes, béchamel, crispy crumb", "price": "€12" },
-        { "name": "Pimientos de Padrón", "desc": "Blistered Padrón peppers, flor de sal, lemon", "price": "€9" }
+        { "name": "Bruschetta al Pomodoro", "desc": "Toasted sourdough, heirloom tomato, basil, Sicilian olive oil, sea salt", "price": "€9" },
+        { "name": "Burrata Pugliese", "desc": "Fresh burrata, Datterini tomatoes, basil oil, aged balsamic, flor di sale", "price": "€14" },
+        { "name": "Fritto Misto", "desc": "Light-battered squid, prawns, courgette flowers, lemon aioli", "price": "€16" },
+        { "name": "Carpaccio di Tonno", "desc": "Bluefin tuna, capers, rocket, shaved Parmigiano, lemon oil", "price": "€18" }
       ],
       "mains": [
-        { "name": "Paella Valenciana", "desc": "Saffron bomba rice, rabbit, beans, orange wood fire (for 2)", "price": "€56" },
-        { "name": "Secreto Ibérico", "desc": "Charcoal-grilled Ibérico pork, PX reduction, peppers", "price": "€34" },
-        { "name": "Lubina a la Sal", "desc": "Whole sea bass baked in salt crust, garlic butter, capers", "price": "€38" },
-        { "name": "Cochinillo Asado", "desc": "Segovian suckling pig, slow-roasted 6 hours, apple compote", "price": "€42" }
+        { "name": "Spaghetti alle Vongole", "desc": "Fresh clams, white wine, garlic, chilli, flat-leaf parsley", "price": "€26" },
+        { "name": "Branzino al Sale", "desc": "Whole sea bass, salt crust, lemon butter, capers, Amalfi olive oil", "price": "€38" },
+        { "name": "Ossobuco alla Milanese", "desc": "Braised veal shank, saffron risotto, gremolata", "price": "€42" },
+        { "name": "Risotto al Nero di Seppia", "desc": "Cuttlefish ink, grilled calamari, mascarpone, Prosecco", "price": "€32" }
       ],
       "postres": [
-        { "name": "Crema Catalana", "desc": "Classic custard, caramelised crust, orange zest", "price": "€9" },
-        { "name": "Churros con Chocolate", "desc": "Fried dough, cinnamon sugar, thick dark chocolate dipping sauce", "price": "€11" },
-        { "name": "Tarta de Santiago", "desc": "Almond cake, powdered sugar cross, Pedro Ximénez ice cream", "price": "€10" }
+        { "name": "Panna Cotta", "desc": "Vanilla cream, Amalfi lemon curd, candied zest", "price": "€9" },
+        { "name": "Tiramisù della Casa", "desc": "Mascarpone, espresso-soaked savoiardi, Marsala, cocoa", "price": "€11" },
+        { "name": "Cannolo Siciliano", "desc": "Crispy shell, ricotta, pistachios, candied orange peel", "price": "€10" }
       ],
       "bebidas": [
-        { "name": "Sangria Ardiente", "desc": "House red wine, blood orange, cinnamon, berries", "price": "€14" },
-        { "name": "Rioja Reserva", "desc": "Bodegas Muga, aged 18 months in oak, deep cherry notes", "price": "€12" },
-        { "name": "Agua de Valencia", "desc": "Fresh orange juice, Cava, vodka, gin — Valencia's signature", "price": "€13" }
+        { "name": "Spritz della Costa", "desc": "Aperol, Prosecco, blood orange, rosemary, Amalfi lemon", "price": "€14" },
+        { "name": "Brunello di Montalcino", "desc": "Biondi-Santi, aged 5 years, complex dark fruit, earthy finish", "price": "€18" },
+        { "name": "Limoncello della Casa", "desc": "House-made from Amalfi lemons, ice cold", "price": "€9" }
       ]
     }
   },
   "reservations": {
     "eyebrow": "Join Us",
     "title": "Book a Table",
-    "blurb": "Reserve your table at ARDOR. We look forward to welcoming you.",
+    "blurb": "Reserve your table at VELA. We look forward to welcoming you.",
     "labels": {
       "name": "Full Name",
       "email": "Email",
@@ -133,8 +133,8 @@
       "guests": "Guests"
     },
     "placeholders": {
-      "name": "Ana García",
-      "email": "ana@example.com",
+      "name": "Marco Russo",
+      "email": "marco@example.com",
       "time": "Select time",
       "guests": "Number of guests"
     },
@@ -145,7 +145,7 @@
     "successBody": "A confirmation will be sent to your email."
   },
   "footer": {
-    "tagline": "Where Passion Meets the Plate",
+    "tagline": "Where the Sea Meets the Table",
     "navigateHeading": "Navigate",
     "findUsHeading": "Find Us",
     "links": [
@@ -155,14 +155,14 @@
       { "label": "Full Menu", "href": "#menu" },
       { "label": "Reservations", "href": "#reservations" }
     ],
-    "address": ["Calle de la Pasión, 14", "28001 Madrid, Spain"],
+    "address": ["Via Posillipo, 24", "80123 Napoli, Italy"],
     "hours": {
       "weekdays": { "label": "Mon–Thu", "value": "7:00 PM – 11:00 PM" },
       "weekend": { "label": "Fri–Sat", "value": "7:00 PM – 12:30 AM" },
       "sunday": { "label": "Sunday", "value": "Closed" }
     },
-    "copyright": "© 2026 ARDOR Madrid. All rights reserved.",
-    "crafted": "Crafted with passion in Madrid",
-    "socialAria": "ARDOR on {network}"
+    "copyright": "© 2026 VELA Napoli. All rights reserved.",
+    "crafted": "Crafted with passion in Napoli",
+    "socialAria": "VELA on {network}"
   }
 }
