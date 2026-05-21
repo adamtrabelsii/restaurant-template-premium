@@ -12,20 +12,20 @@
     "switchToSpanish": "Cambiar idioma a Español"
   },
   "hero": {
-    "tagline": "Madrid · Desde 2018",
-    "subtitle": "Donde la Pasión se Encuentra con el Plato",
+    "tagline": "Nápoles · Desde 2019",
+    "subtitle": "Donde el Mar se Encuentra con la Mesa",
     "cta": "Reservar Mesa",
     "scroll": "Desliza"
   },
   "about": {
     "eyebrow": "Nuestra historia",
-    "quote": "\"Fuego. Sabor.<br />Sentimiento.\"",
-    "body": "Nacido en las cocinas de Madrid, ARDOR lleva el espíritu indómito de la cocina española a cada plato. Cocinamos con carbón, paciencia y una obsesión incansable por el sabor — desde el mejor Ibérico hasta la pesca más fresca de la costa.",
-    "chefName": "Chef Alejandro Vega",
+    "quote": "\"Mar. Sal.<br />Alma.\"",
+    "body": "Nacido a orillas de Nápoles, VELA lleva el espíritu indómito de la cocina costera italiana a cada plato. Cocinamos con las mejores capturas del Mar Tirreno, pasta artesanal y una obsesión incansable por la sencillez llevada a la perfección.",
+    "chefName": "Chef Emma Wiebach",
     "chefRole": "Chef Ejecutivo y Fundador",
-    "chefAlt": "Chef principal en ARDOR",
-    "imageAlt": "Ambiente de la cocina de ARDOR",
-    "imageCaption": "Madrid, España",
+    "chefAlt": "Chef principal en VELA",
+    "imageAlt": "Ambiente de la cocina de VELA",
+    "imageCaption": "Nápoles, Italia",
     "stats": {
       "years":    "Años de oficio",
       "michelin": "Estrellas Michelin",
@@ -43,47 +43,47 @@
     "title": "Platos Estrella",
     "items": [
       {
-        "name": "Paella Valenciana",
-        "description": "Arroz bomba con azafrán, conejo de campo, judías verdes, cocinado lentamente sobre fuego de naranjo.",
-        "price": "€28",
-        "alt": "Paella Valenciana servida en una paellera"
+        "name": "Spaghetti alle Vongole",
+        "description": "Almejas frescas, vino blanco, ajo, guindilla, perejil, espagueti artesanal.",
+        "price": "€26",
+        "alt": "Spaghetti alle vongole en un cuenco ancho"
       },
       {
-        "name": "Secreto Ibérico",
-        "description": "Corte oculto de cerdo Ibérico puro, a la brasa, reducción de Pedro Ximénez, pimientos asados.",
-        "price": "€34",
-        "alt": "Cerdo Ibérico a la brasa con salsa de reducción"
+        "name": "Branzino al Sale",
+        "description": "Lubina entera al horno en costra de sal, mantequilla de limón, alcaparras, aceite de oliva de Amalfi.",
+        "price": "€38",
+        "alt": "Lubina emergiendo de la costra de sal"
       },
       {
-        "name": "Gambas al Ajillo",
-        "description": "Gambas salvajes del Atlántico, chisporroteando en ajo, guindilla, jerez seco, en cazuela de barro.",
-        "price": "€22",
-        "alt": "Gambas al ajillo chisporroteando en cazuela de barro"
+        "name": "Risotto al Nero di Seppia",
+        "description": "Arroz Carnaroli, tinta de sepia, calamar a la plancha, mascarpone, Prosecco.",
+        "price": "€32",
+        "alt": "Risotto negro de tinta de calamar"
       }
     ]
   },
   "drinks": {
     "eyebrow": "Cócteles y Vinos",
     "title": "La Barra",
-    "blurb": "Cócteles artesanales inspirados en los sabores de España. Cada copa cuenta una historia.",
+    "blurb": "Cócteles artesanales inspirados en los sabores de la costa de Amalfi. Cada copa cuenta una historia.",
     "items": [
       {
-        "name": "Sangría Ardiente",
+        "name": "Spritz della Costa",
         "label": "Insignia",
-        "description": "Tempranillo, naranja sanguina, canela, vainilla, frutos rojos de temporada.",
-        "alt": "Cóctel Sangría Ardiente"
+        "description": "Aperol, Prosecco DOC, naranja sanguina, romero, ralladura de limón de Amalfi.",
+        "alt": "Cóctel Spritz della Costa"
       },
       {
-        "name": "Cava Blanco",
+        "name": "Limoncello Fizz",
         "label": "Refrescante",
-        "description": "Cava Brut, flor de saúco, pepino, menta fresca, un toque de tónica.",
-        "alt": "Cóctel Cava Blanco"
+        "description": "Limoncello de la casa, flor de saúco, agua con gas, menta fresca, limón confitado.",
+        "alt": "Cóctel Limoncello Fizz"
       },
       {
-        "name": "Fuego Negro",
+        "name": "Negroni Scuro",
         "label": "Intenso",
-        "description": "Mezcal, carbón activado, sirope de miel ahumada, lima, borde de sal con chile.",
-        "alt": "Cóctel Fuego Negro"
+        "description": "Ginebra, Campari, vermut dulce, carbón activado, piel de naranja, cedro ahumado.",
+        "alt": "Cóctel Negroni Scuro"
       }
     ]
   },
@@ -91,40 +91,40 @@
     "eyebrow": "Descubre",
     "title": "Nuestra Carta",
     "tabs": {
-      "tapas": "Tapas",
+      "tapas": "Antipasti",
       "mains": "Principales",
       "postres": "Postres",
       "bebidas": "Bebidas"
     },
     "items": {
       "tapas": [
-        { "name": "Pan con Tomate", "desc": "Pan de masa madre, tomate rallado, aceite Arbequina, sal marina", "price": "€8" },
-        { "name": "Patatas Bravas", "desc": "Patatas crujientes, salsa brava ahumada, alioli de ajo", "price": "€9" },
-        { "name": "Croquetas de Jamón", "desc": "Croquetas artesanales de jamón ibérico, bechamel, rebozado crujiente", "price": "€12" },
-        { "name": "Pimientos de Padrón", "desc": "Pimientos de Padrón asados, flor de sal, limón", "price": "€9" }
+        { "name": "Bruschetta al Pomodoro", "desc": "Pan de masa madre tostado, tomate de temporada, albahaca, aceite de oliva siciliano, sal marina", "price": "€9" },
+        { "name": "Burrata Pugliese", "desc": "Burrata fresca, tomates Datterini, aceite de albahaca, balsámico añejo, flor di sale", "price": "€14" },
+        { "name": "Fritto Misto", "desc": "Calamar, gambas y flor de calabacín en tempura ligera, alioli de limón", "price": "€16" },
+        { "name": "Carpaccio di Tonno", "desc": "Atún rojo, alcaparras, rúcula, parmesano en lascas, aceite de limón", "price": "€18" }
       ],
       "mains": [
-        { "name": "Paella Valenciana", "desc": "Arroz bomba con azafrán, conejo, judías, fuego de naranjo (para 2)", "price": "€56" },
-        { "name": "Secreto Ibérico", "desc": "Secreto Ibérico a la brasa, reducción de PX, pimientos", "price": "€34" },
-        { "name": "Lubina a la Sal", "desc": "Lubina entera al horno en costra de sal, mantequilla de ajo, alcaparras", "price": "€38" },
-        { "name": "Cochinillo Asado", "desc": "Cochinillo segoviano, asado lentamente 6 horas, compota de manzana", "price": "€42" }
+        { "name": "Spaghetti alle Vongole", "desc": "Almejas frescas, vino blanco, ajo, guindilla, perejil", "price": "€26" },
+        { "name": "Branzino al Sale", "desc": "Lubina entera, costra de sal, mantequilla de limón, alcaparras, aceite de Amalfi", "price": "€38" },
+        { "name": "Ossobuco alla Milanese", "desc": "Jarrete de ternera estofado, risotto al azafrán, gremolata", "price": "€42" },
+        { "name": "Risotto al Nero di Seppia", "desc": "Tinta de sepia, calamar a la plancha, mascarpone, Prosecco", "price": "€32" }
       ],
       "postres": [
-        { "name": "Crema Catalana", "desc": "Crema clásica, costra caramelizada, ralladura de naranja", "price": "€9" },
-        { "name": "Churros con Chocolate", "desc": "Masa frita, azúcar y canela, salsa espesa de chocolate negro", "price": "€11" },
-        { "name": "Tarta de Santiago", "desc": "Pastel de almendra, cruz de azúcar glas, helado de Pedro Ximénez", "price": "€10" }
+        { "name": "Panna Cotta", "desc": "Crema de vainilla, crema de limón de Amalfi, ralladura confitada", "price": "€9" },
+        { "name": "Tiramisù della Casa", "desc": "Mascarpone, savoiardi empapados en espresso, Marsala, cacao", "price": "€11" },
+        { "name": "Cannolo Siciliano", "desc": "Masa crujiente, ricotta, pistachos, piel de naranja confitada", "price": "€10" }
       ],
       "bebidas": [
-        { "name": "Sangría Ardiente", "desc": "Vino tinto de la casa, naranja sanguina, canela, frutos rojos", "price": "€14" },
-        { "name": "Rioja Reserva", "desc": "Bodegas Muga, criado 18 meses en roble, notas profundas de cereza", "price": "€12" },
-        { "name": "Agua de Valencia", "desc": "Zumo de naranja fresco, Cava, vodka, ginebra — la insignia de Valencia", "price": "€13" }
+        { "name": "Spritz della Costa", "desc": "Aperol, Prosecco, naranja sanguina, romero, limón de Amalfi", "price": "€14" },
+        { "name": "Brunello di Montalcino", "desc": "Biondi-Santi, añejado 5 años, fruta oscura compleja, final terroso", "price": "€18" },
+        { "name": "Limoncello della Casa", "desc": "Elaborado en casa con limones de Amalfi, bien frío", "price": "€9" }
       ]
     }
   },
   "reservations": {
     "eyebrow": "Únete",
     "title": "Haz Tu Reserva",
-    "blurb": "Reserva tu mesa en ARDOR. Te esperamos con ilusión.",
+    "blurb": "Reserva tu mesa en VELA. Te esperamos con ilusión.",
     "labels": {
       "name": "Nombre Completo",
       "email": "Correo Electrónico",
@@ -133,8 +133,8 @@
       "guests": "Comensales"
     },
     "placeholders": {
-      "name": "Ana García",
-      "email": "ana@ejemplo.com",
+      "name": "Marco Russo",
+      "email": "marco@ejemplo.com",
       "time": "Selecciona hora",
       "guests": "Número de comensales"
     },
@@ -145,7 +145,7 @@
     "successBody": "Recibirás una confirmación en tu correo electrónico."
   },
   "footer": {
-    "tagline": "Donde la Pasión se Encuentra con el Plato",
+    "tagline": "Donde el Mar se Encuentra con la Mesa",
     "navigateHeading": "Navegar",
     "findUsHeading": "Encuéntranos",
     "links": [
@@ -155,14 +155,14 @@
       { "label": "Carta Completa", "href": "#menu" },
       { "label": "Reservas", "href": "#reservations" }
     ],
-    "address": ["Calle de la Pasión, 14", "28001 Madrid, España"],
+    "address": ["Via Posillipo, 24", "80123 Nápoles, Italia"],
     "hours": {
       "weekdays": { "label": "Lun–Jue", "value": "19:00 – 23:00" },
       "weekend": { "label": "Vie–Sáb", "value": "19:00 – 00:30" },
       "sunday": { "label": "Domingo", "value": "Cerrado" }
     },
-    "copyright": "© 2026 ARDOR Madrid. Todos los derechos reservados.",
-    "crafted": "Hecho con pasión en Madrid",
-    "socialAria": "ARDOR en {network}"
+    "copyright": "© 2026 VELA Nápoles. Todos los derechos reservados.",
+    "crafted": "Hecho con pasión en Nápoles",
+    "socialAria": "VELA en {network}"
   }
 }
