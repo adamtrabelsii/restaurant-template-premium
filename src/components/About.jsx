@@ -1,14 +1,27 @@
+// src/components/About.jsx
 import { useEffect, useRef, useState } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
 import Reveal from './common/Reveal'
 
+const EASE = [0.16, 1, 0.3, 1]
+
 const STATS = [
-  { value: 12,  suffix: '',   labelKey: 'about.stats.years',   accent: '#C9A961' },
-  { value: 2,   suffix: '★',  labelKey: 'about.stats.michelin',accent: '#C9A961' },
-  { value: 87,  suffix: '',   labelKey: 'about.stats.wines',   accent: '#A8323F' },
-  { value: 4,   suffix: '',   labelKey: 'about.stats.chefs',   accent: '#C9A961' },
+  { value: 12, suffix: '',  labelKey: 'about.stats.years',   accent: '#C9A961' },
+  { value: 2,  suffix: '★', labelKey: 'about.stats.michelin',accent: '#C9A961' },
+  { value: 87, suffix: '',  labelKey: 'about.stats.wines',   accent: '#A8323F' },
+  { value: 4,  suffix: '',  labelKey: 'about.stats.chefs',   accent: '#C9A961' },
 ]
+
+const statsContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07 } },
+}
+
+const statItem = {
+  hidden: { opacity: 0, x: -40, filter: 'blur(4px)' },
+  show:   { opacity: 1, x: 0,   filter: 'blur(0px)', transition: { duration: 0.7, ease: EASE } },
+}
 
 function CountUp({ to, suffix = '', active, reducedMotion }) {
   const [n, setN] = useState(reducedMotion ? to : 0)
@@ -32,11 +45,17 @@ function CountUp({ to, suffix = '', active, reducedMotion }) {
 export default function About({ reducedMotion }) {
   const { t } = useLanguage()
   const statsRef = useRef(null)
+  const sectionRef = useRef(null)
   const inView = useInView(statsRef, { once: true, amount: 0.4 })
 
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'center center'],
+  })
+  const lineScaleY = useTransform(scrollYProgress, [0, 1], [0, 1])
+
   return (
-    <section id="about" className="relative bg-ardor-darker py-28 md:py-40 overflow-hidden noise">
-      {/* Soft glow */}
+    <section ref={sectionRef} id="about" className="relative bg-ardor-darker py-28 md:py-40 overflow-hidden noise">
       <div className="absolute inset-0 pointer-events-none opacity-50" aria-hidden="true"
         style={{ background: 'radial-gradient(ellipse 50% 60% at 80% 30%, rgba(168,50,63,0.10) 0%, transparent 65%), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,169,97,0.06) 0%, transparent 70%)' }}
       />
@@ -45,13 +64,16 @@ export default function About({ reducedMotion }) {
         {/* Left: quote */}
         <Reveal direction="left" reducedMotion={reducedMotion}>
           <div className="flex gap-6 items-start">
+            {/* Scroll-linked vertical line */}
             <motion.div
-              className="w-px flex-shrink-0 self-stretch"
-              style={{ background: 'linear-gradient(180deg, #A8323F 0%, #C9A961 100%)' }}
-              initial={reducedMotion ? false : { scaleY: 0, originY: 0 }}
-              whileInView={reducedMotion ? {} : { scaleY: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="w-px flex-shrink-0 self-stretch origin-top"
+              style={reducedMotion
+                ? { background: 'linear-gradient(180deg, #A8323F 0%, #C9A961 100%)' }
+                : {
+                    background: 'linear-gradient(180deg, #A8323F 0%, #C9A961 100%)',
+                    scaleY: lineScaleY,
+                  }
+              }
             />
             <div>
               <p className="font-montserrat text-[10px] tracking-[0.5em] uppercase text-ardor-neon mb-5">
@@ -94,7 +116,7 @@ export default function About({ reducedMotion }) {
               initial={reducedMotion ? false : { scale: 1.15 }}
               whileInView={reducedMotion ? {} : { scale: 1 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 1.4, ease: EASE }}
             />
             <motion.div
               className="absolute inset-0 bg-ardor-darker origin-left"
@@ -107,8 +129,6 @@ export default function About({ reducedMotion }) {
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-6">
               <p className="font-montserrat text-[10px] tracking-[0.4em] uppercase text-white/70">{t('about.imageCaption')}</p>
             </div>
-
-            {/* Corner brackets */}
             <span className="absolute top-3 left-3 w-5 h-5 border-l border-t border-ardor-neon/60" />
             <span className="absolute top-3 right-3 w-5 h-5 border-r border-t border-ardor-neon/60" />
             <span className="absolute bottom-3 left-3 w-5 h-5 border-l border-b border-ardor-neon/60" />
@@ -118,25 +138,32 @@ export default function About({ reducedMotion }) {
       </div>
 
       {/* Stats strip */}
-      <div ref={statsRef} className="relative max-w-7xl mx-auto px-6 mt-24 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.06] border border-white/[0.06]">
+      <motion.div
+        ref={statsRef}
+        className="relative max-w-7xl mx-auto px-6 mt-24 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.06] border border-white/[0.06]"
+        variants={reducedMotion ? {} : statsContainer}
+        initial={reducedMotion ? false : 'hidden'}
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         {STATS.map((s, i) => (
-          <Reveal
+          <motion.div
             key={i}
-            direction="up"
-            delay={i * 0.08}
-            reducedMotion={reducedMotion}
+            variants={reducedMotion ? {} : statItem}
             className="relative bg-ardor-darker p-8 flex flex-col items-start"
           >
-            <span className="absolute top-0 left-0 right-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${s.accent}, transparent)` }} />
-            <p className="font-cormorant italic font-bold text-white tabular" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1 }}>
+            <span className="absolute top-0 left-0 right-0 h-px"
+              style={{ background: `linear-gradient(90deg, transparent, ${s.accent}, transparent)` }} />
+            <p className="font-cormorant italic font-bold text-white tabular"
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1 }}>
               <CountUp to={s.value} suffix={s.suffix} active={inView} reducedMotion={reducedMotion} />
             </p>
             <p className="mt-3 font-montserrat text-[10px] tracking-[0.4em] uppercase text-ardor-muted">
               {t(s.labelKey)}
             </p>
-          </Reveal>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   )
 }
