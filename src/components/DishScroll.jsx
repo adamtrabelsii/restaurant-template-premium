@@ -1,8 +1,6 @@
 // src/components/DishScroll.jsx
 import { motion } from 'framer-motion'
 import { ContainerScroll } from './ui/container-scroll-animation'
-import { useLanguage } from '../i18n/LanguageContext'
-
 const DISHES = [
   {
     image: 'https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=1200&q=80&auto=format&fit=crop',
@@ -59,8 +57,6 @@ function DishTile({ dish, delay, reducedMotion, className = '' }) {
 }
 
 export default function DishScroll({ reducedMotion }) {
-  const { t } = useLanguage()
-
   const titleComponent = (
     <div>
       <div className="flex items-center justify-center gap-3 mb-5">
