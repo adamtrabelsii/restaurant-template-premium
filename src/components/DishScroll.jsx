@@ -4,10 +4,11 @@ import { ContainerScroll } from './ui/container-scroll-animation'
 import { useLanguage } from '../i18n/LanguageContext'
 
 // Images live in the component (not translatable); copy comes from i18n by index.
+// Index-matched to dishScroll.items: Chuletón de Vaca, Pulpo a la Gallega, Arroz Negro
 const DISH_IMAGES = [
-  'https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=1200&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1432139509613-5c4255815697?w=700&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1559847844-5315695dadae?w=700&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1558030006-450675393462?w=1200&q=80&auto=format&fit=crop', // aged beef chop
+  'https://images.unsplash.com/photo-1578935149228-66b184c83e69?w=700&q=80&auto=format&fit=crop',  // octopus
+  'https://images.unsplash.com/photo-1630175860333-5131bda75071?w=700&q=80&auto=format&fit=crop',  // ink/seafood rice
 ]
 
 const EASE = [0.16, 1, 0.3, 1]
