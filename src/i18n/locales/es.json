@@ -34,6 +34,15 @@
     }
   },
   "press": { "eyebrow": "Aparecemos en" },
+  "dishScroll": {
+    "eyebrow": "Platos Estrella",
+    "title": "Hecho con obsesión.",
+    "items": [
+      { "name": "Chuletón de Vaca Madurada", "desc": "Chuletón gallego madurado, a la brasa, sal ahumada", "price": "€68" },
+      { "name": "Pulpo a la Gallega", "desc": "Pulpo gallego, pimentón ahumado, patata confitada", "price": "€26" },
+      { "name": "Arroz Negro", "desc": "Arroz bomba, tinta de calamar, sepia, alioli", "price": "€24" }
+    ]
+  },
   "gallery": {
     "eyebrow": "El espacio",
     "title": "Una sala para los sentidos"
@@ -139,6 +148,8 @@
       "guests": "Número de comensales"
     },
     "guestsOptions": ["1 Comensal", "2 Comensales", "3 Comensales", "4 Comensales", "5 Comensales", "6 Comensales", "7+ Comensales (por favor llama)"],
+    "guestSingular": "comensal",
+    "guestPlural": "comensales",
     "submit": "Confirmar Reserva",
     "submitting": "Reservando…",
     "successTitle": "¡Perfecto! Tu mesa está reservada.",
@@ -155,11 +166,19 @@
       { "label": "Carta Completa", "href": "#menu" },
       { "label": "Reservas", "href": "#reservations" }
     ],
-    "address": ["Calle de la Pasión, 14", "28001 Madrid, España"],
+    "address": ["Calle de Jorge Juan 12", "28001 Madrid, España"],
+    "phone": "+34 914 35 18 60",
+    "email": "hola@ardor.es",
     "hours": {
-      "weekdays": { "label": "Lun–Jue", "value": "19:00 – 23:00" },
+      "weekdays": { "label": "Mar–Jue", "value": "19:00 – 23:00" },
       "weekend": { "label": "Vie–Sáb", "value": "19:00 – 00:30" },
-      "sunday": { "label": "Domingo", "value": "Cerrado" }
+      "sunday": { "label": "Domingo", "value": "13:00 – 16:00" }
+    },
+    "newsletter": {
+      "heading": "Boletín",
+      "blurb": "Menús de temporada y catas privadas, cada mes en tu correo.",
+      "placeholder": "tu@ejemplo.com",
+      "subscribed": "✓ Suscrito"
     },
     "copyright": "© 2026 ARDOR Madrid. Todos los derechos reservados.",
     "crafted": "Hecho con pasión en Madrid",

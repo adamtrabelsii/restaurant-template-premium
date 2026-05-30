@@ -10,7 +10,6 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (!id.includes('node_modules')) return
-          if (id.includes('postprocessing') || id.match(/[\\/]three[\\/]/) || id.includes('@react-three')) return 'three'
           if (id.includes('framer-motion')) return 'motion'
           if (id.includes('lucide-react')) return 'icons'
           if (id.match(/[\\/]react(-dom)?[\\/]/) || id.includes('scheduler')) return 'react'

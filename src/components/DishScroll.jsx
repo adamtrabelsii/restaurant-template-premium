@@ -1,28 +1,13 @@
 // src/components/DishScroll.jsx
 import { motion } from 'framer-motion'
 import { ContainerScroll } from './ui/container-scroll-animation'
-const DISHES = [
-  {
-    image: 'https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=1200&q=80&auto=format&fit=crop',
-    name: 'Toro Tartare',
-    price: '€38',
-    desc: 'Bluefin tuna, smoked roe, crispy capers',
-    featured: true,
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1432139509613-5c4255815697?w=700&q=80&auto=format&fit=crop',
-    name: 'Ibérico Presa',
-    price: '€42',
-    desc: 'Charcoal-grilled, romesco, wild herbs',
-    featured: false,
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?w=700&q=80&auto=format&fit=crop',
-    name: 'Black Truffle Risotto',
-    price: '€56',
-    desc: 'Carnaroli, aged parmesan, shaved truffle',
-    featured: false,
-  },
+import { useLanguage } from '../i18n/LanguageContext'
+
+// Images live in the component (not translatable); copy comes from i18n by index.
+const DISH_IMAGES = [
+  'https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=1200&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1432139509613-5c4255815697?w=700&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1559847844-5315695dadae?w=700&q=80&auto=format&fit=crop',
 ]
 
 const EASE = [0.16, 1, 0.3, 1]
@@ -57,12 +42,20 @@ function DishTile({ dish, delay, reducedMotion, className = '' }) {
 }
 
 export default function DishScroll({ reducedMotion }) {
+  const { t } = useLanguage()
+  const items = t('dishScroll.items')
+  const dishes = (Array.isArray(items) ? items : []).map((item, i) => ({
+    ...item,
+    image: DISH_IMAGES[i],
+    featured: i === 0,
+  }))
+
   const titleComponent = (
     <div>
       <div className="flex items-center justify-center gap-3 mb-5">
         <span className="w-8 h-px bg-ardor-red/60" />
         <p className="font-montserrat text-[10px] tracking-[0.5em] uppercase text-ardor-red">
-          Signature Dishes
+          {t('dishScroll.eyebrow')}
         </p>
         <span className="w-8 h-px bg-ardor-red/60" />
       </div>
@@ -70,7 +63,7 @@ export default function DishScroll({ reducedMotion }) {
         className="font-cormorant font-bold italic text-ardor-text"
         style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', letterSpacing: '-0.02em' }}
       >
-        Crafted with obsession.
+        {t('dishScroll.title')}
       </h2>
       <div className="w-20 h-px bg-gradient-to-r from-transparent via-ardor-gold to-transparent mx-auto mt-6" />
     </div>
@@ -89,13 +82,13 @@ export default function DishScroll({ reducedMotion }) {
       <ContainerScroll titleComponent={titleComponent}>
         <div className="h-full grid grid-cols-2 grid-rows-2 gap-3 p-1">
           <DishTile
-            dish={DISHES[0]}
+            dish={dishes[0]}
             delay={0}
             reducedMotion={reducedMotion}
             className="row-span-2"
           />
-          <DishTile dish={DISHES[1]} delay={0.12} reducedMotion={reducedMotion} />
-          <DishTile dish={DISHES[2]} delay={0.24} reducedMotion={reducedMotion} />
+          <DishTile dish={dishes[1]} delay={0.12} reducedMotion={reducedMotion} />
+          <DishTile dish={dishes[2]} delay={0.24} reducedMotion={reducedMotion} />
         </div>
       </ContainerScroll>
     </section>

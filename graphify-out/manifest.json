@@ -1,0 +1,222 @@
+{
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\package.json": {
+    "mtime": 1778730477.7044368,
+    "ast_hash": "20c6030eb2c947eafe3c30ea552b9b02",
+    "semantic_hash": "20c6030eb2c947eafe3c30ea552b9b02"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\postcss.config.js": {
+    "mtime": 1778531351.1146927,
+    "ast_hash": "ef3ba2a81ba19f8ea5ddf625521e96f0",
+    "semantic_hash": "ef3ba2a81ba19f8ea5ddf625521e96f0"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\tailwind.config.js": {
+    "mtime": 1779731746.399912,
+    "ast_hash": "b7eadb3360836bf92870ee990993497d",
+    "semantic_hash": "b7eadb3360836bf92870ee990993497d"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\vite.config.js": {
+    "mtime": 1778730524.4252393,
+    "ast_hash": "0729136640ed124eb82382f5eccb6fd3",
+    "semantic_hash": "0729136640ed124eb82382f5eccb6fd3"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\.openclaw\\workspace-state.json": {
+    "mtime": 1779211951.3964524,
+    "ast_hash": "e00f9877cca1614e6c9a058040c227fc",
+    "semantic_hash": "e00f9877cca1614e6c9a058040c227fc"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\App.jsx": {
+    "mtime": 1779327606.9505017,
+    "ast_hash": "5eb1eac724c8d8ebde28621a3b0d516f",
+    "semantic_hash": "5eb1eac724c8d8ebde28621a3b0d516f"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\main.jsx": {
+    "mtime": 1778721047.1541896,
+    "ast_hash": "193ff064110ed01705aaf27b4c347190",
+    "semantic_hash": "193ff064110ed01705aaf27b4c347190"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\canvas\\DishScene.jsx": {
+    "mtime": 1778731431.507415,
+    "ast_hash": "a71cfed66cbf4a9254d26fa68bcf5587",
+    "semantic_hash": "a71cfed66cbf4a9254d26fa68bcf5587"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\About.jsx": {
+    "mtime": 1779731746.382957,
+    "ast_hash": "0ed2fe894ac0d457132fce4189325ac6",
+    "semantic_hash": "0ed2fe894ac0d457132fce4189325ac6"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\Dishes.jsx": {
+    "mtime": 1779731746.3849533,
+    "ast_hash": "c5c6f446817450e4d8bc72e24833b9b8",
+    "semantic_hash": "c5c6f446817450e4d8bc72e24833b9b8"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\DishScroll.jsx": {
+    "mtime": 1779731746.3839548,
+    "ast_hash": "dfe87718ed8bdba3c0d677cf387584e6",
+    "semantic_hash": "dfe87718ed8bdba3c0d677cf387584e6"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\Drinks.jsx": {
+    "mtime": 1779731746.3869479,
+    "ast_hash": "c489ca79c60afcddc1cad31833bae04b",
+    "semantic_hash": "c489ca79c60afcddc1cad31833bae04b"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\Footer.jsx": {
+    "mtime": 1779731746.3879437,
+    "ast_hash": "dab2cf27127f9a354d1467192e3ecaed",
+    "semantic_hash": "dab2cf27127f9a354d1467192e3ecaed"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\Gallery.jsx": {
+    "mtime": 1779731746.3889422,
+    "ast_hash": "976844fc677bed5d68ebd1dc76c6348b",
+    "semantic_hash": "976844fc677bed5d68ebd1dc76c6348b"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\Hero.jsx": {
+    "mtime": 1779731746.3899393,
+    "ast_hash": "1da3f1751bd794aa239a4f6680b2f8fa",
+    "semantic_hash": "1da3f1751bd794aa239a4f6680b2f8fa"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\LanguageToggle.jsx": {
+    "mtime": 1778721045.4561918,
+    "ast_hash": "208ab03a42dbaba18f72fae8e60e5e6e",
+    "semantic_hash": "208ab03a42dbaba18f72fae8e60e5e6e"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\Menu.jsx": {
+    "mtime": 1779731746.3909373,
+    "ast_hash": "c799218bb8a8f11e80eeeddaacc87944",
+    "semantic_hash": "c799218bb8a8f11e80eeeddaacc87944"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\Navbar.jsx": {
+    "mtime": 1779731746.3919332,
+    "ast_hash": "8e57fddabb690a11ad1a0e29592e136c",
+    "semantic_hash": "8e57fddabb690a11ad1a0e29592e136c"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\Press.jsx": {
+    "mtime": 1779328097.1399167,
+    "ast_hash": "e9677b6a97e42623a58e8d8459800fc3",
+    "semantic_hash": "e9677b6a97e42623a58e8d8459800fc3"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\Reservations.jsx": {
+    "mtime": 1779731746.3929312,
+    "ast_hash": "904b0c0c2b714224b862f639ee262bd6",
+    "semantic_hash": "904b0c0c2b714224b862f639ee262bd6"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\common\\CursorFollower.jsx": {
+    "mtime": 1779731746.394925,
+    "ast_hash": "93489b6b22577e65bb2f31500f1cfb0f",
+    "semantic_hash": "93489b6b22577e65bb2f31500f1cfb0f"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\common\\LoadingScreen.jsx": {
+    "mtime": 1779731746.394925,
+    "ast_hash": "922ffc5e93b374fdcc00ad9dfde27f50",
+    "semantic_hash": "922ffc5e93b374fdcc00ad9dfde27f50"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\common\\Reveal.jsx": {
+    "mtime": 1779327496.6918578,
+    "ast_hash": "d2586cc739b0bc3156b9893076427119",
+    "semantic_hash": "d2586cc739b0bc3156b9893076427119"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\common\\ScrollProgress.jsx": {
+    "mtime": 1779731746.3959234,
+    "ast_hash": "feb1b8db8495d03c2616966edd067b32",
+    "semantic_hash": "feb1b8db8495d03c2616966edd067b32"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\components\\ui\\container-scroll-animation.jsx": {
+    "mtime": 1779327455.5093641,
+    "ast_hash": "b24c23a4b88b108a20df599cbc24f0f3",
+    "semantic_hash": "b24c23a4b88b108a20df599cbc24f0f3"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\hooks\\useActiveSection.js": {
+    "mtime": 1778730096.8384862,
+    "ast_hash": "45bdcde46cb052a77be10278e7256bd6",
+    "semantic_hash": "45bdcde46cb052a77be10278e7256bd6"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\i18n\\LanguageContext.jsx": {
+    "mtime": 1778720957.0915122,
+    "ast_hash": "803ea519613faa201851d6a7fec87658",
+    "semantic_hash": "803ea519613faa201851d6a7fec87658"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\i18n\\locales\\en.json": {
+    "mtime": 1779731746.3969202,
+    "ast_hash": "f256b63707920092c33511abf632c2ec",
+    "semantic_hash": "f256b63707920092c33511abf632c2ec"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\src\\i18n\\locales\\es.json": {
+    "mtime": 1779731746.397917,
+    "ast_hash": "ec3331dbfebb647f5b8e06eca677e9ab",
+    "semantic_hash": "ec3331dbfebb647f5b8e06eca677e9ab"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\AGENTS.md": {
+    "mtime": 1779211951.3424633,
+    "ast_hash": "44e3d4b147731617bb20a8a80b61b0e8",
+    "semantic_hash": "44e3d4b147731617bb20a8a80b61b0e8"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\fix.md": {
+    "mtime": 1778729571.4520934,
+    "ast_hash": "44cf65c109f58c0bbe0a353a05d42864",
+    "semantic_hash": "44cf65c109f58c0bbe0a353a05d42864"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\fix2.md": {
+    "mtime": 1778731262.8415163,
+    "ast_hash": "79ea7a287368556317fd266a011b7550",
+    "semantic_hash": "79ea7a287368556317fd266a011b7550"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\HEARTBEAT.md": {
+    "mtime": 1779211951.3826005,
+    "ast_hash": "bf26a0acb21fa55e345e4d66b29dcc42",
+    "semantic_hash": "bf26a0acb21fa55e345e4d66b29dcc42"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\IDENTITY.md": {
+    "mtime": 1779211951.3626432,
+    "ast_hash": "5a2c256cf07897d07195639d9efec936",
+    "semantic_hash": "5a2c256cf07897d07195639d9efec936"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\index.html": {
+    "mtime": 1778730033.9638827,
+    "ast_hash": "78b84f1b60e2c6862173af2f1eae637b",
+    "semantic_hash": "78b84f1b60e2c6862173af2f1eae637b"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\SOUL.md": {
+    "mtime": 1779211951.3474686,
+    "ast_hash": "8263e278a75be62b07d6291346bd7554",
+    "semantic_hash": "8263e278a75be62b07d6291346bd7554"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\TOOLS.md": {
+    "mtime": 1779211951.3484054,
+    "ast_hash": "981c7c92a546f836030f8a43a80c8bb2",
+    "semantic_hash": "981c7c92a546f836030f8a43a80c8bb2"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\USER.md": {
+    "mtime": 1779211951.3692164,
+    "ast_hash": "332f691dcdbc0f1d55a69ebc588941b3",
+    "semantic_hash": "332f691dcdbc0f1d55a69ebc588941b3"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\docs\\superpowers\\plans\\2026-05-11-ardor-pro-build.md": {
+    "mtime": 1778531089.3019967,
+    "ast_hash": "f63812c5ce7f7d44af69f63784c0c88e",
+    "semantic_hash": "f63812c5ce7f7d44af69f63784c0c88e"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\docs\\superpowers\\plans\\2026-05-21-ardor-ui-overhaul.md": {
+    "mtime": 1779327027.9316852,
+    "ast_hash": "3b819d8eca82e52b2f5735a868d9e5ed",
+    "semantic_hash": "3b819d8eca82e52b2f5735a868d9e5ed"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\docs\\superpowers\\specs\\2026-05-11-ardor-pro-design.md": {
+    "mtime": 1778530748.2159197,
+    "ast_hash": "3b0e475e908b87f7f4b374432b5ceb86",
+    "semantic_hash": "3b0e475e908b87f7f4b374432b5ceb86"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\docs\\superpowers\\specs\\2026-05-14-i18n-en-es-design.md": {
+    "mtime": 1778720886.2864413,
+    "ast_hash": "9e2d50fcadd4bd640c98e15b04dd18a5",
+    "semantic_hash": "9e2d50fcadd4bd640c98e15b04dd18a5"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\docs\\superpowers\\specs\\2026-05-21-ardor-ui-overhaul-design.md": {
+    "mtime": 1779326743.2436707,
+    "ast_hash": "2afb85cba224229e9913c0e43556fefc",
+    "semantic_hash": "2afb85cba224229e9913c0e43556fefc"
+  },
+  "C:\\Adem\\CODING\\projects\\restaurant-pro\\public\\models\\README.md": {
+    "mtime": 1778716927.394214,
+    "ast_hash": "2c98a1d5051f8efcb5c1a9d2819a4336",
+    "semantic_hash": "2c98a1d5051f8efcb5c1a9d2819a4336"
+  }
+}

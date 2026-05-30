@@ -196,7 +196,7 @@ export default function Reservations({ reducedMotion }) {
                         />
                       </div>
                       <div className="pt-2 text-xs font-montserrat text-white/40 leading-relaxed">
-                        {data.date} · {data.time} · {data.guests} {data.guests === 1 ? 'guest' : 'guests'}
+                        {data.date} · {data.time} · {data.guests} {data.guests === 1 ? t('reservations.guestSingular') : t('reservations.guestPlural')}
                       </div>
                     </motion.div>
                   )}
