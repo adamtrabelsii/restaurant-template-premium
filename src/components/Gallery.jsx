@@ -9,7 +9,7 @@ const EASE = [0.16, 1, 0.3, 1]
 const IMAGES = [
   { src: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1100&q=80', alt: 'Dining room', span: 'md:col-span-2 md:row-span-2' },
   { src: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=700&q=80',     alt: 'Bar detail',  span: 'md:col-span-1 md:row-span-1' },
-  { src: 'https://images.unsplash.com/photo-1705948730553-3ea0c89ae6fb?w=700&q=80',  alt: 'Plating',     span: 'md:col-span-1 md:row-span-1' },
+  { src: 'https://images.unsplash.com/photo-1663530761401-15eefb544889?w=700&q=80',  alt: 'Plating',     span: 'md:col-span-1 md:row-span-1' },
   { src: 'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=700&q=80',  alt: 'Open fire',   span: 'md:col-span-1 md:row-span-1' },
   { src: 'https://images.unsplash.com/photo-1592861956120-e524fc739696?w=700&q=80',  alt: 'Cellar',      span: 'md:col-span-1 md:row-span-1' },
 ]
