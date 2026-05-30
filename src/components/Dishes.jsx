@@ -9,10 +9,11 @@ const EASE = [0.16, 1, 0.3, 1]
 const UNSPLASH = (id, w = 1200) =>
   `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`
 
+// Index-matched to dishes.items: Paella Valenciana, Secreto Ibérico, Gambas al Ajillo
 const DISH_IMAGES = [
-  UNSPLASH('1534080564583-6be75777b70a'),
-  UNSPLASH('1432139509613-5c4255815697'),
-  UNSPLASH('1559847844-5315695dadae'),
+  UNSPLASH('1534080564583-6be75777b70a'), // paella
+  UNSPLASH('1611059263765-f57653f3bba3'), // grilled Ibérico pork
+  UNSPLASH('1559742811-822873691df8'),    // garlic prawns
 ]
 
 const SPANS = [

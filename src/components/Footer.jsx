@@ -4,9 +4,9 @@ import { Instagram, Facebook, MapPin, Send } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 
 const SOCIAL = [
-  { label: 'Instagram', Icon: Instagram },
-  { label: 'Facebook',  Icon: Facebook },
-  { label: 'TripAdvisor', Icon: MapPin },
+  { label: 'Instagram', Icon: Instagram, href: 'https://www.instagram.com/ardormadrid' },
+  { label: 'Facebook',  Icon: Facebook,  href: 'https://www.facebook.com/ardormadrid' },
+  { label: 'TripAdvisor', Icon: MapPin,  href: 'https://www.tripadvisor.com/ardormadrid' },
 ]
 
 export default function Footer({ reducedMotion }) {
@@ -37,10 +37,12 @@ export default function Footer({ reducedMotion }) {
           </p>
           <p className="font-cormorant italic text-white/60 text-base mb-6">{t('footer.tagline')}</p>
           <div className="flex gap-3">
-            {SOCIAL.map(({ label, Icon }) => (
+            {SOCIAL.map(({ label, Icon, href }) => (
               <motion.a
                 key={label}
-                href="#"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={socialAriaTpl.replace('{network}', label)}
                 className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-ardor-neon hover:border-ardor-neon/40 transition-colors duration-200 cursor-pointer"
                 whileHover={reducedMotion ? {} : { y: -2 }}
@@ -69,8 +71,12 @@ export default function Footer({ reducedMotion }) {
           <h4 className="font-montserrat text-[10px] tracking-[0.5em] uppercase text-ardor-red mb-6">{t('footer.findUsHeading')}</h4>
           <address className="not-italic font-montserrat text-sm text-white/60 space-y-2">
             {address.map((line, i) => <p key={i}>{line}</p>)}
-            <p className="pt-2 font-mono tabular">+34 91 234 56 78</p>
-            <p>hola@ardor.es</p>
+            <p className="pt-2 font-mono tabular">
+              <a href={`tel:${t('footer.phone').replace(/\s/g, '')}`} className="hover:text-ardor-neon transition-colors">{t('footer.phone')}</a>
+            </p>
+            <p>
+              <a href={`mailto:${t('footer.email')}`} className="hover:text-ardor-neon transition-colors">{t('footer.email')}</a>
+            </p>
           </address>
           <div className="mt-6 font-montserrat text-[11px] text-white/50 space-y-1">
             <p><span className="text-white">{t('footer.hours.weekdays.label')}</span> · <span className="font-mono tabular">{t('footer.hours.weekdays.value')}</span></p>
@@ -81,12 +87,12 @@ export default function Footer({ reducedMotion }) {
 
         {/* Newsletter */}
         <div className="md:col-span-3">
-          <h4 className="font-montserrat text-[10px] tracking-[0.5em] uppercase text-ardor-red mb-6">Newsletter</h4>
+          <h4 className="font-montserrat text-[10px] tracking-[0.5em] uppercase text-ardor-red mb-6">{t('footer.newsletter.heading')}</h4>
           <p className="font-montserrat text-xs text-white/50 mb-4 leading-relaxed">
-            Seasonal menus and private tastings, delivered monthly.
+            {t('footer.newsletter.blurb')}
           </p>
           {subscribed ? (
-            <p className="font-cormorant italic text-ardor-neon text-sm">✓ Subscribed</p>
+            <p className="font-cormorant italic text-ardor-neon text-sm">{t('footer.newsletter.subscribed')}</p>
           ) : (
             <form
               onSubmit={(e) => { e.preventDefault(); if (email) setSubscribed(true) }}
@@ -97,7 +103,7 @@ export default function Footer({ reducedMotion }) {
                 required
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                placeholder="you@example.com"
+                placeholder={t('footer.newsletter.placeholder')}
                 aria-label="Email for newsletter"
                 className="flex-1 bg-transparent text-sm text-white py-2 outline-none placeholder:text-white/25 font-montserrat"
               />

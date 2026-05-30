@@ -34,6 +34,15 @@
     }
   },
   "press": { "eyebrow": "As featured in" },
+  "dishScroll": {
+    "eyebrow": "Signature Dishes",
+    "title": "Crafted with obsession.",
+    "items": [
+      { "name": "Chuletón de Vaca Madurada", "desc": "Aged Galician beef chop, charcoal-grilled, smoked sea salt", "price": "€68" },
+      { "name": "Pulpo a la Gallega", "desc": "Galician octopus, smoked paprika, potato confit", "price": "€26" },
+      { "name": "Arroz Negro", "desc": "Bomba rice, squid ink, cuttlefish, garlic alioli", "price": "€24" }
+    ]
+  },
   "gallery": {
     "eyebrow": "The space",
     "title": "A room for the senses"
@@ -139,6 +148,8 @@
       "guests": "Number of guests"
     },
     "guestsOptions": ["1 Guest", "2 Guests", "3 Guests", "4 Guests", "5 Guests", "6 Guests", "7+ Guests (please call)"],
+    "guestSingular": "guest",
+    "guestPlural": "guests",
     "submit": "Confirm Reservation",
     "submitting": "Reserving…",
     "successTitle": "Perfect! Your table is reserved.",
@@ -155,11 +166,19 @@
       { "label": "Full Menu", "href": "#menu" },
       { "label": "Reservations", "href": "#reservations" }
     ],
-    "address": ["Calle de la Pasión, 14", "28001 Madrid, Spain"],
+    "address": ["Calle de Jorge Juan 12", "28001 Madrid, Spain"],
+    "phone": "+34 914 35 18 60",
+    "email": "hola@ardor.es",
     "hours": {
-      "weekdays": { "label": "Mon–Thu", "value": "7:00 PM – 11:00 PM" },
+      "weekdays": { "label": "Tue–Thu", "value": "7:00 PM – 11:00 PM" },
       "weekend": { "label": "Fri–Sat", "value": "7:00 PM – 12:30 AM" },
-      "sunday": { "label": "Sunday", "value": "Closed" }
+      "sunday": { "label": "Sunday", "value": "1:00 PM – 4:00 PM" }
+    },
+    "newsletter": {
+      "heading": "Newsletter",
+      "blurb": "Seasonal menus and private tastings, delivered monthly.",
+      "placeholder": "you@example.com",
+      "subscribed": "✓ Subscribed"
     },
     "copyright": "© 2026 ARDOR Madrid. All rights reserved.",
     "crafted": "Crafted with passion in Madrid",
