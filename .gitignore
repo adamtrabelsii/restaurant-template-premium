@@ -1,5 +1,24 @@
 node_modules/
 dist/
+.env*
+
+# AI tooling internals
 .superpowers/
 .claude/
+.openclaw/
 graphify-out/
+
+# Internal agent/session files
+AGENTS.md
+HEARTBEAT.md
+IDENTITY.md
+SOUL.md
+TOOLS.md
+USER.md
+
+# Internal planning docs
+docs/superpowers/
+
+# Scratch notes
+fix.md
+fix2.md
