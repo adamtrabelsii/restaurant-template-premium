@@ -14,6 +14,7 @@ import Footer from './components/Footer'
 import ScrollProgress from './components/common/ScrollProgress'
 import CursorFollower from './components/common/CursorFollower'
 import LoadingScreen from './components/common/LoadingScreen'
+import SpotlightVars from './components/common/SpotlightVars'
 
 export default function App() {
   const prefersReducedMotion = useReducedMotion()
@@ -23,6 +24,7 @@ export default function App() {
       <LoadingScreen reducedMotion={prefersReducedMotion} />
       <ScrollProgress />
       <CursorFollower reducedMotion={prefersReducedMotion} />
+      <SpotlightVars reducedMotion={prefersReducedMotion} />
 
       <Navbar reducedMotion={prefersReducedMotion} />
       <main>

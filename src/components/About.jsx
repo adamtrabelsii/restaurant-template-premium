@@ -7,10 +7,10 @@ import Reveal from './common/Reveal'
 const EASE = [0.16, 1, 0.3, 1]
 
 const STATS = [
-  { value: 12, suffix: '',  labelKey: 'about.stats.years',   accent: '#C9A961' },
-  { value: 2,  suffix: '★', labelKey: 'about.stats.michelin',accent: '#C9A961' },
-  { value: 87, suffix: '',  labelKey: 'about.stats.wines',   accent: '#A8323F' },
-  { value: 4,  suffix: '',  labelKey: 'about.stats.chefs',   accent: '#C9A961' },
+  { value: 8,  suffix: '',  labelKey: 'about.stats.years',   accent: 'var(--gold)' },
+  { value: 2,  suffix: '★', labelKey: 'about.stats.michelin',accent: 'var(--gold)' },
+  { value: 87, suffix: '',  labelKey: 'about.stats.wines',   accent: 'var(--red)' },
+  { value: 4,  suffix: '',  labelKey: 'about.stats.chefs',   accent: 'var(--gold)' },
 ]
 
 const statsContainer = {
@@ -57,7 +57,7 @@ export default function About({ reducedMotion }) {
   return (
     <section ref={sectionRef} id="about" className="relative bg-ardor-darker py-28 md:py-40 overflow-hidden noise">
       <div className="absolute inset-0 pointer-events-none opacity-50" aria-hidden="true"
-        style={{ background: 'radial-gradient(ellipse 50% 60% at 80% 30%, rgba(168,50,63,0.10) 0%, transparent 65%), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,169,97,0.06) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse 50% 60% at 80% 30%, rgb(var(--red-rgb) / 0.10) 0%, transparent 65%), radial-gradient(ellipse 40% 40% at 10% 80%, rgb(var(--gold-rgb) / 0.06) 0%, transparent 70%)' }}
       />
 
       <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
@@ -68,16 +68,16 @@ export default function About({ reducedMotion }) {
             <motion.div
               className="w-px flex-shrink-0 self-stretch origin-top"
               style={reducedMotion
-                ? { background: 'linear-gradient(180deg, #A8323F 0%, #C9A961 100%)' }
+                ? { background: 'linear-gradient(180deg, var(--red) 0%, var(--gold) 100%)' }
                 : {
-                    background: 'linear-gradient(180deg, #A8323F 0%, #C9A961 100%)',
+                    background: 'linear-gradient(180deg, var(--red) 0%, var(--gold) 100%)',
                     scaleY: lineScaleY,
                   }
               }
             />
             <div>
-              <p className="font-montserrat text-[10px] tracking-[0.5em] uppercase text-ardor-neon mb-5">
-                {t('about.eyebrow') || 'Our story'}
+              <p className="font-montserrat text-[10px] tracking-[0.5em] uppercase text-ardor-gold mb-5">
+                {t('about.eyebrow')}
               </p>
               <p
                 className="font-cormorant italic text-white leading-[1.05] mb-7"
@@ -129,10 +129,10 @@ export default function About({ reducedMotion }) {
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-6">
               <p className="font-montserrat text-[10px] tracking-[0.4em] uppercase text-white/70">{t('about.imageCaption')}</p>
             </div>
-            <span className="absolute top-3 left-3 w-5 h-5 border-l border-t border-ardor-neon/60" />
-            <span className="absolute top-3 right-3 w-5 h-5 border-r border-t border-ardor-neon/60" />
-            <span className="absolute bottom-3 left-3 w-5 h-5 border-l border-b border-ardor-neon/60" />
-            <span className="absolute bottom-3 right-3 w-5 h-5 border-r border-b border-ardor-neon/60" />
+            <span className="absolute top-3 left-3 w-5 h-5 border-l border-t border-ardor-gold/60" />
+            <span className="absolute top-3 right-3 w-5 h-5 border-r border-t border-ardor-gold/60" />
+            <span className="absolute bottom-3 left-3 w-5 h-5 border-l border-b border-ardor-gold/60" />
+            <span className="absolute bottom-3 right-3 w-5 h-5 border-r border-b border-ardor-gold/60" />
           </div>
         </Reveal>
       </div>

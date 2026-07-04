@@ -2,6 +2,9 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
+import Embers from './common/Embers'
+import Magnetic from './common/Magnetic'
+import { BRAND } from '../config/brand'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -15,14 +18,10 @@ const item = {
   show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: EASE } },
 }
 
-const LETTERS = ['A', 'R', 'D', 'O', 'R']
+const LETTERS = [...BRAND.name]
 
-// Ambient orb config: [left, top, duration, size, delay]
-const ORBS = [
-  { x: '25%', y: '20%', duration: 6, size: 320, delay: 0 },
-  { x: '70%', y: '65%', duration: 9, size: 200, delay: 2 },
-  { x: '50%', y: '80%', duration: 7, size: 140, delay: 1 },
-]
+const HERO_IMG = (w) =>
+  `https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=${w}&q=80&auto=format&fit=crop`
 
 export default function Hero({ reducedMotion }) {
   const { t } = useLanguage()
@@ -54,35 +53,17 @@ export default function Hero({ reducedMotion }) {
         aria-hidden="true"
       >
         <img
-          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=2200&q=80&auto=format&fit=crop"
+          src={HERO_IMG(2200)}
+          srcSet={`${HERO_IMG(1200)} 1200w, ${HERO_IMG(1800)} 1800w, ${HERO_IMG(2200)} 2200w`}
+          sizes="100vw"
+          fetchpriority="high"
           alt=""
           className="w-full h-[115%] object-cover opacity-40"
         />
       </motion.div>
 
-      {/* Ambient gold orbs */}
-      {!reducedMotion && ORBS.map((orb, i) => (
-        <motion.div
-          key={i}
-          aria-hidden="true"
-          className="absolute rounded-full pointer-events-none"
-          style={{
-            left: orb.x,
-            top: orb.y,
-            width: orb.size,
-            height: orb.size,
-            background: 'radial-gradient(circle, rgba(201,169,97,0.09) 0%, transparent 70%)',
-            transform: 'translate(-50%, -50%)',
-          }}
-          animate={{ y: [0, -20, 0], opacity: [0.6, 1, 0.6] }}
-          transition={{
-            duration: orb.duration,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: orb.delay,
-          }}
-        />
-      ))}
+      {/* Signature: embers rising off the charcoal */}
+      <Embers reducedMotion={reducedMotion} />
 
       {/* Warm color wash */}
       <div
@@ -90,7 +71,7 @@ export default function Hero({ reducedMotion }) {
         aria-hidden="true"
         style={{
           background:
-            'radial-gradient(ellipse 70% 60% at 30% 30%, rgba(168,50,63,0.18) 0%, transparent 65%), radial-gradient(ellipse 60% 60% at 80% 75%, rgba(201,169,97,0.12) 0%, transparent 70%)',
+            'radial-gradient(ellipse 70% 60% at 30% 30%, rgb(var(--red-rgb) / 0.18) 0%, transparent 65%), radial-gradient(ellipse 60% 60% at 80% 75%, rgb(var(--gold-rgb) / 0.12) 0%, transparent 70%)',
         }}
       />
 
@@ -100,7 +81,7 @@ export default function Hero({ reducedMotion }) {
         aria-hidden="true"
         style={{
           background:
-            'radial-gradient(ellipse at 50% 50%, rgba(12,10,9,0.35) 0%, rgba(12,10,9,0.75) 60%, rgba(12,10,9,0.95) 100%)',
+            'radial-gradient(ellipse at 50% 50%, rgb(var(--dark-rgb) / 0.35) 0%, rgb(var(--dark-rgb) / 0.75) 60%, rgb(var(--dark-rgb) / 0.95) 100%)',
         }}
       />
 
@@ -129,7 +110,7 @@ export default function Hero({ reducedMotion }) {
 
         <motion.h1
           variants={item}
-          className="font-cormorant font-bold italic leading-none text-ardor-text mb-6 select-none flex"
+          className="font-cormorant font-bold italic leading-none text-ardor-text mb-6 select-none flex display-wonk"
           style={{
             fontSize: 'clamp(5rem, 15vw, 14rem)',
             letterSpacing: '-0.03em',
@@ -139,7 +120,7 @@ export default function Hero({ reducedMotion }) {
           {LETTERS.map((L, i) => (
             <motion.span
               key={i}
-              className={L === 'O' ? 'text-ardor-red' : ''}
+              className={i === BRAND.accentLetter ? 'text-ardor-red' : ''}
               initial={reducedMotion ? false : { y: 120, opacity: 0, rotateY: 60 }}
               animate={{ y: 0, opacity: 1, rotateY: 0 }}
               transition={{ duration: 1, delay: 0.3 + i * 0.08, ease: EASE }}
@@ -163,30 +144,30 @@ export default function Hero({ reducedMotion }) {
           {t('hero.subtitle')}
         </motion.p>
 
-        <motion.a
-          variants={item}
-          href="#reservations"
-          className="relative font-montserrat text-xs tracking-[0.4em] uppercase text-ardor-text group-hover:text-ardor-dark px-12 py-4 mt-2 group cursor-pointer overflow-hidden rounded-full border border-ardor-text/15 transition-colors duration-300"
-          whileHover={reducedMotion ? {} : { scale: 1.03 }}
-          whileTap={reducedMotion ? {} : { scale: 0.97 }}
-          transition={{ duration: 0.25, ease: EASE }}
-        >
-          <span className="absolute inset-0 opacity-90"
-            style={{ background: 'linear-gradient(135deg, #A8323F 0%, #C9A961 100%)' }} />
-          <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            style={{ background: '#F4EFE7' }} />
-          <span className="relative">{t('hero.cta')}</span>
-        </motion.a>
+        <Magnetic disabled={reducedMotion}>
+          <motion.a
+            variants={item}
+            href="#reservations"
+            className="relative inline-block font-montserrat text-xs tracking-[0.4em] uppercase text-ardor-text px-12 py-4 mt-2 group cursor-pointer overflow-hidden rounded-full border border-ardor-text/15 transition-colors duration-300"
+            whileHover={reducedMotion ? {} : { scale: 1.03 }}
+            whileTap={reducedMotion ? {} : { scale: 0.97 }}
+            transition={{ duration: 0.25, ease: EASE }}
+          >
+            <span className="absolute inset-0 opacity-90"
+              style={{ background: 'linear-gradient(135deg, var(--red) 0%, var(--gold) 100%)' }} />
+            <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{ background: 'var(--text)' }} />
+            <span className="relative transition-colors duration-300 group-hover:text-ardor-dark">{t('hero.cta')}</span>
+          </motion.a>
+        </Magnetic>
 
         <motion.div
           variants={item}
           className="flex items-center gap-8 mt-12 font-montserrat text-[10px] tracking-[0.3em] uppercase text-ardor-text/40"
         >
-          <span>★★ Michelin</span>
+          <span>★★ Guía Brasa</span>
           <span className="text-ardor-gold/60">·</span>
-          <span>50 Best</span>
-          <span className="text-ardor-gold/60">·</span>
-          <span>Madrid · 2018</span>
+          <span>Top 50 Europa</span>
         </motion.div>
       </motion.div>
 

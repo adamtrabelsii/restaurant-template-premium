@@ -14,9 +14,9 @@ function PourSVG() {
     <svg aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-24 pointer-events-none" viewBox="0 0 48 96">
       <defs>
         <linearGradient id="pour" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#C9A961" stopOpacity="0" />
-          <stop offset="50%" stopColor="#C9A961" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#A8323F" stopOpacity="0.9" />
+          <stop offset="0%" style={{ stopColor: 'var(--gold)' }} stopOpacity="0" />
+          <stop offset="50%" style={{ stopColor: 'var(--gold)' }} stopOpacity="0.6" />
+          <stop offset="100%" style={{ stopColor: 'var(--red)' }} stopOpacity="0.9" />
         </linearGradient>
       </defs>
       <motion.path
@@ -37,7 +37,7 @@ function DrinkCard({ drink, image, reducedMotion, delay }) {
 
   return (
     <motion.div
-      className="relative overflow-hidden glass glass-hover rounded-sm cursor-pointer"
+      className="relative overflow-hidden glass glass-hover spotlight rounded-sm"
       initial={reducedMotion ? false : { opacity: 0, y: 40 }}
       whileInView={reducedMotion ? {} : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -59,7 +59,7 @@ function DrinkCard({ drink, image, reducedMotion, delay }) {
         {hovered && !reducedMotion && <PourSVG />}
       </div>
       <div className="p-6 relative">
-        <p className="font-montserrat text-ardor-neon text-[10px] tracking-[0.4em] uppercase mb-2">{drink.label}</p>
+        <p className="font-montserrat text-ardor-gold text-[10px] tracking-[0.4em] uppercase mb-2">{drink.label}</p>
         <h3 className="font-cormorant italic font-semibold text-white text-2xl mb-3">{drink.name}</h3>
         <p className="font-montserrat text-white/60 text-xs leading-relaxed">{drink.description}</p>
       </div>
@@ -73,7 +73,7 @@ function DrinkCard({ drink, image, reducedMotion, delay }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            style={{ background: 'radial-gradient(ellipse at top, rgba(201,169,97,0.16) 0%, transparent 60%)' }}
+            style={{ background: 'radial-gradient(ellipse at top, rgb(var(--gold-rgb) / 0.16) 0%, transparent 60%)' }}
           />
         )}
       </AnimatePresence>
@@ -82,13 +82,13 @@ function DrinkCard({ drink, image, reducedMotion, delay }) {
 }
 
 export default function Drinks({ reducedMotion }) {
-  const { t } = useLanguage()
-  const drinks = t('drinks.items')
+  const { t, tArray } = useLanguage()
+  const drinks = tArray('drinks.items')
 
   return (
     <section id="drinks" className="relative bg-ardor-darker py-28 md:py-40 overflow-hidden noise">
       <div className="absolute inset-0 pointer-events-none opacity-60" aria-hidden="true"
-        style={{ background: 'radial-gradient(ellipse 50% 40% at 30% 20%, rgba(201,169,97,0.07) 0%, transparent 65%), radial-gradient(ellipse 50% 50% at 80% 80%, rgba(168,50,63,0.06) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse 50% 40% at 30% 20%, rgb(var(--gold-rgb) / 0.07) 0%, transparent 65%), radial-gradient(ellipse 50% 50% at 80% 80%, rgb(var(--red-rgb) / 0.06) 0%, transparent 70%)' }}
       />
 
       <div className="relative max-w-7xl mx-auto px-6">

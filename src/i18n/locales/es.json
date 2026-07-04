@@ -1,4 +1,12 @@
 {
+  "meta": {
+    "title": "ARDOR — Donde la Pasión se Encuentra con el Plato",
+    "description": "ARDOR — Alta cocina española contemporánea en Madrid. Cocina al carbón, producto ibérico y una bodega de 87 referencias. Reserva tu mesa.",
+    "skipLink": "Saltar al contenido"
+  },
+  "loading": {
+    "label": "Preparando la mesa"
+  },
   "navbar": {
     "links": {
       "about": "Nosotros",
@@ -8,6 +16,7 @@
     },
     "reserve": "Reservar",
     "toggleMenu": "Abrir menú",
+    "languageAria": "Idioma",
     "switchToEnglish": "Cambiar idioma a Inglés",
     "switchToSpanish": "Cambiar idioma a Español"
   },
@@ -28,12 +37,15 @@
     "imageCaption": "Madrid, España",
     "stats": {
       "years":    "Años de oficio",
-      "michelin": "Estrellas Michelin",
+      "michelin": "Estrellas de guía",
       "wines":    "Vinos en bodega",
       "chefs":    "Chefs en brigada"
     }
   },
-  "press": { "eyebrow": "Aparecemos en" },
+  "press": {
+    "eyebrow": "Aparecemos en",
+    "sectionAria": "Prensa y premios"
+  },
   "dishScroll": {
     "eyebrow": "Platos Estrella",
     "title": "Hecho con obsesión.",
@@ -45,11 +57,21 @@
   },
   "gallery": {
     "eyebrow": "El espacio",
-    "title": "Una sala para los sentidos"
+    "title": "Una sala para los sentidos",
+    "openAria": "Ver {name}",
+    "close": "Cerrar",
+    "images": [
+      "Sala del restaurante",
+      "Detalle de la barra",
+      "Emplatado",
+      "Fuego abierto",
+      "Bodega"
+    ]
   },
   "dishes": {
     "eyebrow": "Nuestras Especialidades",
     "title": "Platos Estrella",
+    "signatureBadge": "Estrella",
     "items": [
       {
         "name": "Paella Valenciana",
@@ -99,6 +121,15 @@
   "menu": {
     "eyebrow": "Descubre",
     "title": "Nuestra Carta",
+    "hoverHint": "Pasa el cursor por un plato",
+    "noMatches": "Ningún plato coincide con este filtro.",
+    "filters": {
+      "groupAria": "Filtros dietéticos",
+      "all": "Todos",
+      "v": "Vegetariano",
+      "gf": "Sin gluten",
+      "n": "Contiene frutos secos"
+    },
     "tabs": {
       "tapas": "Tapas",
       "mains": "Principales",
@@ -107,26 +138,26 @@
     },
     "items": {
       "tapas": [
-        { "name": "Pan con Tomate", "desc": "Pan de masa madre, tomate rallado, aceite Arbequina, sal marina", "price": "€8" },
-        { "name": "Patatas Bravas", "desc": "Patatas crujientes, salsa brava ahumada, alioli de ajo", "price": "€9" },
-        { "name": "Croquetas de Jamón", "desc": "Croquetas artesanales de jamón ibérico, bechamel, rebozado crujiente", "price": "€12" },
-        { "name": "Pimientos de Padrón", "desc": "Pimientos de Padrón asados, flor de sal, limón", "price": "€9" }
+        { "name": "Pan con Tomate", "desc": "Pan de masa madre, tomate rallado, aceite Arbequina, sal marina", "price": "€8", "tags": ["v"] },
+        { "name": "Patatas Bravas", "desc": "Patatas crujientes, salsa brava ahumada, alioli de ajo", "price": "€9", "tags": ["v", "gf"] },
+        { "name": "Croquetas de Jamón", "desc": "Croquetas artesanales de jamón ibérico, bechamel, rebozado crujiente", "price": "€12", "tags": [] },
+        { "name": "Pimientos de Padrón", "desc": "Pimientos de Padrón asados, flor de sal, limón", "price": "€9", "tags": ["v", "gf"] }
       ],
       "mains": [
-        { "name": "Paella Valenciana", "desc": "Arroz bomba con azafrán, conejo, judías, fuego de naranjo (para 2)", "price": "€56" },
-        { "name": "Secreto Ibérico", "desc": "Secreto Ibérico a la brasa, reducción de PX, pimientos", "price": "€34" },
-        { "name": "Lubina a la Sal", "desc": "Lubina entera al horno en costra de sal, mantequilla de ajo, alcaparras", "price": "€38" },
-        { "name": "Cochinillo Asado", "desc": "Cochinillo segoviano, asado lentamente 6 horas, compota de manzana", "price": "€42" }
+        { "name": "Paella Valenciana", "desc": "Arroz bomba con azafrán, conejo, judías, fuego de naranjo (para 2)", "price": "€56", "tags": ["gf"] },
+        { "name": "Secreto Ibérico", "desc": "Secreto Ibérico a la brasa, reducción de PX, pimientos", "price": "€34", "tags": ["gf"] },
+        { "name": "Lubina a la Sal", "desc": "Lubina entera al horno en costra de sal, mantequilla de ajo, alcaparras", "price": "€38", "tags": ["gf"] },
+        { "name": "Cochinillo Asado", "desc": "Cochinillo segoviano, asado lentamente 6 horas, compota de manzana", "price": "€42", "tags": [] }
       ],
       "postres": [
-        { "name": "Crema Catalana", "desc": "Crema clásica, costra caramelizada, ralladura de naranja", "price": "€9" },
-        { "name": "Churros con Chocolate", "desc": "Masa frita, azúcar y canela, salsa espesa de chocolate negro", "price": "€11" },
-        { "name": "Tarta de Santiago", "desc": "Pastel de almendra, cruz de azúcar glas, helado de Pedro Ximénez", "price": "€10" }
+        { "name": "Crema Catalana", "desc": "Crema clásica, costra caramelizada, ralladura de naranja", "price": "€9", "tags": ["v", "gf"] },
+        { "name": "Churros con Chocolate", "desc": "Masa frita, azúcar y canela, salsa espesa de chocolate negro", "price": "€11", "tags": ["v"] },
+        { "name": "Tarta de Santiago", "desc": "Pastel de almendra, cruz de azúcar glas, helado de Pedro Ximénez", "price": "€10", "tags": ["v", "gf", "n"] }
       ],
       "bebidas": [
-        { "name": "Sangría Ardiente", "desc": "Vino tinto de la casa, naranja sanguina, canela, frutos rojos", "price": "€14" },
-        { "name": "Rioja Reserva", "desc": "Bodegas Muga, criado 18 meses en roble, notas profundas de cereza", "price": "€12" },
-        { "name": "Agua de Valencia", "desc": "Zumo de naranja fresco, Cava, vodka, ginebra — la insignia de Valencia", "price": "€13" }
+        { "name": "Sangría Ardiente", "desc": "Vino tinto de la casa, naranja sanguina, canela, frutos rojos", "price": "€14", "tags": ["v", "gf"] },
+        { "name": "Rioja Reserva", "desc": "Bodegas Muga, criado 18 meses en roble, notas profundas de cereza", "price": "€12", "tags": ["v", "gf"] },
+        { "name": "Agua de Valencia", "desc": "Zumo de naranja fresco, Cava, vodka, ginebra — la insignia de Valencia", "price": "€13", "tags": ["v", "gf"] }
       ]
     }
   },
@@ -143,17 +174,19 @@
     },
     "placeholders": {
       "name": "Ana García",
-      "email": "ana@ejemplo.com",
-      "time": "Selecciona hora",
-      "guests": "Número de comensales"
+      "email": "ana@ejemplo.com"
     },
-    "guestsOptions": ["1 Comensal", "2 Comensales", "3 Comensales", "4 Comensales", "5 Comensales", "6 Comensales", "7+ Comensales (por favor llama)"],
     "guestSingular": "comensal",
     "guestPlural": "comensales",
+    "back": "← Atrás",
+    "next": "Siguiente →",
+    "stepAria": "Paso {n}",
+    "closedMonday": "Los lunes permanecemos cerrados — elige otro día, por favor.",
+    "sundayLunch": "Los domingos solo servimos almuerzos.",
     "submit": "Confirmar Reserva",
     "submitting": "Reservando…",
     "successTitle": "¡Perfecto! Tu mesa está reservada.",
-    "successBody": "Recibirás una confirmación en tu correo electrónico."
+    "successBody": "Este sitio es una demostración — no se ha realizado una reserva real."
   },
   "footer": {
     "tagline": "Donde la Pasión se Encuentra con el Plato",
@@ -178,6 +211,8 @@
       "heading": "Boletín",
       "blurb": "Menús de temporada y catas privadas, cada mes en tu correo.",
       "placeholder": "tu@ejemplo.com",
+      "emailAria": "Correo para el boletín",
+      "submitAria": "Suscribirse",
       "subscribed": "✓ Suscrito"
     },
     "copyright": "© 2026 ARDOR Madrid. Todos los derechos reservados.",

@@ -2,12 +2,27 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
 import Reveal from './common/Reveal'
+import FloatingPaths from './ui/floating-paths'
 
-const FIELD = 'w-full bg-transparent border-b border-white/15 text-white font-montserrat text-sm py-3 outline-none placeholder:text-white/25 focus:border-ardor-neon transition-colors duration-200'
-const TIMES = ['19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00']
+const FIELD = 'w-full bg-transparent border-b border-white/15 text-white font-montserrat text-sm py-3 outline-none placeholder:text-white/25 focus:border-ardor-gold transition-colors duration-200'
+const DINNER_TIMES = ['19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00']
+const SUNDAY_TIMES = ['13:00', '13:30', '14:00', '14:30', '15:00', '15:30']
 const GUESTS = [1, 2, 3, 4, 5, 6, 7, 8]
 const STEPS = ['date', 'guests', 'details']
 const EASE = [0.16, 1, 0.3, 1]
+
+// Local date (not UTC) so the min doesn't drift around midnight
+const todayLocal = () => new Date().toLocaleDateString('en-CA')
+
+// Matches the opening hours in the footer + JSON-LD:
+// closed Mondays, lunch-only Sundays, dinner Tue–Sat.
+function timesFor(dateStr) {
+  if (!dateStr) return DINNER_TIMES
+  const day = new Date(`${dateStr}T12:00:00`).getDay()
+  if (day === 1) return null // Monday — closed
+  if (day === 0) return SUNDAY_TIMES
+  return DINNER_TIMES
+}
 
 export default function Reservations({ reducedMotion }) {
   const { t } = useLanguage()
@@ -17,9 +32,17 @@ export default function Reservations({ reducedMotion }) {
   const [data, setData] = useState({ date: '', time: '', guests: '', name: '', email: '' })
 
   const update = (k, v) => setData(d => ({ ...d, [k]: v }))
+  const times = timesFor(data.date)
+  const isMonday = data.date && times === null
+  const isSunday = data.date && times === SUNDAY_TIMES
+
+  const setDate = (v) => {
+    const allowed = timesFor(v)
+    setData(d => ({ ...d, date: v, time: allowed && allowed.includes(d.time) ? d.time : '' }))
+  }
 
   const canNext = () => {
-    if (step === 0) return data.date && data.time
+    if (step === 0) return data.date && data.time && !isMonday
     if (step === 1) return data.guests
     return data.name && data.email
   }
@@ -36,8 +59,9 @@ export default function Reservations({ reducedMotion }) {
 
   return (
     <section id="reservations" className="relative bg-ardor-darker py-28 md:py-40 overflow-hidden noise">
+      <FloatingPaths reducedMotion={reducedMotion} />
       <div className="absolute inset-0 pointer-events-none opacity-50" aria-hidden="true"
-        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(168,50,63,0.10) 0%, transparent 65%), radial-gradient(ellipse 50% 50% at 50% 80%, rgba(201,169,97,0.06) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgb(var(--red-rgb) / 0.10) 0%, transparent 65%), radial-gradient(ellipse 50% 50% at 50% 80%, rgb(var(--gold-rgb) / 0.06) 0%, transparent 70%)' }}
       />
 
       <div className="relative max-w-2xl mx-auto px-6">
@@ -64,7 +88,7 @@ export default function Reservations({ reducedMotion }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, ease: EASE }}
-              className="glass rounded-sm p-8 md:p-10"
+              className="glass spotlight rounded-sm p-8 md:p-10"
             >
               {/* Progress dots */}
               <div className="flex items-center justify-center gap-4 mb-10">
@@ -74,18 +98,19 @@ export default function Reservations({ reducedMotion }) {
                       type="button"
                       onClick={() => i <= step && setStep(i)}
                       className={`w-8 h-8 rounded-full flex items-center justify-center font-mono text-[11px] transition-all duration-300 ${
-                        i === step ? 'bg-ardor-neon text-ardor-darker' :
-                        i < step ? 'bg-ardor-neon/20 text-ardor-neon cursor-pointer' :
+                        i === step ? 'bg-ardor-gold text-ardor-darker' :
+                        i < step ? 'bg-ardor-gold/20 text-ardor-gold cursor-pointer' :
                         'border border-white/15 text-white/30'
                       }`}
-                      aria-label={`Step ${i + 1}`}
+                      aria-label={t('reservations.stepAria').replace('{n}', String(i + 1))}
+                      aria-current={i === step ? 'step' : undefined}
                     >
                       {i + 1}
                     </button>
                     {i < STEPS.length - 1 && (
                       <div className="w-12 h-px bg-white/10 relative overflow-hidden">
                         <motion.div
-                          className="absolute inset-0 bg-ardor-neon origin-left"
+                          className="absolute inset-0 bg-ardor-gold origin-left"
                           animate={{ scaleX: i < step ? 1 : 0 }}
                           transition={{ duration: 0.4, ease: EASE }}
                         />
@@ -111,30 +136,40 @@ export default function Reservations({ reducedMotion }) {
                         <input
                           id="res-date" type="date" required
                           value={data.date}
-                          onChange={e => update('date', e.target.value)}
-                          min={new Date().toISOString().split('T')[0]}
+                          onChange={e => setDate(e.target.value)}
+                          min={todayLocal()}
                           className={`${FIELD} [color-scheme:dark]`}
                         />
+                        {isMonday && (
+                          <p role="status" className="font-montserrat text-xs text-ardor-red mt-3">{t('reservations.closedMonday')}</p>
+                        )}
+                        {isSunday && (
+                          <p role="status" className="font-montserrat text-xs text-ardor-gold/80 mt-3">{t('reservations.sundayLunch')}</p>
+                        )}
                       </div>
-                      <div>
-                        <p className="font-montserrat text-[10px] tracking-[0.4em] uppercase text-ardor-muted mb-3">{t('reservations.labels.time')}</p>
-                        <div className="grid grid-cols-4 gap-2">
-                          {TIMES.map(time => (
-                            <button
-                              key={time}
-                              type="button"
-                              onClick={() => update('time', time)}
-                              className={`font-mono text-xs py-3 rounded-sm border transition-all duration-200 cursor-pointer tabular ${
-                                data.time === time
-                                  ? 'border-ardor-neon text-ardor-neon bg-ardor-neon/5'
-                                  : 'border-white/10 text-white/70 hover:border-white/30'
-                              }`}
-                            >
-                              {time}
-                            </button>
-                          ))}
+                      {!isMonday && (
+                        <div>
+                          <p id="res-time-label" className="font-montserrat text-[10px] tracking-[0.4em] uppercase text-ardor-muted mb-3">{t('reservations.labels.time')}</p>
+                          <div className="grid grid-cols-4 gap-2" role="radiogroup" aria-labelledby="res-time-label">
+                            {(times || DINNER_TIMES).map(time => (
+                              <button
+                                key={time}
+                                type="button"
+                                role="radio"
+                                aria-checked={data.time === time}
+                                onClick={() => update('time', time)}
+                                className={`font-mono text-xs py-3 rounded-sm border transition-all duration-200 cursor-pointer tabular ${
+                                  data.time === time
+                                    ? 'border-ardor-gold text-ardor-gold bg-ardor-gold/5'
+                                    : 'border-white/10 text-white/70 hover:border-white/30'
+                                }`}
+                              >
+                                {time}
+                              </button>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </motion.div>
                   )}
 
@@ -146,16 +181,18 @@ export default function Reservations({ reducedMotion }) {
                       exit={{ opacity: 0, x: -20 }}
                       transition={{ duration: 0.35, ease: EASE }}
                     >
-                      <p className="font-montserrat text-[10px] tracking-[0.4em] uppercase text-ardor-muted mb-3">{t('reservations.labels.guests')}</p>
-                      <div className="grid grid-cols-4 gap-2">
+                      <p id="res-guests-label" className="font-montserrat text-[10px] tracking-[0.4em] uppercase text-ardor-muted mb-3">{t('reservations.labels.guests')}</p>
+                      <div className="grid grid-cols-4 gap-2" role="radiogroup" aria-labelledby="res-guests-label">
                         {GUESTS.map(g => (
                           <button
                             key={g}
                             type="button"
+                            role="radio"
+                            aria-checked={data.guests === g}
                             onClick={() => update('guests', g)}
                             className={`font-mono text-xl py-6 rounded-sm border transition-all duration-200 cursor-pointer tabular ${
                               data.guests === g
-                                ? 'border-ardor-neon text-ardor-neon bg-ardor-neon/5'
+                                ? 'border-ardor-gold text-ardor-gold bg-ardor-gold/5'
                                 : 'border-white/10 text-white/70 hover:border-white/30'
                             }`}
                           >
@@ -210,7 +247,7 @@ export default function Reservations({ reducedMotion }) {
                     disabled={step === 0}
                     className="font-montserrat text-[11px] tracking-[0.3em] uppercase text-ardor-muted disabled:opacity-30 hover:text-white transition-colors duration-200 cursor-pointer disabled:cursor-not-allowed"
                   >
-                    ← Back
+                    {t('reservations.back')}
                   </button>
 
                   {step < STEPS.length - 1 ? (
@@ -220,8 +257,8 @@ export default function Reservations({ reducedMotion }) {
                       disabled={!canNext()}
                       className="relative font-montserrat text-[11px] tracking-[0.3em] uppercase text-white px-8 py-3 rounded-full overflow-hidden border border-white/15 group disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
                     >
-                      <span className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #A8323F, #C9A961)' }} />
-                      <span className="relative">Next →</span>
+                      <span className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--red), var(--gold))' }} />
+                      <span className="relative">{t('reservations.next')}</span>
                     </button>
                   ) : (
                     <motion.button
@@ -231,7 +268,7 @@ export default function Reservations({ reducedMotion }) {
                       whileHover={reducedMotion || loading ? {} : { scale: 1.02 }}
                       whileTap={reducedMotion || loading ? {} : { scale: 0.97 }}
                     >
-                      <span className="absolute inset-0" style={{ background: '#C9A961' }} />
+                      <span className="absolute inset-0" style={{ background: 'var(--gold)' }} />
                       <span className="relative">{loading ? t('reservations.submitting') : t('reservations.submit')}</span>
                     </motion.button>
                   )}
@@ -248,12 +285,12 @@ export default function Reservations({ reducedMotion }) {
               transition={{ duration: 0.5, ease: EASE }}
               className="glass rounded-sm py-16 px-8 text-center"
             >
-              <div className="w-16 h-16 rounded-full bg-ardor-neon/10 border border-ardor-neon/40 mx-auto mb-6 flex items-center justify-center">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A961" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <div className="w-16 h-16 rounded-full bg-ardor-gold/10 border border-ardor-gold/40 mx-auto mb-6 flex items-center justify-center">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-ardor-gold" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <p className="font-cormorant italic text-ardor-neon text-3xl mb-3">{t('reservations.successTitle')}</p>
+              <p className="font-cormorant italic text-ardor-gold text-3xl mb-3">{t('reservations.successTitle')}</p>
               <p className="font-montserrat text-white/60 text-xs tracking-wide">{t('reservations.successBody')}</p>
             </motion.div>
           )}

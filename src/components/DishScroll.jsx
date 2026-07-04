@@ -77,7 +77,7 @@ export default function DishScroll({ reducedMotion }) {
         aria-hidden="true"
         style={{
           background:
-            'radial-gradient(ellipse 60% 50% at 50% 20%, rgba(168,50,63,0.10) 0%, transparent 65%)',
+            'radial-gradient(ellipse 60% 50% at 50% 20%, rgb(var(--red-rgb) / 0.10) 0%, transparent 65%)',
         }}
       />
       <ContainerScroll titleComponent={titleComponent}>

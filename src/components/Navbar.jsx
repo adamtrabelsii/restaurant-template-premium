@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
 import LanguageToggle from './LanguageToggle'
+import Wordmark from './common/Wordmark'
 import useActiveSection from '../hooks/useActiveSection'
 
 const LINK_KEYS = [
@@ -39,17 +40,23 @@ export default function Navbar({ reducedMotion }) {
       className="fixed top-3 left-3 right-3 md:top-4 md:left-4 md:right-4 z-50 rounded-2xl border border-white/[0.06]"
       animate={{
         y: hidden ? -100 : 0,
-        backgroundColor: scrolled ? 'rgba(7,7,11,0.72)' : 'rgba(7,7,11,0.25)',
-        backdropFilter: scrolled ? 'blur(18px)' : 'blur(8px)',
         paddingTop: scrolled ? '10px' : '16px',
         paddingBottom: scrolled ? '10px' : '16px',
       }}
       transition={transition}
-      style={{ WebkitBackdropFilter: 'blur(18px)' }}
+      style={{ backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)' }}
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-7 flex items-center justify-between">
+      {/* Token-driven background layer; only its opacity animates */}
+      <motion.div
+        className="absolute inset-0 rounded-2xl pointer-events-none"
+        style={{ background: 'var(--dark)' }}
+        animate={{ opacity: scrolled ? 0.72 : 0.25 }}
+        transition={transition}
+        aria-hidden="true"
+      />
+      <div className="relative max-w-7xl mx-auto px-5 md:px-7 flex items-center justify-between">
         <a href="#hero" className="font-cormorant text-2xl font-bold italic tracking-widest text-white select-none">
-          ARD<span className="text-ardor-red">O</span>R
+          <Wordmark />
         </a>
 
         <ul className="hidden md:flex items-center gap-7 font-montserrat text-[11px] font-medium tracking-[0.25em] uppercase">
@@ -65,7 +72,7 @@ export default function Navbar({ reducedMotion }) {
                 <motion.span
                   layoutId="nav-active"
                   className="absolute -bottom-2 left-0 right-0 h-px"
-                  style={{ background: 'linear-gradient(90deg, transparent, #C9A961, transparent)' }}
+                  style={{ background: 'linear-gradient(90deg, transparent, var(--gold), transparent)' }}
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}
@@ -115,7 +122,7 @@ export default function Navbar({ reducedMotion }) {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={reducedMotion ? { duration: 0 } : { duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden overflow-hidden"
+            className="relative md:hidden overflow-hidden"
           >
             <ul className="flex flex-col gap-3 pt-5 px-7 pb-5 mt-3 border-t border-white/10 font-montserrat text-xs font-medium tracking-[0.25em] uppercase text-ardor-muted">
               {LINK_KEYS.map(l => (

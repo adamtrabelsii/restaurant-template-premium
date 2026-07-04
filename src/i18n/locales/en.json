@@ -1,4 +1,12 @@
 {
+  "meta": {
+    "title": "ARDOR — Where Passion Meets the Plate",
+    "description": "ARDOR — Contemporary Spanish fine dining in Madrid. Charcoal-fired cuisine, Iberian produce and an 87-strong cellar. Reserve your table.",
+    "skipLink": "Skip to content"
+  },
+  "loading": {
+    "label": "Preparing the table"
+  },
   "navbar": {
     "links": {
       "about": "About",
@@ -8,6 +16,7 @@
     },
     "reserve": "Reserve",
     "toggleMenu": "Toggle menu",
+    "languageAria": "Language",
     "switchToEnglish": "Switch language to English",
     "switchToSpanish": "Switch language to Spanish"
   },
@@ -28,12 +37,15 @@
     "imageCaption": "Madrid, Spain",
     "stats": {
       "years":    "Years of craft",
-      "michelin": "Michelin stars",
+      "michelin": "Guide stars",
       "wines":    "Cellar selections",
       "chefs":    "Chefs in brigade"
     }
   },
-  "press": { "eyebrow": "As featured in" },
+  "press": {
+    "eyebrow": "As featured in",
+    "sectionAria": "Press and awards"
+  },
   "dishScroll": {
     "eyebrow": "Signature Dishes",
     "title": "Crafted with obsession.",
@@ -45,11 +57,21 @@
   },
   "gallery": {
     "eyebrow": "The space",
-    "title": "A room for the senses"
+    "title": "A room for the senses",
+    "openAria": "View {name}",
+    "close": "Close",
+    "images": [
+      "Dining room",
+      "Bar detail",
+      "Plating",
+      "Open fire",
+      "Cellar"
+    ]
   },
   "dishes": {
     "eyebrow": "Our Specialities",
     "title": "Signature Dishes",
+    "signatureBadge": "Signature",
     "items": [
       {
         "name": "Paella Valenciana",
@@ -99,6 +121,15 @@
   "menu": {
     "eyebrow": "Explore",
     "title": "Our Menu",
+    "hoverHint": "Hover a dish",
+    "noMatches": "No dishes match this filter.",
+    "filters": {
+      "groupAria": "Dietary filters",
+      "all": "All",
+      "v": "Vegetarian",
+      "gf": "Gluten-free",
+      "n": "Contains nuts"
+    },
     "tabs": {
       "tapas": "Tapas",
       "mains": "Mains",
@@ -107,26 +138,26 @@
     },
     "items": {
       "tapas": [
-        { "name": "Pan con Tomate", "desc": "Sourdough, grated heirloom tomato, Arbequina oil, sea salt", "price": "€8" },
-        { "name": "Patatas Bravas", "desc": "Crispy potatoes, smoky bravas sauce, garlic alioli", "price": "€9" },
-        { "name": "Croquetas de Jamón", "desc": "Hand-rolled jamón ibérico croquettes, béchamel, crispy crumb", "price": "€12" },
-        { "name": "Pimientos de Padrón", "desc": "Blistered Padrón peppers, flor de sal, lemon", "price": "€9" }
+        { "name": "Pan con Tomate", "desc": "Sourdough, grated heirloom tomato, Arbequina oil, sea salt", "price": "€8", "tags": ["v"] },
+        { "name": "Patatas Bravas", "desc": "Crispy potatoes, smoky bravas sauce, garlic alioli", "price": "€9", "tags": ["v", "gf"] },
+        { "name": "Croquetas de Jamón", "desc": "Hand-rolled jamón ibérico croquettes, béchamel, crispy crumb", "price": "€12", "tags": [] },
+        { "name": "Pimientos de Padrón", "desc": "Blistered Padrón peppers, flor de sal, lemon", "price": "€9", "tags": ["v", "gf"] }
       ],
       "mains": [
-        { "name": "Paella Valenciana", "desc": "Saffron bomba rice, rabbit, beans, orange wood fire (for 2)", "price": "€56" },
-        { "name": "Secreto Ibérico", "desc": "Charcoal-grilled Ibérico pork, PX reduction, peppers", "price": "€34" },
-        { "name": "Lubina a la Sal", "desc": "Whole sea bass baked in salt crust, garlic butter, capers", "price": "€38" },
-        { "name": "Cochinillo Asado", "desc": "Segovian suckling pig, slow-roasted 6 hours, apple compote", "price": "€42" }
+        { "name": "Paella Valenciana", "desc": "Saffron bomba rice, rabbit, beans, orange wood fire (for 2)", "price": "€56", "tags": ["gf"] },
+        { "name": "Secreto Ibérico", "desc": "Charcoal-grilled Ibérico pork, PX reduction, peppers", "price": "€34", "tags": ["gf"] },
+        { "name": "Lubina a la Sal", "desc": "Whole sea bass baked in salt crust, garlic butter, capers", "price": "€38", "tags": ["gf"] },
+        { "name": "Cochinillo Asado", "desc": "Segovian suckling pig, slow-roasted 6 hours, apple compote", "price": "€42", "tags": [] }
       ],
       "postres": [
-        { "name": "Crema Catalana", "desc": "Classic custard, caramelised crust, orange zest", "price": "€9" },
-        { "name": "Churros con Chocolate", "desc": "Fried dough, cinnamon sugar, thick dark chocolate dipping sauce", "price": "€11" },
-        { "name": "Tarta de Santiago", "desc": "Almond cake, powdered sugar cross, Pedro Ximénez ice cream", "price": "€10" }
+        { "name": "Crema Catalana", "desc": "Classic custard, caramelised crust, orange zest", "price": "€9", "tags": ["v", "gf"] },
+        { "name": "Churros con Chocolate", "desc": "Fried dough, cinnamon sugar, thick dark chocolate dipping sauce", "price": "€11", "tags": ["v"] },
+        { "name": "Tarta de Santiago", "desc": "Almond cake, powdered sugar cross, Pedro Ximénez ice cream", "price": "€10", "tags": ["v", "gf", "n"] }
       ],
       "bebidas": [
-        { "name": "Sangria Ardiente", "desc": "House red wine, blood orange, cinnamon, berries", "price": "€14" },
-        { "name": "Rioja Reserva", "desc": "Bodegas Muga, aged 18 months in oak, deep cherry notes", "price": "€12" },
-        { "name": "Agua de Valencia", "desc": "Fresh orange juice, Cava, vodka, gin — Valencia's signature", "price": "€13" }
+        { "name": "Sangria Ardiente", "desc": "House red wine, blood orange, cinnamon, berries", "price": "€14", "tags": ["v", "gf"] },
+        { "name": "Rioja Reserva", "desc": "Bodegas Muga, aged 18 months in oak, deep cherry notes", "price": "€12", "tags": ["v", "gf"] },
+        { "name": "Agua de Valencia", "desc": "Fresh orange juice, Cava, vodka, gin — Valencia's signature", "price": "€13", "tags": ["v", "gf"] }
       ]
     }
   },
@@ -143,17 +174,19 @@
     },
     "placeholders": {
       "name": "Ana García",
-      "email": "ana@example.com",
-      "time": "Select time",
-      "guests": "Number of guests"
+      "email": "ana@example.com"
     },
-    "guestsOptions": ["1 Guest", "2 Guests", "3 Guests", "4 Guests", "5 Guests", "6 Guests", "7+ Guests (please call)"],
     "guestSingular": "guest",
     "guestPlural": "guests",
+    "back": "← Back",
+    "next": "Next →",
+    "stepAria": "Step {n}",
+    "closedMonday": "We are closed on Mondays — please choose another day.",
+    "sundayLunch": "On Sundays we serve lunch only.",
     "submit": "Confirm Reservation",
     "submitting": "Reserving…",
     "successTitle": "Perfect! Your table is reserved.",
-    "successBody": "A confirmation will be sent to your email."
+    "successBody": "This is a concept showcase — no real reservation was made."
   },
   "footer": {
     "tagline": "Where Passion Meets the Plate",
@@ -178,6 +211,8 @@
       "heading": "Newsletter",
       "blurb": "Seasonal menus and private tastings, delivered monthly.",
       "placeholder": "you@example.com",
+      "emailAria": "Email for newsletter",
+      "submitAria": "Subscribe",
       "subscribed": "✓ Subscribed"
     },
     "copyright": "© 2026 ARDOR Madrid. All rights reserved.",

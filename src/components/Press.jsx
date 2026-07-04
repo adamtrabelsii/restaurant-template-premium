@@ -4,15 +4,17 @@ import { useLanguage } from '../i18n/LanguageContext'
 
 const EASE = [0.16, 1, 0.3, 1]
 
+// Fictional publications — replace with the client's real press mentions.
+// Deliberately not real magazine trademarks (see BRANDING.md §6).
 const ITEMS = [
-  'Michelin Guide',
-  "World's 50 Best",
-  'Condé Nast Traveler',
-  'El País Gastro',
-  'Wine Spectator',
-  'GQ España',
-  'Forbes Travel',
-  'Time Out Madrid',
+  'Guía Brasa',
+  'The Ember Review',
+  'Sobremesa Magazine',
+  'Mesa Capital',
+  'Cocina & Cava',
+  'The Plate Journal',
+  'Madrid à Table',
+  'Fuego y Sal',
 ]
 
 export default function Press({ reducedMotion }) {
@@ -20,13 +22,13 @@ export default function Press({ reducedMotion }) {
   const items = [...ITEMS, ...ITEMS]
 
   return (
-    <section aria-label="Press and awards" className="relative bg-ardor-mid py-16 border-y border-white/[0.04] overflow-hidden">
+    <section aria-label={t('press.sectionAria')} className="relative bg-ardor-mid py-16 border-y border-white/[0.04] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-8 flex items-center justify-center gap-3">
-        <span className="w-8 h-px bg-ardor-neon/40" />
-        <p className="font-montserrat text-[10px] tracking-[0.5em] uppercase text-ardor-neon">
-          {t('press.eyebrow') || 'As featured in'}
+        <span className="w-8 h-px bg-ardor-gold/40" />
+        <p className="font-montserrat text-[10px] tracking-[0.5em] uppercase text-ardor-gold">
+          {t('press.eyebrow')}
         </p>
-        <span className="w-8 h-px bg-ardor-neon/40" />
+        <span className="w-8 h-px bg-ardor-gold/40" />
       </div>
 
       <div className="relative">
@@ -39,7 +41,8 @@ export default function Press({ reducedMotion }) {
           {items.map((label, i) => (
             <motion.div
               key={i}
-              className="font-cormorant italic text-2xl md:text-3xl text-white/40 hover:text-ardor-neon transition-colors duration-300 whitespace-nowrap"
+              aria-hidden={i >= ITEMS.length || undefined}
+              className="font-cormorant italic text-2xl md:text-3xl text-white/40 hover:text-ardor-gold transition-colors duration-300 whitespace-nowrap"
               initial={reducedMotion ? false : { opacity: 0, scale: 0.88 }}
               whileInView={reducedMotion ? {} : { opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.5 }}

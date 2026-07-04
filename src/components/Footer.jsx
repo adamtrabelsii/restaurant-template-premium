@@ -1,18 +1,18 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Instagram, Facebook, MapPin, Send } from 'lucide-react'
+import { Instagram, Facebook, Send } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
+import Wordmark from './common/Wordmark'
 
 const SOCIAL = [
   { label: 'Instagram', Icon: Instagram, href: 'https://www.instagram.com/ardormadrid' },
   { label: 'Facebook',  Icon: Facebook,  href: 'https://www.facebook.com/ardormadrid' },
-  { label: 'TripAdvisor', Icon: MapPin,  href: 'https://www.tripadvisor.com/ardormadrid' },
 ]
 
 export default function Footer({ reducedMotion }) {
-  const { t } = useLanguage()
-  const navLinks = t('footer.links')
-  const address = t('footer.address')
+  const { t, tArray } = useLanguage()
+  const navLinks = tArray('footer.links')
+  const address = tArray('footer.address')
   const socialAriaTpl = t('footer.socialAria')
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
@@ -22,7 +22,7 @@ export default function Footer({ reducedMotion }) {
       {/* Animated gradient rule */}
       <motion.div
         className="w-full h-px mb-16"
-        style={{ background: 'linear-gradient(90deg, transparent 0%, #A8323F 35%, #C9A961 65%, transparent 100%)' }}
+        style={{ background: 'linear-gradient(90deg, transparent 0%, var(--red) 35%, var(--gold) 65%, transparent 100%)' }}
         initial={reducedMotion ? false : { scaleX: 0, originX: 0 }}
         whileInView={reducedMotion ? {} : { scaleX: 1 }}
         viewport={{ once: true, amount: 0.5 }}
@@ -33,7 +33,7 @@ export default function Footer({ reducedMotion }) {
         {/* Brand */}
         <div className="md:col-span-4">
           <p className="font-cormorant font-bold italic text-white text-4xl tracking-wider mb-3">
-            ARD<span className="text-ardor-red">O</span>R
+            <Wordmark />
           </p>
           <p className="font-cormorant italic text-white/60 text-base mb-6">{t('footer.tagline')}</p>
           <div className="flex gap-3">
@@ -44,7 +44,7 @@ export default function Footer({ reducedMotion }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={socialAriaTpl.replace('{network}', label)}
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-ardor-neon hover:border-ardor-neon/40 transition-colors duration-200 cursor-pointer"
+                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-ardor-gold hover:border-ardor-gold/40 transition-colors duration-200 cursor-pointer"
                 whileHover={reducedMotion ? {} : { y: -2 }}
                 transition={{ duration: 0.2 }}
               >
@@ -60,7 +60,7 @@ export default function Footer({ reducedMotion }) {
           <ul className="space-y-3 font-montserrat text-sm text-white/60">
             {navLinks.map(l => (
               <li key={l.href}>
-                <a href={l.href} className="hover:text-ardor-neon transition-colors duration-200">{l.label}</a>
+                <a href={l.href} className="hover:text-ardor-gold transition-colors duration-200">{l.label}</a>
               </li>
             ))}
           </ul>
@@ -72,10 +72,10 @@ export default function Footer({ reducedMotion }) {
           <address className="not-italic font-montserrat text-sm text-white/60 space-y-2">
             {address.map((line, i) => <p key={i}>{line}</p>)}
             <p className="pt-2 font-mono tabular">
-              <a href={`tel:${t('footer.phone').replace(/\s/g, '')}`} className="hover:text-ardor-neon transition-colors">{t('footer.phone')}</a>
+              <a href={`tel:${t('footer.phone').replace(/\s/g, '')}`} className="hover:text-ardor-gold transition-colors">{t('footer.phone')}</a>
             </p>
             <p>
-              <a href={`mailto:${t('footer.email')}`} className="hover:text-ardor-neon transition-colors">{t('footer.email')}</a>
+              <a href={`mailto:${t('footer.email')}`} className="hover:text-ardor-gold transition-colors">{t('footer.email')}</a>
             </p>
           </address>
           <div className="mt-6 font-montserrat text-[11px] text-white/50 space-y-1">
@@ -92,11 +92,11 @@ export default function Footer({ reducedMotion }) {
             {t('footer.newsletter.blurb')}
           </p>
           {subscribed ? (
-            <p className="font-cormorant italic text-ardor-neon text-sm">{t('footer.newsletter.subscribed')}</p>
+            <p className="font-cormorant italic text-ardor-gold text-sm">{t('footer.newsletter.subscribed')}</p>
           ) : (
             <form
               onSubmit={(e) => { e.preventDefault(); if (email) setSubscribed(true) }}
-              className="flex items-center gap-2 border-b border-white/15 focus-within:border-ardor-neon transition-colors"
+              className="flex items-center gap-2 border-b border-white/15 focus-within:border-ardor-gold transition-colors"
             >
               <input
                 type="email"
@@ -104,10 +104,10 @@ export default function Footer({ reducedMotion }) {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder={t('footer.newsletter.placeholder')}
-                aria-label="Email for newsletter"
+                aria-label={t('footer.newsletter.emailAria')}
                 className="flex-1 bg-transparent text-sm text-white py-2 outline-none placeholder:text-white/25 font-montserrat"
               />
-              <button type="submit" className="text-white/60 hover:text-ardor-neon transition-colors cursor-pointer" aria-label="Subscribe">
+              <button type="submit" className="text-white/60 hover:text-ardor-gold transition-colors cursor-pointer" aria-label={t('footer.newsletter.submitAria')}>
                 <Send size={16} strokeWidth={1.5} />
               </button>
             </form>

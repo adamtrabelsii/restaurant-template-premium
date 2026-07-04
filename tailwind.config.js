@@ -8,18 +8,19 @@ export default {
         montserrat: ['Inter', 'Montserrat', 'sans-serif'],
         mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },
+      // All values come from the CSS variables in src/index.css — edit the
+      // palette there, not here (see BRANDING.md).
       colors: {
         ardor: {
-          red:    '#A8323F',
-          gold:   '#C9A961',
-          copper: '#B87333',
-          neon:   '#C9A961',
-          dark:   '#0C0A09',
-          darker: '#06050A',
-          mid:    '#15110F',
-          surface:'#1C1815',
-          muted:  '#A89E92',
-          text:   '#F4EFE7',
+          red:    'rgb(var(--red-rgb) / <alpha-value>)',
+          gold:   'rgb(var(--gold-rgb) / <alpha-value>)',
+          copper: 'rgb(var(--copper-rgb) / <alpha-value>)',
+          dark:   'rgb(var(--dark-rgb) / <alpha-value>)',
+          darker: 'rgb(var(--darker-rgb) / <alpha-value>)',
+          mid:    'rgb(var(--mid-rgb) / <alpha-value>)',
+          surface:'rgb(var(--surface-rgb) / <alpha-value>)',
+          muted:  'rgb(var(--muted-rgb) / <alpha-value>)',
+          text:   'rgb(var(--text-rgb) / <alpha-value>)',
         },
       },
       transitionTimingFunction: {

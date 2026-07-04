@@ -13,7 +13,7 @@ export default function LanguageToggle({ reducedMotion, className = '' }) {
     <div
       className={`relative inline-flex items-center rounded-full border border-white/15 p-0.5 font-montserrat text-[10px] font-medium tracking-[0.2em] uppercase ${className}`}
       role="group"
-      aria-label="Language"
+      aria-label={t('navbar.languageAria')}
     >
       {options.map((opt) => {
         const active = lang === opt.code
@@ -25,7 +25,7 @@ export default function LanguageToggle({ reducedMotion, className = '' }) {
             aria-pressed={active}
             aria-label={opt.aria}
             className="relative px-3 py-1 cursor-pointer transition-colors duration-200"
-            style={{ color: active ? '#fff' : '#9CA3AF' }}
+            style={{ color: active ? 'var(--text)' : 'var(--muted)' }}
           >
             {active && (
               <motion.span

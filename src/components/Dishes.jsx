@@ -22,7 +22,7 @@ const SPANS = [
   'md:col-span-1 md:row-span-1 md:min-h-[17.5rem]',
 ]
 
-function DishCard({ dish, image, reducedMotion, delay, span, featured }) {
+function DishCard({ dish, image, reducedMotion, delay, span, featured, badge }) {
   const cardRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: cardRef,
@@ -37,10 +37,7 @@ function DishCard({ dish, image, reducedMotion, delay, span, featured }) {
       whileInView={reducedMotion ? {} : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.8, ease: EASE, delay }}
-      whileHover={reducedMotion ? {} : {
-        boxShadow: '0 0 0 1px rgba(201,169,97,0.45), 0 20px 60px -20px rgba(201,169,97,0.25)',
-      }}
-      className={`group relative overflow-hidden rounded-sm glass cursor-pointer ${span}`}
+      className={`group relative overflow-hidden rounded-sm glass glass-hover spotlight transition-shadow duration-500 ${span}`}
     >
       <div className="absolute inset-0 overflow-hidden">
         <motion.img
@@ -58,7 +55,7 @@ function DishCard({ dish, image, reducedMotion, delay, span, featured }) {
           <motion.div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: 'linear-gradient(105deg, transparent 40%, rgba(201,169,97,0.08) 50%, transparent 60%)',
+              background: 'linear-gradient(105deg, transparent 40%, rgb(var(--gold-rgb) / 0.08) 50%, transparent 60%)',
               backgroundSize: '200% 100%',
             }}
             animate={{ backgroundPosition: ['-100% 0', '200% 0'] }}
@@ -68,15 +65,15 @@ function DishCard({ dish, image, reducedMotion, delay, span, featured }) {
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-ardor-darker via-ardor-darker/30 to-transparent" />
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{ background: 'radial-gradient(ellipse at center, rgba(201,169,97,0.10) 0%, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse at center, rgb(var(--gold-rgb) / 0.10) 0%, transparent 70%)' }} />
 
-      <span className="absolute top-4 left-4 w-4 h-4 border-l border-t border-ardor-neon/40 group-hover:border-ardor-neon transition-colors" />
-      <span className="absolute top-4 right-4 w-4 h-4 border-r border-t border-ardor-neon/40 group-hover:border-ardor-neon transition-colors" />
+      <span className="absolute top-4 left-4 w-4 h-4 border-l border-t border-ardor-gold/40 group-hover:border-ardor-gold transition-colors" />
+      <span className="absolute top-4 right-4 w-4 h-4 border-r border-t border-ardor-gold/40 group-hover:border-ardor-gold transition-colors" />
 
       <div className="relative h-full flex flex-col justify-end p-6 md:p-8">
         {featured && (
-          <span className="self-start mb-3 font-montserrat text-[9px] tracking-[0.4em] uppercase text-ardor-neon border border-ardor-neon/40 px-2 py-1 rounded-sm">
-            Signature
+          <span className="self-start mb-3 font-montserrat text-[9px] tracking-[0.4em] uppercase text-ardor-gold border border-ardor-gold/40 px-2 py-1 rounded-sm">
+            {badge}
           </span>
         )}
         <div className="flex justify-between items-baseline gap-4">
@@ -88,18 +85,14 @@ function DishCard({ dish, image, reducedMotion, delay, span, featured }) {
         <p className={`font-montserrat text-white/60 text-xs leading-relaxed mt-3 ${featured ? 'max-w-md' : ''}`}>
           {dish.description}
         </p>
-        <div className="mt-5 flex items-center gap-2 font-montserrat text-[10px] tracking-[0.3em] uppercase text-ardor-neon/70">
-          <span className="w-6 h-px bg-ardor-neon/50" />
-          <span>Explore</span>
-        </div>
       </div>
     </motion.article>
   )
 }
 
 export default function Dishes({ reducedMotion }) {
-  const { t } = useLanguage()
-  const dishes = t('dishes.items')
+  const { t, tArray } = useLanguage()
+  const dishes = tArray('dishes.items')
 
   return (
     <section id="dishes" className="relative bg-ardor-mid py-28 md:py-40 overflow-hidden">
@@ -129,6 +122,7 @@ export default function Dishes({ reducedMotion }) {
               delay={i * 0.1}
               span={SPANS[i] || ''}
               featured={i === 0}
+              badge={t('dishes.signatureBadge')}
             />
           ))}
         </div>

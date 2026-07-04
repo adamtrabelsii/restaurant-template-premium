@@ -2,16 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   BRAND PALETTE — the single source of truth for every color.
+   Edit ONLY the *-rgb triplets below to rebrand (see BRANDING.md).
+   Tailwind's `ardor.*` colors, every inline style, and all
+   effects derive from these variables.
+   ============================================================ */
 :root {
-  --red:    #A8323F;
-  --gold:   #C9A961;
-  --copper: #B87333;
-  --dark:   #0C0A09;
-  --darker: #06050A;
-  --mid:    #15110F;
-  --surface:#1C1815;
-  --muted:  #A89E92;
-  --text:   #F4EFE7;
+  --red-rgb:    168 50 63;    /* primary accent (wine)        */
+  --gold-rgb:   201 169 97;   /* secondary accent (brass)     */
+  --copper-rgb: 184 115 51;   /* rare tertiary accent         */
+  --dark-rgb:   12 10 9;      /* page background              */
+  --darker-rgb: 6 5 10;       /* deepest sections             */
+  --mid-rgb:    21 17 15;     /* alternating sections         */
+  --surface-rgb:28 24 21;     /* raised surfaces              */
+  --muted-rgb:  168 158 146;  /* secondary text               */
+  --text-rgb:   244 239 231;  /* primary text (parchment)     */
+  --glow-rgb:   246 238 220;  /* bright core of light effects */
+
+  --red:    rgb(var(--red-rgb));
+  --gold:   rgb(var(--gold-rgb));
+  --copper: rgb(var(--copper-rgb));
+  --dark:   rgb(var(--dark-rgb));
+  --darker: rgb(var(--darker-rgb));
+  --mid:    rgb(var(--mid-rgb));
+  --surface:rgb(var(--surface-rgb));
+  --muted:  rgb(var(--muted-rgb));
+  --text:   rgb(var(--text-rgb));
 }
 
 * { box-sizing: border-box; }
@@ -26,7 +43,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-::selection { background: rgba(168, 50, 63, 0.4); color: var(--text); }
+::selection { background: rgb(var(--red-rgb) / 0.4); color: var(--text); }
 
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--darker); }
@@ -64,23 +81,67 @@ body {
 /* Tabular numbers for prices */
 .tabular { font-variant-numeric: tabular-nums; }
 
+/* Fraunces variable axes — the hand-cut display look (fix3 §9.5).
+   Requires SOFT/WONK in the Google Fonts request. */
+.display-wonk {
+  font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;
+}
+
+/* Candlelight spotlight (fix3 §9.2, adapted from 21st.dev spotlight-card).
+   Fixed accent hue — no hue rotation, ever. background-attachment: fixed lets
+   every card sample the same viewport coords from two :root vars set by
+   SpotlightVars; with the vars unset the gradients sit off-screen and the
+   card is plain glass (touch + reduced-motion fallback). */
+.spotlight::before,
+.spotlight::after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-mask-image: linear-gradient(transparent, transparent), linear-gradient(white, white);
+  -webkit-mask-clip: padding-box, border-box;
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(transparent, transparent), linear-gradient(white, white);
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+  z-index: 1;
+}
+.spotlight::before {
+  background-image: radial-gradient(
+    200px 200px at calc(var(--spot-x, -9999) * 1px) calc(var(--spot-y, -9999) * 1px),
+    rgb(var(--gold-rgb) / 0.5),
+    transparent 100%
+  );
+}
+.spotlight::after {
+  background-image: radial-gradient(
+    90px 90px at calc(var(--spot-x, -9999) * 1px) calc(var(--spot-y, -9999) * 1px),
+    rgb(var(--glow-rgb) / 0.45),
+    transparent 100%
+  );
+}
+
 /* Glass surface */
 .glass {
-  background: linear-gradient(135deg, rgba(244,239,231,0.03), rgba(244,239,231,0.01));
+  background: linear-gradient(135deg, rgb(var(--text-rgb) / 0.03), rgb(var(--text-rgb) / 0.01));
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(244,239,231,0.06);
+  border: 1px solid rgb(var(--text-rgb) / 0.06);
 }
 .glass-hover:hover {
-  border-color: rgba(201, 169, 97, 0.30);
-  box-shadow: 0 12px 60px -20px rgba(201, 169, 97, 0.18), inset 0 1px 0 rgba(244,239,231,0.04);
+  border-color: rgb(var(--gold-rgb) / 0.30);
+  box-shadow: 0 12px 60px -20px rgb(var(--gold-rgb) / 0.18), inset 0 1px 0 rgb(var(--text-rgb) / 0.04);
 }
 
 /* Subtle warm grid background helper */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(244,239,231,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244,239,231,0.03) 1px, transparent 1px);
+    linear-gradient(rgb(var(--text-rgb) / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--text-rgb) / 0.03) 1px, transparent 1px);
   background-size: 80px 80px;
 }
 

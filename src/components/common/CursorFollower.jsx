@@ -33,7 +33,7 @@ export default function CursorFollower({ reducedMotion }) {
         height: 380,
         marginLeft: -190,
         marginTop: -190,
-        background: 'radial-gradient(circle, rgba(201,169,97,0.08) 0%, rgba(168,50,63,0.04) 35%, transparent 65%)',
+        background: 'radial-gradient(circle, rgb(var(--gold-rgb) / 0.08) 0%, rgb(var(--red-rgb) / 0.04) 35%, transparent 65%)',
         mixBlendMode: 'screen',
         filter: 'blur(20px)',
       }}

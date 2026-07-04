@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#07070B" />
+  <meta name="theme-color" content="#0C0A09" />
   <meta name="color-scheme" content="dark" />
 
-  <title>ARDOR — Where Passion Meets the Plate</title>
-  <meta name="description" content="ARDOR — Contemporary Spanish fine dining in Madrid. Charcoal-fired cuisine, Iberian produce and an 87-strong cellar. Reserve your table." />
+  <title>ARDOR — Donde la Pasión se Encuentra con el Plato</title>
+  <meta name="description" content="ARDOR — Alta cocina española contemporánea en Madrid. Cocina al carbón, producto ibérico y una bodega de 87 referencias. Reserva tu mesa." />
+  <link rel="canonical" href="https://ardor-restaurant-template-premium.vercel.app/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="restaurant.restaurant" />
@@ -17,22 +18,30 @@
   <meta property="og:locale" content="es_ES" />
   <meta property="og:locale:alternate" content="en_US" />
 
-  <meta property="og:image" content="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=630&q=80&auto=format&fit=crop" />
+  <meta property="og:image" content="https://ardor-restaurant-template-premium.vercel.app/og.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:url" content="https://www.ardor.es" />
+  <meta property="og:image:alt" content="ARDOR — candlelit fine-dining table in Madrid" />
+  <meta property="og:url" content="https://ardor-restaurant-template-premium.vercel.app/" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ARDOR" />
   <meta name="twitter:description" content="Contemporary Spanish fine dining in Madrid." />
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=630&q=80&auto=format&fit=crop" />
+  <meta name="twitter:image" content="https://ardor-restaurant-template-premium.vercel.app/og.jpg" />
 
-  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2307070B'/><text x='50%25' y='56%25' text-anchor='middle' font-family='serif' font-size='38' font-weight='700' font-style='italic' fill='%23FF3D54' dy='.05em'>A</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230C0A09'/><text x='50%25' y='56%25' text-anchor='middle' font-family='serif' font-size='38' font-weight='700' font-style='italic' fill='%23A8323F' dy='.05em'>A</text></svg>" />
+
+  <!-- LCP: hero backdrop -->
+  <link rel="preload" as="image"
+    imagesrcset="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80&auto=format&fit=crop 1200w, https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&q=80&auto=format&fit=crop 1800w, https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=2200&q=80&auto=format&fit=crop 2200w"
+    imagesizes="100vw"
+    fetchpriority="high" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <!-- JSON-LD Restaurant schema -->
   <script type="application/ld+json">
@@ -45,7 +54,12 @@
     "priceRange": "€€€€",
     "telephone": "+34914351860",
     "email": "hola@ardor.es",
-    "url": "https://www.ardor.es",
+    "url": "https://ardor-restaurant-template-premium.vercel.app/",
+    "image": "https://ardor-restaurant-template-premium.vercel.app/og.jpg",
+    "sameAs": [
+      "https://www.instagram.com/ardormadrid",
+      "https://www.facebook.com/ardormadrid"
+    ],
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Calle de Jorge Juan 12",
@@ -53,6 +67,11 @@
       "addressRegion": "Madrid",
       "postalCode": "28001",
       "addressCountry": "ES"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.4239,
+      "longitude": -3.6836
     },
     "openingHoursSpecification": [
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday"], "opens": "19:00", "closes": "23:00" },
@@ -64,7 +83,7 @@
   </script>
 </head>
 <body>
-  <a href="#hero" class="skip-link">Skip to content</a>
+  <a href="#hero" class="skip-link">Saltar al contenido</a>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
